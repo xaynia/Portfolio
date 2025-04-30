@@ -1,6 +1,6 @@
 <template>
   <div class="portfolio">
-    <h1>My Portfolio</h1>
+    <h1>My Portfolio v1.0</h1>
 
     <!-- JavaScript game -->
     <section>
