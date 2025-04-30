@@ -5,9 +5,7 @@
     <!-- JavaScript game -->
     <section>
       <h2>JavaScript Game 2</h2>
-      <iframe
-          src="https://xaynia.itch.io/lost-colours"
-          width="600" height="400" frameborder="0" />
+      <iframe src="https://itch.io/embed/3479013" width="552" height="167" frameborder="0"><a href="https://xaynia.itch.io/lost-colours">Lost Colors by xaynia</a></iframe>
       <p>
         <a href="https://github.com/xaynia/CART-253" target="_blank">Source code</a>
       </p>
