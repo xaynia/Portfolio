@@ -4,7 +4,7 @@
     <header class="site-header">
       <nav class="nav-container">
         <!-- Site Logo / Title -->
-        <h1 class="logo">My Awesome Portfolio</h1>
+        <h1 class="logo">Acacia Williams</h1>
 
         <!-- Navigation Links -->
         <ul class="nav-links">

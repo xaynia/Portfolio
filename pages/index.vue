@@ -1,7 +1,7 @@
 <template>
   <div class="home-container">
-    <h2>Welcome to My Portfolio</h2>
-    <p>Hover over an item to see its name. Click to learn more.</p>
+<!--    <h2>Welcome to My Portfolio</h2>-->
+<!--    <p>Hover over an item to see its name. Click to learn more.</p>-->
 
     <div class="grid">
       <div
@@ -10,7 +10,12 @@
           class="grid-item"
           @click="goToDetail(item.slug)"
       >
-        <img :src="item.image" :alt="item.title" />
+        <video :src="`/media${item.image}`"
+               autoplay
+               muted
+               loop
+               playsinline
+               preload="auto"/>
         <div class="overlay">
           <h3>{{ item.title }}</h3>
           <p>{{ item.description }}</p>
@@ -56,7 +61,7 @@ function goToDetail(slug: string) {
   overflow: hidden;
   cursor: pointer;
 
-  img {
+  video {
     width: 100%;
     display: block;
     transition: transform 0.3s ease;

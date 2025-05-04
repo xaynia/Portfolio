@@ -1,0 +1,39 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body, #game {
+    width: 100%;
+    height: 100%;
+}
+
+canvas {
+    display: block;
+    width: 100% !important;   /* override inline width set by Phaser */
+    height: auto !important;  /* maintain aspect ratio */
+}
+
+body {
+    line-height: 1;
+    font-family: Arial, sans-serif;
+    background-color: #040218;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+img, video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
