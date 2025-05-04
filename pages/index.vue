@@ -104,12 +104,16 @@ function goToDetail(slug: string) {
 
   .info {
     padding: 1rem;
+    text-align: center;
+    max-width: 90%;
+    margin: 0 auto;
+
 
     .title {
-      font-size: 1rem;
+      font-size: 1.1rem;
       font-weight: 600;
       margin-bottom: 0.25rem;
-      color: $dark; /* or #333 if you like */
+      color: $dark;
     }
 
     .desc {

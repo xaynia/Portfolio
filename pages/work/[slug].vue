@@ -1,7 +1,7 @@
 <template>
   <div class="detail-container" v-if="item">
     <h2>{{ item.title }}</h2>
-    <p>{{ item.description }}</p>
+    <p>{{ item.longDescription }}</p>
 
     <!-- optional iframe (e.g. itch.io embed) -->
     <div v-if="item.iframeUrl" class="iframe-wrapper">

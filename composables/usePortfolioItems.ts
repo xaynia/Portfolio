@@ -1,65 +1,107 @@
 export interface PortfolioItem {
     slug: string;
     title: string;
-    image: string;         // path to thumbnail in /public
-    description?: string;  // optional
-    iframeUrl?: string;    // for web game embed
-    screenshots?: string[],
-    // Add more fields: videoUrl, unityScreenshots, etc.
+    image: string;          // path to thumbnail in /public
+    description?: string;   // short text (home page)
+    longDescription?: string; // extended text (detail page)
+    iframeUrl?: string;     // for web game embed
+    screenshots?: string[]; // array of media filenames
+    // Add more fields if needed (videoUrl, etc.)
 }
 
 export const usePortfolioItems = () => {
     const items: PortfolioItem[] = [
-
-        // Javascript Game
         {
             slug: 'chromatic-chameleon',
             title: 'Chromatic Chameleon',
             image: '/chromatic-chameleon.mp4',
-            description: 'A small platformer game made with JavaScript. Hover to see more!',
+            description: 'A small platformer game made with JavaScript.',
+            longDescription: `
+        In Chromatic Chameleon, you guide a color-shifting chameleon through tricky levels.
+        Built in pure JavaScript using HTML canvas, the game features evolving environments
+        where obstacles can only be navigated by matching the correct color at the right time.
+      `,
             iframeUrl: '/games/ChromaticChameleon/index.html',
-            screenshots: ['/start.mp4', '/level-three.mp4', '/chameleon.png', '/enemy.png', '/sakura.png', '/chameleon-spritesheet.png',]
+            screenshots: [
+                '/start.mp4',
+                '/level-three.mp4',
+                '/chameleon.png',
+                '/enemy.png',
+                '/sakura.png',
+                '/chameleon-spritesheet.png',
+            ],
         },
-
-        // Unity game "Ghoul Rush"
-
         {
             slug: 'ghoul-rush',
             title: 'Ghoul Rush',
             image: '/ghoulrush2.mp4',
-            description: 'A fast paced 3D horde-survival magic shooter game. Swap elemental spells to fend off endless ghost waves and protect the core. Made in Unity.',
-            iframeUrl: '', // TODO this is for Unity game
-            screenshots: ['/wave-one.mp4', '/wave-three-switch-spell.mp4', '/wave-six.mp4', '/upgrade-spell.mp4', ]
+            description: 'A fast-paced 3D horde-survival magic shooter game. Swap elemental spells to fend off endless ghost waves!',
+            longDescription: `
+        Ghoul Rush is a Unity-made survival shooter where you defend a magical core
+        against relentless spirits. Collect orbs and unlock different elemental spells,
+        each with unique effects and synergies. Can you survive the final wave?
+      `,
+            // iframeUrl: '', // If you have a Unity web build link or so
+            screenshots: [
+                '/wave-one.mp4',
+                '/wave-three-switch-spell.mp4',
+                '/wave-six.mp4',
+                '/upgrade-spell.mp4',
+            ],
         },
-
-        // Chaos vs. Symmetry video
         {
             slug: 'chaos-vs-symmetry',
             title: 'Chaos vs. Symmetry',
             image: '/symmetry-chaos.mp4',
-            description: 'Aerial footage of Montréal’s L’Anneau morphs into a Studio-Ghibli-inspired stop-motion vision, where perfect circular symmetry erupts into floral chaos and then settles back into calm—all cut to a Flume-style electronic score.',
+            description: 'A short film mixing aerial footage of Montréal with Ghibli-inspired stop-motion transitions.',
+            longDescription: `
+        In this experimental short, perfect circular symmetry transitions into
+        freeform floral chaos—mirroring the interplay between technology and nature.
+        With a Flume-inspired electronic score, the film highlights the tenuous balance
+        between structured modernity and organic wonder.
+      `,
             iframeUrl: 'https://www.youtube.com/embed/UyIjaud9AE0',
-            // screenshots: ['']
+            // screenshots: [ ... ] // if you want some
         },
-
-        // Pico 8 Game
         {
             slug: 'ghost-tale',
             title: 'Ghost Tale',
             image: '/ghost-tale-spawn.mp4',
-            description: 'A small Lua platformer game made with Pico-8 . Hover to see more!',
+            description: 'A Lua-powered Pico-8 platformer with retro charm.',
+            longDescription: `
+        Ghost Tale combines retro pixel art with puzzle platforming in a haunted world.
+        Written in Lua for Pico-8, the game challenges you to navigate tricky obstacles
+        and outsmart mischievous spirits. Collect hidden runes to unlock surprising
+        story elements.
+      `,
             iframeUrl: 'https://itch.io/embed/3479013',
-            screenshots: ['/ghost-tale-spawn.mp4', '/ghost-tale-platforms.mp4','/ghost-tale-platforms2.mp4','/ghost-tale-obstacle.mp4','/ghost-tale-false-grave.mp4','/ghost-tale-death.mp4', '/ghost-tale-win.mp4']
+            screenshots: [
+                '/ghost-tale-spawn.mp4',
+                '/ghost-tale-platforms.mp4',
+                '/ghost-tale-platforms2.mp4',
+                '/ghost-tale-obstacle.mp4',
+                '/ghost-tale-false-grave.mp4',
+                '/ghost-tale-death.mp4',
+                '/ghost-tale-win.mp4',
+            ],
         },
-
-        // Gravity Jam
         {
             slug: 'gravity-jam',
             title: 'Gravity Jam',
             image: '/gravity-jam.mp4',
-            description: 'A small platformer game made with JavaScript p5 libary. Hover to see more!',
+            description: 'A p5.js platformer focusing on gravity manipulation.',
+            longDescription: `
+        Gravity Jam is a whimsical platformer built with the p5.js library. The game
+        explores gravity-bending mechanics, letting players invert physics to dodge
+        hazards, collect items, and solve environmental puzzles. Lightweight yet
+        addictive fun for fans of creative 2D gameplay!
+      `,
             iframeUrl: '/games/GravityJam/index.html',
-            screenshots: ['/gravity-jam-feather-fall-b.mp4', '/gravity-jam-snow-b.mp4', '/gravity-jam-laughing-skull-b',]
+            screenshots: [
+                '/gravity-jam-feather-fall-b.mp4',
+                '/gravity-jam-snow-b.mp4',
+                '/gravity-jam-laughing-skull-b',
+            ],
         },
     ]
 
