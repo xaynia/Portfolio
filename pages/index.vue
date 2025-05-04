@@ -1,24 +1,32 @@
 <template>
   <div class="home-container">
-<!--    <h2>Welcome to My Portfolio</h2>-->
-<!--    <p>Hover over an item to see its name. Click to learn more.</p>-->
-
-    <div class="grid">
+    <div class="masonry">
       <div
           v-for="item in items"
           :key="item.slug"
-          class="grid-item"
+          class="masonry-item"
           @click="goToDetail(item.slug)"
       >
-        <video :src="`/media${item.image}`"
-               autoplay
-               muted
-               loop
-               playsinline
-               preload="auto"/>
-        <div class="overlay">
-          <h3>{{ item.title }}</h3>
-          <p>{{ item.description }}</p>
+        <!-- Video or image -->
+        <video
+            v-if="isVideo(item.image)"
+            :src="`/media${item.image}`"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="auto"
+        />
+        <img
+            v-else
+            :src="`/media${item.image}`"
+            alt=""
+        />
+
+        <!-- Text content below the media -->
+        <div class="info">
+          <h3 class="title">{{ item.title }}</h3>
+          <p class="desc">{{ item.description }}</p>
         </div>
       </div>
     </div>
@@ -28,6 +36,11 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
 import { usePortfolioItems } from '~/composables/usePortfolioItems'
+
+/** Determine if the given file is a video (mp4/webm) */
+function isVideo(file: string) {
+  return /\.(mp4|webm)$/i.test(file)
+}
 
 const router = useRouter()
 const { items } = usePortfolioItems()
@@ -43,54 +56,67 @@ function goToDetail(slug: string) {
 .home-container {
   padding: 2rem;
   text-align: center;
+  /* Optional global font for a “nice” look:
+     font-family: 'Inter', sans-serif;
+  */
+}
 
-  p {
-    margin-bottom: 1.5rem;
-    color: $dark;
+/* Masonry columns approach */
+.masonry {
+  column-count: 2;
+  column-gap: 1rem;
+
+  /* for responsiveness */
+  @media (max-width: 1000px) {
+    column-count: 2;
+  }
+  @media (max-width: 600px) {
+    column-count: 1;
   }
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 1rem;
-}
-
-.grid-item {
-  position: relative;
+.masonry-item {
+  /* Each item is an inline-block “card” in a column */
+  display: inline-block;
+  width: 100%;
+  margin: 0 0 1rem;
+  background: #fff;
+  border-radius: 6px;
   overflow: hidden;
+  text-align: left;
   cursor: pointer;
 
-  video {
+  /* Subtle card hover effect */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  /* The video or image up top */
+  video,
+  img {
     width: 100%;
+    height: auto;
     display: block;
-    transition: transform 0.3s ease;
   }
 
-  &:hover img {
-    transform: scale(1.1);
-  }
-
-  .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.6);
-    color: white;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+  .info {
     padding: 1rem;
-  }
 
-  &:hover .overlay {
-    opacity: 1;
+    .title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+      color: $dark; /* or #333 if you like */
+    }
+
+    .desc {
+      font-size: 0.875rem;
+      color: #555;
+      line-height: 1.4;
+    }
   }
 }
 </style>
