@@ -72,10 +72,11 @@
 
         <!-- full PDF -->
         <iframe v-if="isPdf(currentSrc)"
-                :src="currentSrc + '#page=1&zoom=page-fit'"
+                :src="currentSrc + '#page=1&zoom=page-width&toolbar=0'"
                 class="full pdf-full"
+                :style="{ width: '90vw', height: '90vh' }"
                 tabindex="-1"
-                title="PDF viewer"></iframe>
+                title="PDF viewer"> </iframe>
 
         <!-- Full video -->
         <video v-else-if="isVideo(currentSrc)"
