@@ -1,6 +1,16 @@
-/* Color variables */
+/* Color palette */
 $primary: #04aa6d;
-$dark: #222;
-$light: #f9f9f9;
+$dark:    #222;
+$light:   #f9f9f9;
 
-//TODO add light/dark versions and toggle button in layout header
+/* Typography */
+$font-stack: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+
+/* Layout */
+$header-height: 64px;
+
+/* TODO: dark-mode */
+$colors-dark: (
+        bg: #121212,
+        text: #eaeaea
+);

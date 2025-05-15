@@ -51,7 +51,7 @@ function goToDetail(slug: string) {
 </script>
 
 <style scoped lang="scss">
-@use '/assets/scss/variables' as *;
+@use '~/assets/scss/variables' as *;
 
 .home-container {
   padding: 2rem;

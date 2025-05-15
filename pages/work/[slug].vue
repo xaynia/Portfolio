@@ -1,103 +1,98 @@
 <template>
   <div class="detail-container" v-if="item">
     <h2>{{ item.title }}</h2>
-    <p>{{ item.longDescription }}</p>
 
-    <!-- optional iframe (e.g. itch.io embed) -->
-    <div v-if="item.iframeUrl" class="iframe-wrapper">
-      <iframe
-          :src="item.iframeUrl"
-          allowfullscreen
-      />
+    <!-- long description: \n → <br> -->
+    <div class="long-description" v-html="formatted"></div>
+
+    <!-- █ 1. Playable iframe (game / YouTube) -->
+    <div v-if="item.iframeUrl"
+         class="media-wrapper"
+         :style="{ aspectRatio: item.ratio || '16 / 9' }">
+      <iframe :src="item.iframeUrl" allowfullscreen />
     </div>
 
-    <!-- Screenshots / Media grid -->
+    <!-- █ 2. Self-hosted movie -->
+    <div v-else-if="item.videoUrl"
+         class="media-wrapper"
+         :style="{ aspectRatio: item.ratio || '16 / 9' }">
+      <video :src="item.videoUrl" controls preload="none" :poster="item.image" />
+    </div>
+
+    <!-- █ 2½. Credits -->
+    <div v-if="item.credits" class="credits">
+      <h3>Credits</h3>
+      <pre>{{ item.credits }}</pre>
+    </div>
+
+    <!-- █ 3. Screenshots / Media grid -->
     <div v-if="mediaShots.length" class="screenshots">
       <h3>Screenshots / Media</h3>
+
       <div class="screenshot-grid">
         <template v-for="(src, idx) in mediaShots" :key="idx">
+          <!-- PDF thumb -->
+          <div v-if="isPdf(src)" class="thumb pdf-thumb" @click="open(idx)">
+            <img :src="thumbFor(src)"
+                 @error="e => (e.currentTarget as HTMLImageElement).src = '/media/default-pdf-thumb.png'">
+            <span class="badge">PDF</span>
+          </div>
+
           <!-- Video thumbnail -->
-          <video
-              v-if="isVideo(src)"
-              :src="src"
-              class="thumb"
-              autoplay
-              muted
-              loop
-              playsinline
-              preload="auto"
-              @click="open(idx)"
-          ></video>
+          <video v-else-if="isVideo(src)"
+                 :src="src"
+                 class="thumb"
+                 autoplay muted loop playsinline preload="auto"
+                 @click="open(idx)" />
 
           <!-- Image thumbnail -->
-          <img
-              v-else
-              :src="src"
-              class="thumb"
-              :alt="item.title"
-              @click="open(idx)"
-          />
+          <img v-else
+               :src="src"
+               class="thumb"
+               :class="['thumb', { small: isTiny(src) }]"
+               :alt="item.title"
+               @click="open(idx)" />
         </template>
       </div>
     </div>
 
-    <!-- Lightbox overlay -->
+    <!-- █ 4. Light-box overlay -->
     <transition name="fade">
-      <div
-          v-if="lbVisible"
-          class="overlay"
-          @click.self="closeLightbox"
-      >
-        <!-- close button -->
-        <button
-            class="close"
-            @click="closeLightbox"
-            aria-label="Close Lightbox"
-        >×</button>
+      <div v-if="lbVisible" class="overlay" @click.self="closeLightbox">
+        <button class="close" @click="closeLightbox" aria-label="Close">×</button>
 
-        <!-- prev / next nav buttons -->
-        <button
-            v-if="mediaShots.length > 1"
-            class="nav-button prev"
-            @click.prevent="prevMedia"
-            aria-label="Previous Media"
-        >
-          ‹
-        </button>
-        <button
-            v-if="mediaShots.length > 1"
-            class="nav-button next"
-            @click.prevent="nextMedia"
-            aria-label="Next Media"
-        >
-          ›
-        </button>
+        <button v-if="mediaShots.length > 1"
+                class="nav-button prev"
+                aria-label="Previous"
+                @click.prevent="prevMedia">‹</button>
+        <button v-if="mediaShots.length > 1"
+                class="nav-button next"
+                aria-label="Next"
+                @click.prevent="nextMedia">›</button>
+
+        <!-- full PDF -->
+        <iframe v-if="isPdf(currentSrc)"
+                :src="currentSrc + '#page=1&zoom=page-fit'"
+                class="full pdf-full"
+                tabindex="-1"
+                title="PDF viewer"></iframe>
 
         <!-- Full video -->
-        <video
-            v-if="isVideo(currentSrc)"
-            :src="currentSrc"
-            class="full video-full"
-            autoplay
-            muted
-            loop
-            playsinline
-        ></video>
+        <video v-else-if="isVideo(currentSrc)"
+               :src="currentSrc"
+               class="full video-full"
+               autoplay muted loop playsinline />
 
         <!-- Full image -->
-        <img
-            v-else
-            :src="currentSrc"
-            class="full image-full"
-            :alt="item.title"
-        />
+        <img v-else
+             :src="currentSrc"
+             class="full image-full"
+             :alt="item.title" />
       </div>
     </transition>
   </div>
 
-  <div v-else>
-    <p>Item not found.</p>
-  </div>
+  <div v-else><p>Item not found.</p></div>
 </template>
 
 <script setup lang="ts">
@@ -105,57 +100,62 @@ import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { usePortfolioItems } from '~/composables/usePortfolioItems'
 
-/** Check if a file is a video by extension. */
-function isVideo(src: string) {
-  return /\.(mp4|webm)$/i.test(src)
+/* helpers ------------------------------------------------ */
+const isVideo = (src: string) => /\.(mp4|webm)$/i.test(src)
+const isPdf   = (src: string) => /\.pdf$/i.test(src)
+
+const tinySprites = ['/chameleon.png', '/enemy.png', '/sakura.png']
+const isTiny      = (src: string) => tinySprites.some(p => src.endsWith(p))
+
+function thumbFor(src: string) {
+  if (!isPdf(src)) return src
+  const custom = src.replace(/\.pdf$/i, '-thumb.jpg')
+  return `/media${custom}`.replace('//', '/')
 }
 
+/* item lookup ------------------------------------------- */
 const route = useRoute()
 const { items } = usePortfolioItems()
-
-/** The portfolio item that matches [slug] */
 const item = items.find(i => i.slug === route.params.slug)
 
-/** Build full media paths (prefix /media) */
+/* A. longDescription -------------------------- */
+const formatted = computed(() => {
+  return (item?.longDescription ?? '')
+      // remove indent that follows each newline
+      .replace(/\r?\n[ \t]+/g, '\n')
+      // blank line → paragraph break (<br><br>)
+      .replace(/\n{2,}/g, '<br><br>')
+      // leftover single newline → space
+      .replace(/\n/g, ' ')
+      .trim()
+})
+// old formatted long description:
+// const formatted = computed(() =>
+//     (item?.longDescription ?? '').replace(/\n/g, '<br>')
+// )
+
+/* B. screenshots array ------------------------------------------- */
 const mediaShots = computed(() =>
     item?.screenshots?.map(s =>
         s.startsWith('/') ? `/media${s}` : `/media/${s}`
     ) ?? []
 )
 
-/** Lightbox state */
-const lbVisible = ref(false)
-const lbIndex = ref(0)
-
-/** Current media in the lightbox */
+/* light-box state & helpers -------------------------------------- */
+const lbVisible  = ref(false)
+const lbIndex    = ref(0)
 const currentSrc = computed(() => mediaShots.value[lbIndex.value] ?? '')
 
-/** Show overlay at index */
-function open(idx: number) {
-  lbIndex.value = idx
-  lbVisible.value = true
-}
+function open(i: number)      { lbIndex.value = i; lbVisible.value = true }
+function closeLightbox()      { lbVisible.value = false }
+function nextMedia()          { lbIndex.value = (lbIndex.value + 1) % mediaShots.value.length }
+function prevMedia()          { lbIndex.value = (lbIndex.value + mediaShots.value.length - 1) % mediaShots.value.length }
 
-/** Close overlay */
-function closeLightbox() {
-  lbVisible.value = false
-}
-
-/** Next / prev in array */
-function nextMedia() {
-  lbIndex.value = (lbIndex.value + 1) % mediaShots.value.length
-}
-function prevMedia() {
-  lbIndex.value =
-      (lbIndex.value + mediaShots.value.length - 1) % mediaShots.value.length
-}
-
-/** Add arrow key and Esc support */
 function onKey(e: KeyboardEvent) {
   if (!lbVisible.value) return
-  if (e.key === 'Escape') closeLightbox()
+  if (e.key === 'Escape')      closeLightbox()
   else if (e.key === 'ArrowRight') nextMedia()
-  else if (e.key === 'ArrowLeft') prevMedia()
+  else if (e.key === 'ArrowLeft')  prevMedia()
 }
 onMounted(() => window.addEventListener('keydown', onKey))
 onUnmounted(() => window.removeEventListener('keydown', onKey))
@@ -167,135 +167,99 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
   max-width: 800px;
   margin: 0 auto;
 
-  /* If there's a playable iframe */
-  .iframe-wrapper {
-    margin: 1rem 0;
-    aspect-ratio: 4 / 3; /* or your desired ratio */
+  /* media wrapper */
+  .media-wrapper {
     width: 100%;
-    iframe {
+    height: 100%;
+    overflow: hidden;
+    iframe,
+    video {
       width: 100%;
       height: 100%;
       border: 0;
+      object-fit: cover;
     }
   }
 
-  /* Thumbnails grid */
+  /* screenshots / thumbnails */
   .screenshots {
     margin-top: 2rem;
     .screenshot-grid {
       display: flex;
       flex-wrap: wrap;
       gap: 1rem;
-      align-items: flex-start; /* prevent auto-stretching */
-
       .thumb {
-        /*
-          We remove a fixed "width: 200px" so smaller images (e.g. 50x50)
-          stay that size. Large images or videos get capped by max-*
-        */
-        width: auto;
-        height: auto;
         max-width: 200px;
         max-height: 150px;
-
         border-radius: 4px;
         cursor: pointer;
         transition: transform 0.2s;
+        img,
+        video {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+        &:hover { transform: scale(1.03); }
 
-        /* For pixel-art crispness on images (does nothing for video) */
-        image-rendering: pixelated;
-
-        &:hover {
-          transform: scale(1.03);
+        &.small {
+          max-width: 50px;
+          max-height: 20px;
+          img { width: auto; height: auto; object-fit: contain; }
         }
       }
+      .pdf-thumb img { object-fit: contain; background: #fff; }
     }
   }
 
-  /* Lightbox overlay */
+  /* overlay */
   .overlay {
     position: fixed;
     inset: 0;
-    z-index: 9999;
     background: rgba(0, 0, 0, 0.85);
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 900;
   }
-
   .full {
+    max-width: 90vw;
+    max-height: 90vh;
     border-radius: 6px;
-    z-index: 1;
   }
-
-  .video-full {
-    /* Large videos scale down if bigger than the viewport */
-    max-width: 90vw;
-    max-height: 90vh;
-    object-fit: contain;
-  }
-
-  .image-full {
-    /*
-      For images, we want original size if smaller than viewport,
-      but never bigger than the screen
-    */
-    width: auto;
-    height: auto;
-    max-width: 90vw;
-    max-height: 90vh;
-    image-rendering: pixelated; /* Crisp for pixel art. */
-  }
-
-  /* Close button */
-  .close {
-    position: absolute;
-    top: 2rem;
-    right: 2rem;
+  .close,
+  .nav-button {
     font: 2.5rem/1 monospace;
     background: none;
     border: none;
     color: #fff;
     cursor: pointer;
-    z-index: 2;
   }
-
-  /* Prev / Next nav buttons */
   .nav-button {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    font: 2.5rem/1 monospace;
-    background: rgba(255, 255, 255, 0.2);
-    color: #fff;
-    border: none;
-    width: 3rem;
-    height: 3rem;
-    cursor: pointer;
+    width: 3rem; height: 3rem;
     border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 2;
-    &:hover {
-      background: rgba(255, 255, 255, 0.3);
-    }
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(255, 255, 255, 0.2);
+    &:hover { background: rgba(255, 255, 255, 0.3); }
   }
-  .prev {
-    left: 2rem;
-  }
-  .next {
-    right: 2rem;
+  .prev { left: 2rem; }
+  .next { right: 2rem; }
+
+  /* credits box */
+  .credits {
+    margin: 1.5rem 0 0;
+    padding: 1rem 1.25rem;
+    background: #f7f7f7;
+    border-left: 4px solid #444;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    white-space: pre-wrap;
   }
 
-  /* Fade transition */
-  .fade-enter-active,
-  .fade-leave-active {
-    transition: opacity 0.2s;
-  }
-  .fade-enter-from,
-  .fade-leave-to {
-    opacity: 0;
-  }
+  /* long description */
+  .long-description { line-height: 1.6; }
 }
 </style>

@@ -2,20 +2,27 @@
 
 @use './variables' as *;
 
-/* Basic resets */
-* {
+/* Basic reset */
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body {
-  font-family: sans-serif;
-  background-color: $light;
+html, body {
+  font-family: $font-stack;
+  background: $light;
   color: $dark;
+  line-height: 1.5;
 }
 
-/* Utility classes or mixins as you like */
-.hover-pointer {
-  cursor: pointer;
+/* Utility */
+.hover-pointer { cursor: pointer; }
+
+/* dark-mode toggle (class on <html>) */
+html.dark {
+  background: map-get($colors-dark, bg);
+  color: map-get($colors-dark, text);
 }

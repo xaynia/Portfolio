@@ -3,10 +3,12 @@
     <!-- Fixed Header -->
     <header :class="['site-header', { hidden: isHidden }]">
       <nav class="nav-container">
-        <h1 class="logo">Acacia Williams</h1>
+        <h1>
+          <NuxtLink to="/" class="logo">Acacia Williams</NuxtLink>
+        </h1>
         <ul class="nav-links">
-          <li><NuxtLink to="/">Home</NuxtLink></li>
-          <li><NuxtLink to="/contact">Contact</NuxtLink></li>
+          <li><NuxtLink to="/about">About</NuxtLink></li>
+<!--          <li><NuxtLink to="/contact">Contact</NuxtLink></li>-->
           <li>
             <a href="https://github.com/xaynia" target="_blank" rel="noopener">
               <img
@@ -17,7 +19,7 @@
             </a>
           </li>
           <li>
-            <a href="https://discord.gg/YOUR_DISCORD" target="_blank" rel="noopener">
+            <a href="https://discord.com/users/329761406817796097" target="_blank" rel="noopener">
               <img
                   src="https://cdn.jsdelivr.net/npm/simple-icons@9/icons/discord.svg"
                   class="icon"
@@ -44,7 +46,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 
 const isHidden = ref(false)
@@ -52,46 +54,32 @@ let lastScrollY = 0
 
 function handleScroll() {
   const currentScrollY = window.scrollY
-  // If scrolling down and passed 50px, hide header
   if (currentScrollY > lastScrollY && currentScrollY > 50) {
     isHidden.value = true
   } else {
-    // Scrolling up or near top, show header
     isHidden.value = false
   }
   lastScrollY = currentScrollY
 }
 
-onMounted(() => {
-  window.addEventListener('scroll', handleScroll)
-})
-
-onBeforeUnmount(() => {
-  window.removeEventListener('scroll', handleScroll)
-})
+onMounted(() => window.addEventListener('scroll', handleScroll))
+onBeforeUnmount(() => window.removeEventListener('scroll', handleScroll))
 </script>
 
-<!--
-  Note:
-  - Using un-scoped or global classes for layout typically works better,
-    because you often want these layout rules to apply site-wide.
-  - If you prefer SCSS variables (e.g. $primary, etc.), adapt the color lines.
--->
 <style scoped lang="scss">
 .layout-wrapper {
-  /* Make the layout fill the full vertical space, ensuring footer sticks at bottom */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-/* Fixed, transparent header that slides up and down */
+/* Fixed, semi-transparent header */
 .site-header {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1000; /* so it stays above content */
+  z-index: 1000;
   background-color: rgba(255, 255, 255, 0.85);
   color: #333;
   padding: 1rem 2rem;
@@ -103,8 +91,17 @@ onBeforeUnmount(() => {
     justify-content: space-between;
   }
 
+  /* Logo link as home */
   .logo {
     font-size: 1.5rem;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      opacity: 0.8;
+    }
   }
 
   .nav-links {
@@ -125,23 +122,23 @@ onBeforeUnmount(() => {
   }
 }
 
-/* Slide the header upward (hidden) */
+/* Slide header up when hidden */
 .hidden {
   transform: translateY(-100%);
 }
 
-/* Push main content below the fixed header (set this to header’s height) */
+/* Reserve space for fixed header */
 .header-spacer {
   height: 64px;
 }
 
-/* Black footer always at bottom, spanning full width */
+/* Footer stuck to bottom */
 .site-footer {
   background-color: #333;
   color: #eee;
   text-align: center;
   padding: 1rem;
-  margin-top: auto; /* Force it to stick to bottom of layout-wrapper */
+  margin-top: auto;
 
   p {
     font-size: 0.9rem;
