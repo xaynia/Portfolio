@@ -1,5 +1,13 @@
 <!DOCTYPE html>
 <html lang="en-us">
+
+<style>
+    /* remove the 1-pixel Unity footer border that causes scrolling */
+    #unity-footer { border: none !important; }
+    /* make sure nothing else can introduce scrollbars */
+    html, body { margin: 0; padding: 0; overflow: hidden; }
+</style>
+
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -7,14 +15,17 @@
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
 
-<!--    <style>-->
-<!--      /* Shift the whole render area down by 8 px */-->
-<!--      #unity-canvas { display:block; margin-top:25px; }-->
+    <style>
+        /* make the canvas fluid */
+        #unity-container, #unity-canvas, canvas {
+            width: 100% !important;
+            height: auto !important;   /* keeps aspect ratio */
+    </style>
+      <!--      /* Shift the whole render area down by 8 px */-->
+      <!--      #unity-canvas { display:block; margin-top:25px; }-->
 
-<!--      /* Keep container from clipping the bottom */-->
-<!--      #unity-container { overflow: visible; } /* or increase its height */-->
-<!--    </style>-->
-
+      <!--      /* Keep container from clipping the bottom */-->
+      <!--      #unity-container { overflow: visible; } /* or increase its height */-->
 
   </head>
   <body>

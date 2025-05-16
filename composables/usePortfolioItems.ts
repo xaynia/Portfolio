@@ -36,7 +36,7 @@ export const usePortfolioItems = () => {
                 '/wave-six.mp4',
                 '/upgrade-spell.mp4'
             ],
-            ratio: '16 / 10',
+            ratio: '960 / 640',
         },
 
         // ── Chaos vs Symmetry ────────────────────────────────────
