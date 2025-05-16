@@ -20,10 +20,7 @@
     </div>
 
     <!-- █ 2½. Credits -->
-    <div v-if="item.credits" class="credits">
-      <h3>Credits</h3>
-      <pre>{{ item.credits }}</pre>
-    </div>
+    <div v-if="item.credits" class="credits" v-html="creditsHtml"></div>
 
     <!-- █ 3. Screenshots / Media grid -->
     <div v-if="mediaShots.length" class="screenshots">
@@ -48,7 +45,6 @@
           <!-- Image thumbnail -->
           <img v-else
                :src="src"
-               class="thumb"
                :class="['thumb', { small: isTiny(src) }]"
                :alt="item.title"
                @click="open(idx)" />
@@ -100,6 +96,18 @@
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { usePortfolioItems } from '~/composables/usePortfolioItems'
+import MarkdownIt from 'markdown-it'
+/* markdown */
+const md = new MarkdownIt({
+  breaks:  true,   // keep your <br> breaks
+  linkify: true    // auto-link plain URLs
+})
+
+/* parsed credits HTML */
+const creditsHtml = computed(() =>
+    item?.credits ? md.render(dedent(item.credits)) : ''
+)
+
 
 /* helpers ------------------------------------------------ */
 const isVideo = (src: string) => /\.(mp4|webm)$/i.test(src)
@@ -112,6 +120,21 @@ function thumbFor(src: string) {
   if (!isPdf(src)) return src
   const custom = src.replace(/\.pdf$/i, '-thumb.jpg')
   return `/media${custom}`.replace('//', '/')
+}
+/* helper to remove common leading indent */
+function dedent(mdText: string) {
+  const lines = mdText.replace(/\r\n/g, '\n').split('\n')
+  // ignore first & last if they’re blank
+  if (lines[0].trim() === '') lines.shift()
+  if (lines[lines.length - 1].trim() === '') lines.pop()
+  // find smallest indent >0
+  const indent = Math.min(
+      ...lines.filter(l => l.trim()).map(l => l.match(/^ +/)?.[0].length ?? 0)
+  )
+  return lines
+      .map(l => l.slice(indent))          // strip indent
+      .join('\n')
+      .replace(/^• /gm, '- ')             // turn bullets into markdown list
 }
 
 /* item lookup ------------------------------------------- */

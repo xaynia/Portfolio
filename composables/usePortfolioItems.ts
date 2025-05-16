@@ -68,15 +68,15 @@ export const usePortfolioItems = () => {
         chaos and symmetry in a striking modern homage.`,
             iframeUrl: 'https://www.youtube.com/embed/UyIjaud9AE0',
             credits: `
-        Sound Attribution:
+        **Sound Attribution:**
 
-        • *Flume Type 4 Chord Synth.wav* — TKOIII — CC BY 4.0  
+         • *Flume Type 4 Chord Synth.wav* — TKOIII — CC BY 4.0  
           https://freesound.org/s/634192/
 
-        • *drumloop_qwerty_138.wav* — harrisonlace — CC 0  
+         • *drumloop_qwerty_138.wav* — harrisonlace — CC 0  
           https://freesound.org/s/648146/
 
-        • *Polyflute pad.wav* — Mat397 — CC BY 3.0  
+         • *Polyflute pad.wav* — Mat397 — CC BY 3.0  
           https://freesound.org/s/485078/
       `
         },
