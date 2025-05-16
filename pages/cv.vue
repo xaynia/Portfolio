@@ -111,7 +111,7 @@
           </li>
           <li>
             <strong>CART 263 – Creative Computation II</strong>:
-            Advanced JS ( JS, HTML, objects, media APIs and canvas, JSON & strings, arrays, SVGs)
+            Translating ideas into programs (JS, HTML, objects, media APIs and canvas, JSON & strings, arrays, SVGs)
             <em>Chromatic Chameleon</em>, a color-shifting platformer.
           </li>
           <li>
