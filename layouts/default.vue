@@ -9,6 +9,7 @@
         <ul class="nav-links">
           <li><NuxtLink to="/about">About</NuxtLink></li>
 <!--          <li><NuxtLink to="/contact">Contact</NuxtLink></li>-->
+          <li><NuxtLink to="/cv">CV</NuxtLink></li>
           <li>
             <a href="https://github.com/xaynia" target="_blank" rel="noopener">
               <img
