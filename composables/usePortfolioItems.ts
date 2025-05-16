@@ -173,7 +173,29 @@ export const usePortfolioItems = () => {
                 '/cymatic-patch-3.png',
                 '/visual-symphony-report.pdf'
             ]
+        },
+
+        // ── Capstone ──────────────────────────────
+        {
+            slug: 'capstone',
+            title: 'Examining the Effects of Video Game Genres on Heart Rate Variability',
+            image: '/capstone-infographic.png',
+            description: 'This study explores how combat, platformer, and social simulation games impact heart rate variability (HRV), highlighting that intense games elevate heart rate, whereas calming games reduce physiological stress',
+            longDescription: `
+        This study investigates how different video game genres—combat, platformer, and social simulation—influence 
+        physiological responses, particularly heart rate variability (HRV). Utilizing precise ECG measurements, 
+        gameplay sessions with "Boomerang Fu," "Super Mario Bros. Wonder," and "Animal Crossing New Horizons" 
+        were analyzed to determine varying levels of cardiovascular arousal and stress. Findings indicate that intense 
+        and competitive games notably elevate heart rate, while calming games can reduce physiological stress, 
+        demonstrating the diverse emotional and therapeutic potentials of video gaming experiences.
+      `,
+
+            screenshots: [
+                '/capstone.pdf',
+            ]
         }
+
+
 
     ]
 

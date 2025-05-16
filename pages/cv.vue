@@ -137,41 +137,52 @@
 
       <ol>
         <li>
-          <strong>ECG &amp; Gaming Capstone</strong> (PSYC 447):
+          <a href="/work/capstone" target="_blank" rel="noopener"> <strong> ECG & Gaming Capstone</strong></a> <b>(PSYC 447)</b>
           Researched psychophysiological signals (heart rate, ECG) while playing various game genres (social simulation,
           fighting, platformer), analyzing stress and emotional responses.
         </li>
         <li>
-          <strong>Ghoul Rush (CART 315):</strong>
+          <a href="/work/ghoul-rush" target="_blank" rel="noopener"> <strong>Ghoul Rush</strong></a> <b>(CART 315)</b>
           A fast-paced 3D horde-survival magic shooter in Unity. Collect elemental mushrooms and swap spells to defend
           the magical core.
         </li>
         <li>
-          <strong>Chaos vs. Symmetry: (CART 212) </strong>
+          <a href="/work/chaos-vs-symmetry" target="_blank" rel="noopener"> <strong>Chaos vs. Symmetry:</strong></a> <b>(CART 212)</b>
           A short experimental video created in Premiere Pro and After Effects. Explores the balance between natural and
           digital elements, featuring AI-generated stop-motion frames.
         </li>
         <li>
-          <strong>Ghost Tale: (CART 315) </strong>
-          A retro-style platformer built in Lua for Pico-8, with puzzle elements and a “haunted” pixel art style.
+          <a href="/work/ghost-tale" target="_blank" rel="noopener">
+            <strong>Ghost Tale</strong>
+          </a>
+          <b> (CART 315)</b>
+          A retro-style platformer built in Lua for Pico-8, with puzzle elements and a “haunted” pixel-art aesthetic.
         </li>
         <li>
-          <strong>Chromatic Chameleon: (CART 263)</strong>
-          A JavaScript platformer transitioning from monochrome to vibrant pastel as you collect Sakura petals, symbolizing
+          <a href="/work/chromatic-chameleon" target="_blank" rel="noopener">
+            <strong>Chromatic Chameleon</strong>
+          </a>
+          <b> (CART 263)</b>
+          A JavaScript platformer that shifts from monochrome to vibrant pastel as you collect Sakura petals—symbolizing
           seasonal change and mood.
         </li>
         <li>
-          <strong>Gravity Jam: (CART 253) </strong>
-          A p5.js prototype focusing on guiding falling objects via gravity. Each variation uses the same mechanic but
+          <a href="/work/gravity-jam" target="_blank" rel="noopener">
+            <strong>Gravity Jam</strong>
+          </a>
+          <b> (CART 253)</b>
+          A p5.js prototype focused on guiding falling objects via gravity. Each variation uses the same core mechanic but
           different visual themes.
         </li>
         <li>
-          <strong>Cymatic Water Symphony: (CART 346) </strong>
-          A Max MSP & Jitter patch combining water-themed audio with cymatic-inspired visuals, showcasing how sound
-          vibrations produce distinct patterns.
+          <a href="/work/cymatic-water-symphony" target="_blank" rel="noopener">
+            <strong>Cymatic Water Symphony</strong>
+          </a>
+          <b> (CART 346)</b>
+          A Max MSP & Jitter patch combining six water-themed audio sources with cymatic-inspired visuals, showcasing how
+          sound vibrations produce distinct patterns in physical media.
         </li>
       </ol>
-
       <hr/>
 
       <!-- Technical Skills -->
