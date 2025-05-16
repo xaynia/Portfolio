@@ -27,6 +27,13 @@
               />
             </a>
           </li>
+          <!--toggle button mode switch-->
+          <li>
+            <button class="mode-btn" @click="toggle">
+              <span v-if="isDark" aria-label="Switch to light mode">🌙</span>
+              <span v-else   aria-label="Switch to dark mode">☀️</span>
+            </button>
+          </li>
         </ul>
       </nav>
     </header>
@@ -47,26 +54,41 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { ref, onMounted, onBeforeUnmount, watch } from 'vue'
 
+/* ── header hide on scroll ─────────────────────────────── */
 const isHidden = ref(false)
 let lastScrollY = 0
-
-function handleScroll() {
-  const currentScrollY = window.scrollY
-  if (currentScrollY > lastScrollY && currentScrollY > 50) {
-    isHidden.value = true
-  } else {
-    isHidden.value = false
-  }
-  lastScrollY = currentScrollY
+function handleScroll () {
+  const y = window.scrollY
+  isHidden.value = y > lastScrollY && y > 50
+  lastScrollY = y
 }
-
 onMounted(() => window.addEventListener('scroll', handleScroll))
 onBeforeUnmount(() => window.removeEventListener('scroll', handleScroll))
+
+/* ── day / night toggle (client-only) ───────────────────── */
+const STORAGE_KEY = 'prefers-dark'
+const isDark      = ref(false)
+
+onMounted(() => {
+  const saved   = localStorage.getItem(STORAGE_KEY)
+  const system  = window.matchMedia('(prefers-color-scheme: dark)').matches
+  isDark.value  = saved !== null ? saved === 'true' : system
+
+  watch(isDark, val => {
+    document.documentElement.classList.toggle('dark', val)
+    localStorage.setItem(STORAGE_KEY, String(val))
+  }, { immediate: true })
+})
+
+function toggle () { isDark.value = !isDark.value }
 </script>
 
+
 <style scoped lang="scss">
+@use '/assets/scss/variables' as *;
+
 .layout-wrapper {
   min-height: 100vh;
   display: flex;
@@ -119,7 +141,24 @@ onBeforeUnmount(() => window.removeEventListener('scroll', handleScroll))
       height: 24px;
       filter: invert(0%);
     }
+
+      /* ADD ▸ button style */
+    .mode-btn {
+      background: none;
+      border: none;
+      font-size: 1.3rem;
+      cursor: pointer;
+      line-height: 1;
+    }
   }
+}
+
+//  dark theme overrides
+:deep(html.dark) {
+  body         { background: map-get($colors-dark, bg); color: map-get($colors-dark, text); }
+  .site-header { background-color: rgba(34,34,34,.85); color: #eaeaea; }
+  .site-footer { background: #111; color: #ccc; }
+  .icon        { filter: invert(90%); }
 }
 
 /* Slide header up when hidden */

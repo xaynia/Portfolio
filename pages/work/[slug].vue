@@ -3,7 +3,7 @@
     <h2>{{ item.title }}</h2>
 
     <!-- long description: \n → <br> -->
-    <div class="long-description" v-html="formatted"></div>
+    <div class="long-description" v-html="longHtml"></div>
 
     <!-- █ 1. Playable iframe (game / YouTube) -->
     <div v-if="item.iframeUrl"
@@ -103,6 +103,11 @@ const md = new MarkdownIt({
   linkify: true    // auto-link plain URLs
 })
 
+/* long-description → HTML */
+const longHtml = computed(() =>
+    item?.longDescription ? md.render(item.longDescription) : ''
+)
+
 /* parsed credits HTML */
 const creditsHtml = computed(() =>
     item?.credits ? md.render(dedent(item.credits)) : ''
@@ -190,6 +195,8 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
   padding: 2rem;
   max-width: 800px;
   margin: 0 auto;
+  background: var(--bg);
+  color: var(--text);
 
   /* media wrapper */
   .media-wrapper {
@@ -276,11 +283,14 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
   .credits {
     margin: 1.5rem 0 0;
     padding: 1rem 1.25rem;
-    background: #f7f7f7;
+    background: var(--card);
     border-left: 4px solid #444;
     border-radius: 6px;
     font-size: 0.85rem;
     white-space: pre-wrap;
+
+    a       { color: var(--link); }
+    a:hover { text-decoration: underline; }
   }
 
   /* long description */

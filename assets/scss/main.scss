@@ -13,8 +13,8 @@
 
 html, body {
   font-family: $font-stack;
-  background: $light;
-  color: $dark;
+  background: var(--bg);
+  color: var(--text);
   line-height: 1.5;
 }
 
