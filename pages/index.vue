@@ -1,32 +1,67 @@
 <template>
   <div class="home-container">
     <div class="masonry">
-      <div
-          v-for="item in items"
-          :key="item.slug"
-          class="masonry-item"
-          @click="goToDetail(item.slug)"
-      >
-        <!-- Video or image -->
-        <video
-            v-if="isVideo(item.image)"
-            :src="`/media${item.image}`"
-            autoplay
-            muted
-            loop
-            playsinline
-            preload="auto"
-        />
-        <img
-            v-else
-            :src="`/media${item.image}`"
-            alt=""
-        />
+      <!-- Left column -->
+      <div class="masonry-col">
+        <div
+            v-for="item in leftItems"
+            :key="item.slug"
+            class="masonry-item"
+            @click="goToDetail(item.slug)"
+        >
+          <!-- Video or image -->
+          <video
+              v-if="isVideo(item.image)"
+              :src="`/media${item.image}`"
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="auto"
+          />
+          <img
+              v-else
+              :src="`/media${item.image}`"
+              alt=""
+          />
 
-        <!-- Text content below the media -->
-        <div class="info">
-          <h3 class="title">{{ item.title }}</h3>
-          <p class="desc">{{ item.description }}</p>
+          <!-- Text content -->
+          <div class="info">
+            <h3 class="title">{{ item.title }}</h3>
+            <p class="desc">{{ item.description }}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right column -->
+      <div class="masonry-col">
+        <div
+            v-for="item in rightItems"
+            :key="item.slug"
+            class="masonry-item"
+            @click="goToDetail(item.slug)"
+        >
+          <!-- Video or image -->
+          <video
+              v-if="isVideo(item.image)"
+              :src="`/media${item.image}`"
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="auto"
+          />
+          <img
+              v-else
+              :src="`/media${item.image}`"
+              alt=""
+          />
+
+          <!-- Text content -->
+          <div class="info">
+            <h3 class="title">{{ item.title }}</h3>
+            <p class="desc">{{ item.description }}</p>
+          </div>
         </div>
       </div>
     </div>
@@ -34,6 +69,7 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { usePortfolioItems } from '~/composables/usePortfolioItems'
 
@@ -48,53 +84,51 @@ const { items } = usePortfolioItems()
 function goToDetail(slug: string) {
   router.push(`/work/${slug}`)
 }
+
+// Split items: even indices => left, odd => right
+const leftItems = computed(() => items.filter((_, i) => i % 2 === 0))
+const rightItems = computed(() => items.filter((_, i) => i % 2 === 1))
 </script>
 
-<style scoped lang="scss">
-@use '~/assets/scss/variables' as *;
-
+<style lang="scss">
 .home-container {
   padding: 2rem;
   text-align: center;
-  /* Optional global font for a “nice” look:
-     font-family: 'Inter', sans-serif;
-  */
 }
 
-/* Masonry columns approach */
+/* Masonry wrapper: 2 columns side by side */
 .masonry {
-  column-count: 2;
-  column-gap: 1rem;
+  display: flex;
+  gap: 1rem; /* space between columns */
 
-  /* for responsiveness */
-  @media (max-width: 1000px) {
-    column-count: 2;
-  }
+  /* If you want them stacked on small screens, break to 1 col: */
   @media (max-width: 600px) {
-    column-count: 1;
+    flex-direction: column;
   }
 }
 
+.masonry-col {
+  flex: 1;               /* each column expands equally */
+  display: flex;
+  flex-direction: column; /* stack items in a vertical flow */
+  gap: 1rem;             /* spacing between items in each column */
+}
+
+/* The item card styling can stay the same as before */
 .masonry-item {
-  /* Each item is an inline-block “card” in a column */
-  display: inline-block;
-  width: 100%;
-  margin: 0 0 1rem;
-  background: #fff;
+  background: var(--card);
+  color: var(--text);
   border-radius: 6px;
   overflow: hidden;
   text-align: left;
   cursor: pointer;
-
-  /* Subtle card hover effect */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   }
 
-  /* The video or image up top */
   video,
   img {
     width: 100%;
@@ -108,17 +142,15 @@ function goToDetail(slug: string) {
     max-width: 90%;
     margin: 0 auto;
 
-
     .title {
       font-size: 1.1rem;
       font-weight: 600;
       margin-bottom: 0.25rem;
-      color: $dark;
+      color: var(--text);
     }
-
     .desc {
       font-size: 0.875rem;
-      color: #555;
+      color: var(--text);
       line-height: 1.4;
     }
   }

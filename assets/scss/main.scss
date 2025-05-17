@@ -1,6 +1,5 @@
-/* assets/scss/main.scss */
-
-@use './variables' as *;
+@use 'sass:map';
+@use './_variables' as *;
 
 /* Basic reset */
 *,
@@ -11,18 +10,59 @@
   box-sizing: border-box;
 }
 
+/* Base styling */
 html, body {
   font-family: $font-stack;
+  line-height: 1.5;
+
+  /* Default light mode backgrounds from CSS variables */
   background: var(--bg);
   color: var(--text);
-  line-height: 1.5;
 }
 
-/* Utility */
+/* Utility classes */
 .hover-pointer { cursor: pointer; }
 
-/* dark-mode toggle (class on <html>) */
-html.dark {
-  background: map-get($colors-dark, bg);
-  color: map-get($colors-dark, text);
+/* Light mode CSS variables */
+:root {
+  --bg:   #ffffff;
+  --text: #222222;
+  --card: #f7f7f7;
+  --link: #0066ee;
+}
+
+/* Dark mode CSS variables */
+.dark {
+  --bg:   #1d1d1d;
+  --text: #e9e9e9;
+  --card: #2a2a2a;
+  --link: #5fa2ff;
+}
+
+/* Direct .dark overrides using your Sass map if desired */
+.dark body {
+  /* example usage of your Sass map */
+  background: map.get($colors-dark, bg);
+  color:      map.get($colors-dark, text);
+}
+
+/* Dark header, footer, icons, etc. */
+.dark .site-header {
+  background-color: rgba(34, 34, 34, 0.85) !important;
+  color: #eaeaea !important;
+}
+
+.dark .site-footer {
+  background: #111 !important;
+  color: #ccc !important;
+}
+
+.dark .icon {
+  filter: invert(90%) !important;
+}
+
+/* “Cyberpunk” hover on masonry items */
+.dark .masonry-item:hover {
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.7) !important;
+  outline: 1px solid magenta !important;
 }

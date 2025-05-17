@@ -6,11 +6,11 @@ $light:   #f9f9f9;
 /* Typography */
 $font-stack: 'Inter', 'Helvetica Neue', Arial, sans-serif;
 
-/* Layout */
-$header-height: 64px;
-
-/* TODO: dark-mode */
+/* Extra color map for advanced overrides in .dark */
 $colors-dark: (
-        bg: #121212,
+        bg:   #121212,
         text: #eaeaea
 );
+
+/* Layout variables */
+$header-height: 64px;

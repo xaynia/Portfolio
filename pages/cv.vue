@@ -216,21 +216,21 @@
 
   <style scoped>
   .cv-page {
-    max-width: 700px;
+    max-width: 900px;
     margin: 0 auto;
-    padding: 1rem;
+    padding: 2rem 1rem;
     line-height: 1.6;
   }
 
   .cv-page h1 {
     margin-bottom: 0.5rem;
-    font-size: 1.75rem;
+    font-size: 2rem;
   }
 
   .cv-page h2 {
     margin-top: 2rem;
     margin-bottom: 0.5rem;
-    font-size: 1.3rem;
+    font-size: 1.4rem;
   }
 
   .cv-page hr {
@@ -238,7 +238,8 @@
   }
 
   .cv-page ul, .cv-page ol {
-    margin-left: 1.5rem;
+    margin-left: 1.75rem;
+    margin-bottom: 1.5rem;
   }
 
   .cv-page p, .cv-page li {

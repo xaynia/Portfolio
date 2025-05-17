@@ -105,7 +105,7 @@ const md = new MarkdownIt({
 
 /* long-description → HTML */
 const longHtml = computed(() =>
-    item?.longDescription ? md.render(item.longDescription) : ''
+    item?.longDescription ? item.longDescription : ''
 )
 
 /* parsed credits HTML */

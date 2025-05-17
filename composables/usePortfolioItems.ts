@@ -39,6 +39,31 @@ export const usePortfolioItems = () => {
             ratio: '960 / 640',
         },
 
+
+        // ── Chromatic Chameleon ─────────────────────────────────
+        {
+            slug: 'chromatic-chameleon',
+            title: 'Chromatic Chameleon',
+            image: '/chromatic-chameleon.mp4',
+            description: 'A small platformer game made with JavaScript.',
+            longDescription: `
+        In Chromatic Chameleon, you guide a color-shifting chameleon through platform levels.
+        Each level is initially gloomy (inspired by the game Limbo, and seasonal affective disorder), however
+        as you gather Sakura petals, you fill each level with rainbow pastel colours, representing
+        spring and transformation. Use your arrow keys to move and space to jump.
+      `,
+            iframeUrl: '/games/ChromaticChameleon/index.html',
+            screenshots: [
+                '/start.mp4',
+                '/level-three.mp4',
+                '/chameleon.png',
+                '/enemy.png',
+                '/sakura.png',
+                '/chameleon-spritesheet.png'
+            ],
+            ratio: '4 / 3',
+        },
+
         // ── Chaos vs Symmetry ────────────────────────────────────
         {
             slug: 'chaos-vs-symmetry',
@@ -102,30 +127,6 @@ export const usePortfolioItems = () => {
                 '/ghost-tale-death.mp4',
                 '/ghost-tale-win.mp4'
             ]
-        },
-
-        // ── Chromatic Chameleon ─────────────────────────────────
-        {
-            slug: 'chromatic-chameleon',
-            title: 'Chromatic Chameleon',
-            image: '/chromatic-chameleon.mp4',
-            description: 'A small platformer game made with JavaScript.',
-            longDescription: `
-        In Chromatic Chameleon, you guide a color-shifting chameleon through platform levels.
-        Each level is initially gloomy (inspired by the game Limbo, and seasonal affective disorder), however
-        as you gather Sakura petals, you fill each level with rainbow pastel colours, representing
-        spring and transformation. Use your arrow keys to move and space to jump.
-      `,
-            iframeUrl: '/games/ChromaticChameleon/index.html',
-            screenshots: [
-                '/start.mp4',
-                '/level-three.mp4',
-                '/chameleon.png',
-                '/enemy.png',
-                '/sakura.png',
-                '/chameleon-spritesheet.png'
-            ],
-            ratio: '4 / 3',
         },
 
         // ── Gravity Jam ─────────────────────────────────────────

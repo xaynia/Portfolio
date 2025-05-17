@@ -8,7 +8,6 @@
         </h1>
         <ul class="nav-links">
           <li><NuxtLink to="/about">About</NuxtLink></li>
-<!--          <li><NuxtLink to="/contact">Contact</NuxtLink></li>-->
           <li><NuxtLink to="/cv">CV</NuxtLink></li>
           <li>
             <a href="https://github.com/xaynia" target="_blank" rel="noopener">
@@ -50,6 +49,7 @@
     <!-- Footer -->
     <footer class="site-footer">
       <p>© 2025 Acacia Williams — All rights reserved</p>
+      <button class="back-to-top" @click="scrollTop">↑ Back to top</button>
     </footer>
   </div>
 </template>
@@ -83,12 +83,19 @@ onMounted(() => {
   }, { immediate: true })
 })
 
-function toggle () { isDark.value = !isDark.value }
+function toggle () {
+  isDark.value = !isDark.value
+}
+
+function scrollTop () {
+  window.scrollTo({ top: 0, behavior: 'smooth' })
+}
 </script>
 
 
-<style scoped lang="scss">
+<style lang="scss">
 @use '/assets/scss/variables' as *;
+@use 'sass:map';
 
 .layout-wrapper {
   min-height: 100vh;
@@ -143,7 +150,6 @@ function toggle () { isDark.value = !isDark.value }
       filter: invert(0%);
     }
 
-      /* ADD ▸ button style */
     .mode-btn {
       background: none;
       border: none;
@@ -152,14 +158,6 @@ function toggle () { isDark.value = !isDark.value }
       line-height: 1;
     }
   }
-}
-
-//  dark theme overrides
-:deep(html.dark) {
-  body         { background: map-get($colors-dark, bg); color: map-get($colors-dark, text); }
-  .site-header { background-color: rgba(34,34,34,.85); color: #eaeaea; }
-  .site-footer { background: #111; color: #ccc; }
-  .icon        { filter: invert(90%); }
 }
 
 /* Slide header up when hidden */
@@ -182,6 +180,20 @@ function toggle () { isDark.value = !isDark.value }
 
   p {
     font-size: 0.9rem;
+  }
+
+  .back-to-top {
+    margin-top: 0.5rem;
+    background: #555;
+    border: none;
+    border-radius: 4px;
+    padding: 0.3rem 0.6rem;
+    color: #fff;
+    cursor: pointer;
+    font-size: 0.85rem;
+    &:hover {
+      background: #444;
+    }
   }
 }
 </style>
