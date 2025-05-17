@@ -193,7 +193,7 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
 <style scoped lang="scss">
 .detail-container {
   padding: 2rem;
-  max-width: 800px;
+  max-width: 1200px;
   margin: 0 auto;
   background: var(--bg);
   color: var(--text);
