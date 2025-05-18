@@ -26,7 +26,7 @@ export const usePortfolioItems = () => {
             longDescription: `
         Ghoul Rush is a Unity-made survival shooter where you defend a magical core
         against hordes. Collect elemental mushrooms to unlock different elemental spells.
-        Press tab to enable/disable mouse.
+        Press tab to enable/disable mouse. Game made with Noémie-San Dauphinais.
         
       `,
             iframeUrl: '/games/GhoulRushWeb/index.html',
