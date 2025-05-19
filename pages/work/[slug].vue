@@ -294,6 +294,8 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
   }
 
   /* long description */
-  .long-description { line-height: 1.6; }
+  .long-description {
+    margin-bottom: 1rem;
+    line-height: 1.6; }
 }
 </style>
