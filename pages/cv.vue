@@ -33,11 +33,9 @@
         Concordia University, Montreal, Quebec</p>
 
       <ul>
-        <li><strong>Psychology Courses:</strong> Completed all major requirements, from research methods to cognitive psychology.</li>
+        <li><strong>Psychology Courses:</strong> Courses Particularly Useful/Relevant to Game Design:
+        </li>
         <ul>
-          <li>
-            <strong>Courses Particularly Useful/Relevant to Game Design: </strong>:
-          </li>
           <li>
             <strong>PSYC 310 – Research Methods &amp; Designs</strong>:
             Experimental design, ethics, APA style, and research proposal writing.
@@ -84,7 +82,7 @@
             measuring physiological responses to video games.
           </li>
         </ul>
-        <li><strong>Computational Arts Coursework:</strong> Focused on game design, creative coding, generative art,
+        <li><strong>Computational Arts:</strong> Focused on game design, creative coding, generative art,
           and multimedia design.</li>
         <ul>
           <li>
