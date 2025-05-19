@@ -45,7 +45,7 @@ export const usePortfolioItems = () => {
             slug: 'chromatic-chameleon',
             title: 'Chromatic Chameleon',
             image: '/chromatic-chameleon.mp4',
-            description: 'A small platformer game made with JavaScript.',
+            description: 'A small platformer game made with Phaser.js.',
             longDescription: `
         In Chromatic Chameleon, you guide a color-shifting chameleon through platform levels.
         Each level is initially gloomy (inspired by the game Limbo, and seasonal affective disorder), however
@@ -114,8 +114,8 @@ export const usePortfolioItems = () => {
             description: 'A Lua-powered Pico-8 platformer with retro charm.',
             longDescription: `
         Ghost Tale combines retro pixel art with puzzle platforming in a haunted cute ghostly world.
-        Written in Lua for Pico-8, the game challenges you to navigate tricky obstacles
-        and outsmart mischievous spirits.
+        Written in Lua for Pico-8, the game challenges you to navigate obstacles, 
+        as you help the ghost find its resting place.
       `,
             iframeUrl: 'https://itch.io/embed-upload/12851329?color=000000',
             screenshots: [
