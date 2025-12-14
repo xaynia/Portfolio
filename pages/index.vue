@@ -28,6 +28,13 @@
           <!-- Text content -->
           <div class="info">
             <h3 class="title">{{ item.title }}</h3>
+
+            <!-- Course + completion date -->
+            <div v-if="item.course || item.completed" class="meta-row center">
+              <span v-if="item.course" class="meta-pill">{{ item.course }}</span>
+              <span v-if="item.completed" class="meta-pill">{{ item.completed }}</span>
+            </div>
+
             <p class="desc">{{ item.description }}</p>
           </div>
         </div>
@@ -60,6 +67,13 @@
           <!-- Text content -->
           <div class="info">
             <h3 class="title">{{ item.title }}</h3>
+
+            <!-- Course + completion date -->
+            <div v-if="item.course || item.completed" class="meta-row center">
+              <span v-if="item.course" class="meta-pill">{{ item.course }}</span>
+              <span v-if="item.completed" class="meta-pill">{{ item.completed }}</span>
+            </div>
+
             <p class="desc">{{ item.description }}</p>
           </div>
         </div>
@@ -148,6 +162,12 @@ const rightItems = computed(() => items.filter((_, i) => i % 2 === 1))
       margin-bottom: 0.25rem;
       color: var(--text);
     }
+
+    /* tighten spacing a bit so the pills sit nicely */
+    .meta-row {
+      margin: 0.35rem 0 0.65rem;
+    }
+
     .desc {
       font-size: 0.875rem;
       color: var(--text);

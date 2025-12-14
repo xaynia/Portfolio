@@ -2,6 +2,12 @@
   <div class="detail-container" v-if="item">
     <h2>{{ item.title }}</h2>
 
+    <!-- Course + completion date -->
+    <div v-if="item.course || item.completed" class="meta-row">
+      <span v-if="item.course" class="meta-pill">{{ item.course }}</span>
+      <span v-if="item.completed" class="meta-pill">{{ item.completed }}</span>
+    </div>
+
     <!-- long description: \n → <br> -->
     <div class="long-description" v-html="longHtml"></div>
 
@@ -197,6 +203,15 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
   margin: 0 auto;
   background: var(--bg);
   color: var(--text);
+
+  h2 {
+    margin-bottom: 0.25rem;
+  }
+
+  /* nicer spacing under title */
+  .meta-row {
+    margin: 0.35rem 0 1.1rem;
+  }
 
   /* media wrapper */
   .media-wrapper {

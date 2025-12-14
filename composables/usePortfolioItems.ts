@@ -9,8 +9,9 @@ export interface PortfolioItem {
     screenshots?: string[]; // array of media filenames
     credits?: string
     ratio?: string            // for size - e.g. "4 / 3" or "16 / 9"
+    course?: string;
+    completed?: string;
 }
-
 
 /* ─────────────────────────────────────────────────────────── */
 
@@ -22,6 +23,8 @@ export const usePortfolioItems = () => {
             slug: 'ghoul-rush',
             title: 'Ghoul Rush',
             image: '/ghoulrush2.mp4',
+            course: 'CART 315',
+            completed: 'Winter 2025',
             description: 'A fast-paced 3D horde-survival magic shooter game. Swap elemental spells to fend off endless ghost waves while defending the magical core!',
             longDescription: `
         Ghoul Rush is a Unity-made survival shooter where you defend a magical core
@@ -45,6 +48,8 @@ export const usePortfolioItems = () => {
             slug: 'chromatic-chameleon',
             title: 'Chromatic Chameleon',
             image: '/chromatic-chameleon.mp4',
+            course: 'CART 263',
+            completed: 'Winter 2025',
             description: 'A small platformer game made with Phaser.js.',
             longDescription: `
         In Chromatic Chameleon, you guide a color-shifting chameleon through platform levels.
@@ -69,6 +74,8 @@ export const usePortfolioItems = () => {
             slug: 'chaos-vs-symmetry',
             title: 'Chaos vs. Symmetry',
             image: '/symmetry-chaos.mp4',
+            course: 'CART 212',
+            completed: 'Winter 2025',
             description: 'A short Premiere Pro and After Effects music-video inspired by Flume and Ghibli.',
             longDescription: `In this experimental short, perfect symmetry dissolves into floral chaos, mirroring the interplay between 
         technology and nature. Anchored by a Flume-inspired electronic score, the film explores the delicate balance 
@@ -111,6 +118,8 @@ export const usePortfolioItems = () => {
             slug: 'ghost-tale',
             title: 'Ghost Tale',
             image: '/ghost-tale-platforms.mp4',
+            course: 'CART 315',
+            completed: 'Winter 2025',
             description: 'A Lua-powered Pico-8 platformer with retro charm.',
             longDescription: `
         Ghost Tale combines retro pixel art with puzzle platforming in a haunted cute ghostly world.
@@ -134,6 +143,8 @@ export const usePortfolioItems = () => {
             slug: 'gravity-jam',
             title: 'Gravity Jam',
             image: '/gravity-jam.mp4',
+            course: 'CART 253',
+            completed: 'Fall 2024',
             description: 'A p5.js game focusing on guiding falling objects using gravity and wind.',
             longDescription: `
         Gravity Jam is a p5.js game project that focuses on guiding falling objects using gravity. It showcases how a 
@@ -156,6 +167,8 @@ export const usePortfolioItems = () => {
             slug: 'cymatic-water-symphony',
             title: 'Cymatic Water Symphony',
             image: '/cymatic-thumbnail.png',
+            course: 'CART 346',
+            completed: 'Fall 2024',
             description: 'A Max MSP audio-visual project exploring cymatic visuals.',
             longDescription: `
         Visual Symphony with Jitter: Cymatic Waters is an immersive audio-visual
@@ -181,6 +194,8 @@ export const usePortfolioItems = () => {
             slug: 'capstone',
             title: 'Examining the Effects of Video Game Genres on Heart Rate Variability',
             image: '/capstone-infographic.png',
+            course: 'PSYC 447',
+            completed: 'Winter 2024',
             description: 'This study explores how combat, platformer, and social simulation games impact heart rate variability (HRV), highlighting that intense games elevate heart rate, whereas calming games reduce physiological stress',
             longDescription: `
         This study investigates how different video game genres—combat, platformer, and social simulation—influence 
