@@ -22,7 +22,7 @@
     <div v-else-if="item.videoUrl"
          class="media-wrapper"
          :style="{ aspectRatio: item.ratio || '16 / 9' }">
-      <video :src="item.videoUrl" controls preload="none" :poster="item.image" />
+      <video :src="item.videoUrl" autoplay controls preload="auto" muted loop playsinline :poster="item.image" />
     </div>
 
     <div v-if="downloads.length" class="downloads">
