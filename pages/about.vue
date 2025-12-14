@@ -1,16 +1,23 @@
 <template>
   <section class="about-section">
     <div class="about-wrapper">
-      <!-- PHOTO COLUMN -->
+      <!-- MEDIA COLUMN -->
       <div class="about-photo">
         <div class="photo-container">
-          <img
-              src="/media/Bravissima.mp4"
-              alt="Bravissima (Kisses) and I at Arbutus Meadows (Jumpers) "
-              class="photo-img"
-          />
-          <p class="photo-note">
-          </p>
+          <video
+              class="photo-media"
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="metadata"
+              controls
+          >
+            <source src="/media/Bravissima2.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+
+          <p class="photo-note"></p>
         </div>
       </div>
 
@@ -25,6 +32,7 @@
           perform in a chamber orchestra. In addition, I’m an avid outdoors
           enthusiast who completed the West Coast Trail in seven days.
         </p>
+
         <p>
           My equestrian journey started at age six, and I now have 13 years
           of experience in hunter, jumper, and dressage. I enjoy practicing Parelli
@@ -68,58 +76,52 @@
 
 <style scoped lang="scss">
 .about-section {
-  padding: 2rem 1rem; /* Some spacing around the entire section */
+  padding: 2rem 1rem;
 }
 
 /* FLEX WRAPPER for two columns */
 .about-wrapper {
   display: flex;
-  align-items: stretch; /* makes columns align top and bottom */
-  flex-wrap: wrap;      /* wraps on smaller screens */
-  max-width: 1200px;    /* wider container for large screens */
+  align-items: stretch; /* makes columns same height */
+  flex-wrap: wrap;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
-/* PHOTO COLUMN */
+/* MEDIA COLUMN */
 .about-photo {
-  flex: 0 0 40%; /* 40% width on desktop */
-  display: flex; /* so it can stretch vertically */
+  flex: 0 0 40%;
+  display: flex; /* allow child to stretch */
 }
 
 .photo-container {
-  /* fill the entire parent column to match text height */
+  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  width: 100%;
 }
 
-/* The actual image */
-.photo-container {
+/* Video fills the column height and crops nicely */
+.photo-media {
   width: 100%;
-}
-
-.photo-img {
-  width: 100%;
-  aspect-ratio: 4 / 5;   /* pick what looks best: 16/9, 1/1, 4/5, etc. */
-  object-fit: cover;
+  height: 100%;
+  flex: 1;               /* take remaining height */
+  object-fit: cover;     /* crop instead of squish */
   border-radius: 8px;
   display: block;
 }
 
-/* Small italic line */
+/* Note under media */
 .photo-note {
   margin-top: 0.4rem;
-  font-size: 0.85rem; /* slightly smaller text */
+  font-size: 0.85rem;
   text-align: center;
 }
 
 /* TEXT COLUMN */
 .about-content {
-  flex: 1; /* fill remaining space */
+  flex: 1;
   padding: 1rem;
 
-  /* remove top margin from the first heading to align with the photo top */
   h2:first-of-type {
     margin-top: -1rem;
   }
@@ -135,15 +137,17 @@
   }
 }
 
-/* MOBILE (tablets & below) */
+/* MOBILE */
 @media (max-width: 768px) {
   .about-photo,
   .about-content {
     flex: 0 0 100%;
   }
 
-  .photo-img {
-    height: auto; /* let the image resize naturally on narrow screens */
+  /* On mobile, don't force tall height */
+  .photo-media {
+    height: auto;
+    aspect-ratio: 4 / 5; /* adjust if you want */
   }
 }
 </style>
