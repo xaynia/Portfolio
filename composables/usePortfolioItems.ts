@@ -11,12 +11,59 @@ export interface PortfolioItem {
     ratio?: string            // for size - e.g. "4 / 3" or "16 / 9"
     course?: string;
     completed?: string;
+    downloads?: { platform: string; arch?: string; url?: string }[]
 }
 
 /* ─────────────────────────────────────────────────────────── */
 
 export const usePortfolioItems = () => {
     const items: PortfolioItem[] = [
+
+        // ── Horse Jumper  ───────────────────────────────────────────
+        {
+            slug: 'horse-jumper',
+            title: 'Horse Jumper Simulator',
+            image: '/ghoulrush2.mp4',
+            course: 'CART 415',
+            completed: 'Fall 2025',
+            description: 'A small 3D show‑jumping game built in Unreal Engine 5.6, where the player rides a horse around an arena and tries to complete a course of jumps in the correct order and as cleanly as possible!',
+            longDescription: `
+       This project is a small 3D show‑jumping game built in Unreal Engine 5.6, where 
+       the player rides a horse around an arena and tries to complete a course of jumps
+       in the correct order and as cleanly as possible. This project grew directly out of
+        my own history with horses and show jumping. I’ve been riding since I was six and
+         competed in hunters and jumpers. Instead of trying to simulate every part of riding
+          (grooming, feeding, stable management, etc.), I deliberately concentrated on a very 
+          specific moment jumpers equestrians know well:  the specific feeling I was chasing:
+           the rhythm and adrenaline of a jumper round: with the primary goal of accomplishing
+            a fast round time with as little faults, which in reality involves factors like 
+            counting strides, committing to a line, taking calculated risks, and knowing that one
+             bad decision can mean a pole, a refusal, or even a fall. The game tries to capture that
+              same edge between mastery and mistake, but in a safe, replayable way.
+      `,
+
+            iframeUrl: 'https://www.youtube.com/embed/wvCe5DROdd4',
+            videoUrl: '/media/HorseJumperHD.mp4',
+            ratio: '960 / 640',
+
+            downloads: [
+                {
+                    platform: 'macOS',
+                    arch: 'Apple Silicon (arm64)',
+                    url: 'https://drive.google.com/file/d/1v6IGvus4h7pK2DYeyY4GEU9GB2_-Ozmo/view?usp=drive_link'
+                },
+                {
+                    platform: 'Linux',
+                    arch: 'x86_64'
+                },
+                {
+                    platform: 'Windows',
+                    arch: 'x86_64'
+                    // url intentionally missing -> site will show “Not available yet”
+                }
+            ]
+        },
+
 
         // ── Ghoul Rush ───────────────────────────────────────────
         {

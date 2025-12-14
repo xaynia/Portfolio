@@ -25,6 +25,18 @@
       <video :src="item.videoUrl" controls preload="none" :poster="item.image" />
     </div>
 
+    <div v-if="downloads.length" class="downloads">
+      <h3>Downloads</h3>
+
+      <div class="download-list">
+        <div v-for="(d, idx) in downloads" :key="idx" class="download-item">
+          <div><strong>{{ d.platform }}</strong><span v-if="d.arch"> — {{ d.arch }}</span></div>
+          <a v-if="d.url" :href="d.url" class="download-link" target="_blank" rel="noopener">Download</a>
+          <span v-else class="download-missing">Not available yet</span>
+        </div>
+      </div>
+    </div>
+
     <!-- █ 2½. Credits -->
     <div v-if="item.credits" class="credits" v-html="creditsHtml"></div>
 
@@ -152,6 +164,7 @@ function dedent(mdText: string) {
 const route = useRoute()
 const { items } = usePortfolioItems()
 const item = items.find(i => i.slug === route.params.slug)
+const downloads = item?.downloads ?? []
 
 /* A. longDescription -------------------------- */
 const formatted = computed(() => {
@@ -203,6 +216,39 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
   margin: 0 auto;
   background: var(--bg);
   color: var(--text);
+
+  .downloads {
+    margin-top: 1.5rem;
+    padding: 1rem 1.25rem;
+    background: var(--card);
+    border-radius: 6px;
+  }
+
+  .download-list {
+    margin-top: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .download-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .download-link {
+    color: var(--link);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .download-link:hover { text-decoration: underline; }
+
+  .download-missing {
+    opacity: 0.8;
+    font-weight: 600;
+  }
 
   h2 {
     margin-bottom: 0.25rem;
