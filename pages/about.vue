@@ -5,7 +5,7 @@
       <div class="about-photo">
         <div class="photo-container">
           <img
-              src="/media/Bravissima2.mp4"
+              src="/media/Bravissima.mp4"
               alt="Bravissima (Kisses) and I at Arbutus Meadows (Jumpers) "
               class="photo-img"
           />
