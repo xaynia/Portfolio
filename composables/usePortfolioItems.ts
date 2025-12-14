@@ -44,7 +44,7 @@ export const usePortfolioItems = () => {
 
             // iframeUrl: 'https://www.youtube.com/embed/wvCe5DROdd4',
             videoUrl: '/media/HorseJumperVideo.mp4',
-            ratio: '960 / 640',
+            ratio: '1484 / 872',
 
             downloads: [
                 {
