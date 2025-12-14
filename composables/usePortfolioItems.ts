@@ -60,7 +60,11 @@ export const usePortfolioItems = () => {
                     platform: 'Windows',
                     arch: 'x86_64'
                     // url intentionally missing -> site will show “Not available yet”
-                }
+
+                },
+            ],
+            screenshots: [
+                '/JumperReport.pdf',
             ]
         },
 
@@ -259,8 +263,7 @@ export const usePortfolioItems = () => {
         }
 
 
-
     ]
 
-    return { items }
+    return {items}
 }
