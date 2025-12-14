@@ -23,7 +23,7 @@ export const usePortfolioItems = () => {
         {
             slug: 'horse-jumper',
             title: 'Horse Jumper Simulator',
-            image: '/ghoulrush2.mp4',
+            image: '/HorseJumperPreview.mp4',
             course: 'CART 415',
             completed: 'Fall 2025',
             description: 'A small 3D show‑jumping game built in Unreal Engine 5.6, where the player rides a horse around an arena and tries to complete a course of jumps in the correct order and as cleanly as possible!',
@@ -42,8 +42,8 @@ export const usePortfolioItems = () => {
               same edge between mastery and mistake, but in a safe, replayable way.
       `,
 
-            iframeUrl: 'https://www.youtube.com/embed/wvCe5DROdd4',
-            videoUrl: '/media/HorseJumperHD.mp4',
+            // iframeUrl: 'https://www.youtube.com/embed/wvCe5DROdd4',
+            videoUrl: '/media/HorseJumperVideo.mp4',
             ratio: '960 / 640',
 
             downloads: [
