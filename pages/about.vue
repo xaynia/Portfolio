@@ -5,12 +5,11 @@
       <div class="about-photo">
         <div class="photo-container">
           <img
-              src="/media/AcaciaCyberpunk.png"
-              alt="Picture of me"
+              src="/media/Bravissima2.mp4"
+              alt="Bravissima (Kisses) and I at Arbutus Meadows (Jumpers) "
               class="photo-img"
           />
           <p class="photo-note">
-            <em>Image created with generative AI</em>
           </p>
         </div>
       </div>
@@ -96,11 +95,16 @@
 }
 
 /* The actual image */
+.photo-container {
+  width: 100%;
+}
+
 .photo-img {
   width: 100%;
-  height: 100%;
-  object-fit: cover; /* crops or zooms image if needed */
+  aspect-ratio: 4 / 5;   /* pick what looks best: 16/9, 1/1, 4/5, etc. */
+  object-fit: cover;
   border-radius: 8px;
+  display: block;
 }
 
 /* Small italic line */
