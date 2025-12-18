@@ -7,11 +7,22 @@ export interface PortfolioItem {
     iframeUrl?: string;     // for web game embed
     videoUrl?: string;     // self-hosted MP4/WebM
     screenshots?: string[]; // array of media filenames
+    artisticInfluences?: string;
     credits?: string
     ratio?: string            // for size - e.g. "4 / 3" or "16 / 9"
     course?: string;
     completed?: string;
     downloads?: { platform: string; arch?: string; url?: string }[]
+
+    status?: 'completed' | 'in-progress' | 'prototype';
+    teamSize?: number;        // 1 = solo, 2 = pair, etc.
+    collaborators?: string[]; // partner(s)/team member names
+    myRole?: string;          // your role on the team (short label)
+    myContributions?: string[]; // 3–6 bullets: what YOU did (specific verbs)
+    engine?: string;          // e.g. "Unity", "Unreal Engine 5.6", "Phaser.js"
+    languages?: string[];     // e.g. ["TypeScript", "C#", "Lua"]
+    developmentDuration?: string; // e.g. "40 hours" / "6 weeks"
+    objective?: string
 }
 
 /* ─────────────────────────────────────────────────────────── */
@@ -19,12 +30,48 @@ export interface PortfolioItem {
 export const usePortfolioItems = () => {
     const items: PortfolioItem[] = [
 
+        // ── Blender ──────────────────────────────
+        {
+            slug: 'blender',
+            title: 'Blender 3D Modeling',
+            image: '/361/ConceptualModel/Hourglass-front-white.png',
+            course: 'CART 361 - 3D Digital Production I',
+            completed: 'Fall 2025',
+            description: 'Create two models (a technical, and conceptual model) using Blender. The technical model was of a everyday object (my water bottle). The conceptual model was a modified version of the water bottle, with modifiers to create a new understanding of the object.',
+            longDescription: `
+        For my technical model, I transformed my everyday water bottle into a conceptual model: an hourglass whose "sand"
+         is shrinking, self-replicating mini bottles. This juxtaposes the eco-friendly aura of reusable merch:
+          even when the object is pink, cute, and marketed as responsible, it still participates in consumerism 
+          and greenwashing. Even when framed as "eco-friendly," branded plastics persist, break down, and multiply,
+           mirroring how plastics become microplastics over time. 
+        
+      `,
+
+            screenshots: [
+                '/361/TechnicalModel/technical-front-wb.png',
+                '/361/TechnicalModel/technical-sideleft.png',
+                '/361/TechnicalModel/technical-back.png',
+                '/361/TechnicalModel/technical-lid.png',
+                '/361/TechnicalModel/technical-lid5png.png',
+                '/361/ConceptualModel/Hourglass-front-white.png',
+                '/361/ConceptualModel/Hourglass-side-grey.png',
+                '/361/ConceptualModel/Hourglass-l.png',
+                '/361/ConceptualModel/Hourglass-topdown.png',
+                '/361/ConceptualModel/Hourglass-bottomup.png',
+                '/361/ConceptualModel/Hourglass-bottomup2.png',
+                '/361/ConceptualModel/Hourglass-side-grey2.png',
+            ],
+            developmentDuration: '3 week course project',
+            objective: 'Create two versions of the same everyday object: one technically accurate and realistically textured, and one conceptually transformed. Together, they demonstrate how 3D realism can be used both to replicate the familiar and to disrupt it to reveal new meaning.',
+
+        },
+
         // ── Horse Jumper  ───────────────────────────────────────────
         {
             slug: 'horse-jumper',
             title: 'Horse Jumper Simulator',
             image: '/HorseJumperPreview.mp4',
-            course: 'CART 415',
+            course: 'CART 415 - Game Studio #1',
             completed: 'Fall 2025',
             description: 'A small 3D show‑jumping game built in Unreal Engine 5.6, where the player rides a horse around an arena and tries to complete a course of jumps in the correct order and as cleanly as possible!',
             longDescription: `
@@ -65,7 +112,23 @@ export const usePortfolioItems = () => {
             ],
             screenshots: [
                 '/JumperReport.pdf',
-            ]
+            ],
+
+            status: 'prototype',
+            teamSize: 1,
+            myRole: 'Designer / Gameplay / Systems Programmer',
+            myContributions: [
+                'Implemented core gameplay loop (waves, win/lose conditions)',
+                'Built spell swapping system and elemental unlock progression',
+                'Created UI/HUD feedback for spells, core health, and wave state',
+                'Integrated pickups and tuned pacing through playtesting/iteration',
+            ],
+            engine: 'Unreal Engine 5.6',
+            languages: ['Blueprint Visual Scripting'],
+            developmentDuration: '4 week course project',
+            objective: 'Its objective is to exercise game design and development skillfullness through creating a short digital games which explores a personal theme.',
+
+
         },
 
 
@@ -74,13 +137,13 @@ export const usePortfolioItems = () => {
             slug: 'ghoul-rush',
             title: 'Ghoul Rush',
             image: '/ghoulrush2.mp4',
-            course: 'CART 315',
+            course: 'CART 315 - Digital Game Prototyping',
             completed: 'Winter 2025',
             description: 'A fast-paced 3D horde-survival magic shooter game. Swap elemental spells to fend off endless ghost waves while defending the magical core!',
             longDescription: `
         Ghoul Rush is a Unity-made survival shooter where you defend a magical core
         against hordes. Collect elemental mushrooms to unlock different elemental spells.
-        Press tab to enable/disable mouse. Game made with Noémie-San Dauphinais.
+        Press tab to enable/disable mouse. 
         
       `,
             iframeUrl: '/games/GhoulRushWeb/index.html',
@@ -91,6 +154,21 @@ export const usePortfolioItems = () => {
                 '/upgrade-spell.mp4'
             ],
             ratio: '960 / 640',
+
+            status: 'prototype',
+            teamSize: 2,
+            collaborators: ['Noémie-San Dauphinais'],
+            myRole: 'Designer / Gameplay / Systems Programmer',
+            myContributions: [
+                'Implemented core gameplay loop (waves, win/lose conditions)',
+                'Built spell swapping system and elemental unlock progression',
+                'Created UI/HUD feedback for spells, core health, and wave state',
+                'Integrated pickups and tuned pacing through playtesting/iteration',
+            ],
+            engine: 'Unity',
+            languages: ['C#'],
+            developmentDuration: 'Course project (term)',
+            objective: 'Design and implement a playable horde-survival prototype focused on elemental spell swapping, wave pacing, and moment-to-moment combat readability.',
         },
 
 
@@ -99,7 +177,7 @@ export const usePortfolioItems = () => {
             slug: 'chromatic-chameleon',
             title: 'Chromatic Chameleon',
             image: '/chromatic-chameleon.mp4',
-            course: 'CART 263',
+            course: 'CART 263 - Creative Computation II',
             completed: 'Winter 2025',
             description: 'A small platformer game made with Phaser.js.',
             longDescription: `
@@ -125,53 +203,57 @@ export const usePortfolioItems = () => {
             slug: 'chaos-vs-symmetry',
             title: 'Chaos vs. Symmetry',
             image: '/symmetry-chaos.mp4',
-            course: 'CART 212',
+            course: 'CART 212 - Digital Media Studio I',
             completed: 'Winter 2025',
-            description: 'A short Premiere Pro and After Effects music-video inspired by Flume and Ghibli.',
-            longDescription: `In this experimental short, perfect symmetry dissolves into floral chaos, mirroring the interplay between 
-        technology and nature. Anchored by a Flume-inspired electronic score, the film explores the delicate balance 
-        between structured modernity and, paradoxically, AI-generated organic wonder. 
+            description:
+                'A 2–3 minute, music-video–style experimental short where Montreal’s L’Anneau ring sculpture becomes a Studio Ghibli–inspired portal—its calm symmetry blooming into AI-generated floral chaos to a Flume-like electronic score. Shot on a DJI Mini drone.',
 
-        Its central themes—reimagining our relationship to nature in the era of AI—are rooted in my Indigenous heritage 
-        and influenced by artists Jon McCormack and Yoshi Sodeoka. Meanwhile, the stop-motion "vision" style pays homage 
-        to Hayao Miyazaki, though it departs from his traditional methods to explore new forms of visual storytelling.
+            longDescription: `
+    Serene morning drone footage of Montreal’s L’Anneau establishes circular calm before the sculpture shifts into a portal: a
+    stop-motion “vision” of walking a perfectly symmetrical garden path toward the ring. As it begins to shimmer, vines and
+    flowers overtake the frame in a dramatic burst of chaos—then recede, returning the ring to stillness and symmetry.
 
-        Edited in Adobe Premiere Pro and After Effects, scenic aerial shots of the L’Anneau sculpture in downtown 
-        Montreal flow in time with the music. While some may see the ring solely as a frame, it transforms into a portal
-        for an AI-generated stop-motion “vision”: a walk through a symmetrical garden leading to the sculpture itself.
-        At the height of the chaos, lush symmetrical flowers proliferate, overtaking the scene until the film reverses
-        back to the AI-ring, then transitions again to the real ring—briefly merging the digital and physical worlds
-        in a glitchy reveal.
+    Shot on a DJI Mini drone and edited in Adobe Premiere Pro and After Effects (with Photoshop-built masks), the film combines
+    mirror effects, wave warps, keyframed masks, glitch transitions, and particle “magic.” A sequence of 52 AI-generated stills
+    forms the stop-motion layer, blending anime fantasy with cinematic reality, while a Flume-inspired electronic score (synth loop,
+    percussion, and ambient textures) drives the arc from order to overload and back again.
+  `,
 
-        Inspired by psychedelic aesthetics, this short aims to provoke thought about chaos, symmetry, and how they 
-        intersect. It also invites viewers to reflect on AI’s evolving role in artistic creation. 
-        I chose to generate 52 AI-based stop-motion frames—drawing inspiration from Botanical 
-        Gardens—to depict the journey from the garden to the ring. By juxtaposing a contemporary sculpture with 
-        cutting-edge AI artistry, the film pays tribute to pioneering visionaries while weaving together themes of 
-        chaos and symmetry in a striking modern homage.`,
+            artisticInfluences: `
+      **Artistic Influences:**
+    • Jon McCormack — *Turbulence* (1994): algorithmic “artificial life” and emergent digital ecosystems; a key reference for the idea of code-born nature and “what is life?”
+    • Yoshi Sodeoka — *The Swarm* (2024): glitch-layered generative video that blurs natural systems with simulation and overlays; influenced my reality-vs-simulation treatment.
+    • Flume: textural electronic sound + music-video pacing; informed both the score and the rhythmic editing.
+    • Hayao Miyazaki / Studio Ghibli: nature-forward fantasy aesthetics and transformation motifs; shaped the portal concept and garden-world tone.
+  `,
+
             iframeUrl: 'https://www.youtube.com/embed/UyIjaud9AE0',
+
             credits: `
-        **Sound Attribution:**
+    **Sound Attribution:**
 
-         • *Flume Type 4 Chord Synth.wav* — TKOIII — CC BY 4.0  
-          https://freesound.org/s/634192/
+     - *Flume Type 4 Chord Synth.wav* — TKOIII — CC BY 4.0 — https://freesound.org/s/634192/
+     - *drumloop_qwerty_138.wav* — harrisonlace — CC 0 — https://freesound.org/s/648146/
+     - *drumloop_qwerty_138.wav* — harrisonlace — CC 0 — https://freesound.org/s/648146/
+  `,
 
-         • *drumloop_qwerty_138.wav* — harrisonlace — CC 0  
-          https://freesound.org/s/648146/
-
-         • *Polyflute pad.wav* — Mat397 — CC BY 3.0  
-          https://freesound.org/s/485078/
-      `
+            teamSize: 1,
+            engine: 'Adobe Premiere Pro; Adobe After Effects; Photoshop',
+            developmentDuration: '3 weeks to complete',
+            objective:
+                'Create a short 2–3 minute video which explores the intersection and interaction between chaotic and symmetrical imagery.',
+            ratio: '16 / 9',
         },
+
 
         // ── Ghost Tale ───────────────────────────────────────────
         {
             slug: 'ghost-tale',
             title: 'Ghost Tale',
             image: '/ghost-tale-platforms.mp4',
-            course: 'CART 315',
+            course: 'CART 315 - Digital Game Prototyping',
             completed: 'Winter 2025',
-            description: 'A Lua-powered Pico-8 platformer with retro charm.',
+            description: 'A Lua-powered Pico-8 tiny game (platformer).',
             longDescription: `
         Ghost Tale combines retro pixel art with puzzle platforming in a haunted cute ghostly world.
         Written in Lua for Pico-8, the game challenges you to navigate obstacles, 
@@ -186,7 +268,12 @@ export const usePortfolioItems = () => {
                 '/ghost-tale-false-grave.mp4',
                 '/ghost-tale-death.mp4',
                 '/ghost-tale-win.mp4'
-            ]
+            ],
+            teamSize: 1,
+            engine: 'Pico-8',
+            languages: ['Lua'],
+            developmentDuration: '1 week to complete',
+            objective: 'Make a tiny game in one week.',
         },
 
         // ── Gravity Jam ─────────────────────────────────────────
@@ -194,9 +281,9 @@ export const usePortfolioItems = () => {
             slug: 'gravity-jam',
             title: 'Gravity Jam',
             image: '/gravity-jam.mp4',
-            course: 'CART 253',
+            course: 'CART 253 - Creative Computation I',
             completed: 'Fall 2024',
-            description: 'A p5.js game focusing on guiding falling objects using gravity and wind.',
+            description: 'A Javascript p5.js game focusing on showcasing three simple variations: guiding falling objects using gravity and wind.',
             longDescription: `
         Gravity Jam is a p5.js game project that focuses on guiding falling objects using gravity. It showcases how a 
         single mechanic—objects influenced by gravity—can be given distinct themes and aesthetics while relying on the 
@@ -211,6 +298,11 @@ export const usePortfolioItems = () => {
                 '/gravity-jam-laughing-skull-b.mp4'
             ],
             ratio: '4 / 3',
+
+            languages: ['Javascript (p5.js)'],
+            developmentDuration: '5 weeks to complete',
+            objective: 'Start with an existing simple experience to create three distinctive variations on that experience; Using arrays, loops, and data-structures, and menu.'
+
         },
 
         // ── Cymatic Water Symphony ──────────────────────────────
@@ -218,9 +310,9 @@ export const usePortfolioItems = () => {
             slug: 'cymatic-water-symphony',
             title: 'Cymatic Water Symphony',
             image: '/cymatic-thumbnail.png',
-            course: 'CART 346',
+            course: 'CART 346 - Digital Sound I',
             completed: 'Fall 2024',
-            description: 'A Max MSP audio-visual project exploring cymatic visuals.',
+            description: 'A Max MSP audio-visual installation project showcasing cymatic visuals with Max extension Jitter (video).',
             longDescription: `
         Visual Symphony with Jitter: Cymatic Waters is an immersive audio-visual
         project that reimagines sound as an interactive and explorative medium.
@@ -228,7 +320,6 @@ export const usePortfolioItems = () => {
         representations inspired by cymatics—the study of how sound vibrations
         produce patterns in physical matter. See the attatched PDF for a comprehensive report.
       `,
-            videoUrl: '/media/cymatic-visual-water-symphony.mp4',
             screenshots: [
                 '/cymatic-nodes.png',
                 '/cymatic-thumbnail.png',
@@ -237,7 +328,12 @@ export const usePortfolioItems = () => {
                 '/cymatic-patch-2.png',
                 '/cymatic-patch-3.png',
                 '/visual-symphony-report.pdf'
-            ]
+            ],
+            teamSize: 1,
+            engine: 'Max MSP',
+            languages: ['Max Visual Scripting, Max extension: Jitter'],
+            developmentDuration: '5 weeks to complete',
+            objective: 'Make a 10 to 15-minute presentation where you will summarize and showcase the main features and uses of one Max software extension.',
         },
 
         // ── Capstone ──────────────────────────────
@@ -245,7 +341,7 @@ export const usePortfolioItems = () => {
             slug: 'capstone',
             title: 'Examining the Effects of Video Game Genres on Heart Rate Variability',
             image: '/capstone-infographic.png',
-            course: 'PSYC 447',
+            course: 'PSYC 447 - Current Issues in Health Psychophysiology',
             completed: 'Winter 2024',
             description: 'This study explores how combat, platformer, and social simulation games impact heart rate variability (HRV), highlighting that intense games elevate heart rate, whereas calming games reduce physiological stress',
             longDescription: `

@@ -2,15 +2,6 @@
   <div class="detail-container" v-if="item">
     <h2>{{ item.title }}</h2>
 
-    <!-- Course + completion date -->
-    <div v-if="item.course || item.completed" class="meta-row">
-      <span v-if="item.course" class="meta-pill">{{ item.course }}</span>
-      <span v-if="item.completed" class="meta-pill">{{ item.completed }}</span>
-    </div>
-
-    <!-- long description: \n → <br> -->
-    <div class="long-description" v-html="longHtml"></div>
-
     <!-- █ 1. Playable iframe (game / YouTube) -->
     <div v-if="item.iframeUrl"
          class="media-wrapper"
@@ -25,6 +16,71 @@
       <video :src="item.videoUrl" autoplay controls preload="auto" muted loop playsinline :poster="item.image" />
     </div>
 
+    <!-- Project Details (structured, review-friendly) -->
+    <div class="project-details">
+      <h3>Project Details</h3>
+
+      <dl class="details-grid">
+        <dt>Status</dt>
+        <dd>{{ statusLabel }}</dd>
+
+        <template v-if="item.course">
+          <dt>Course</dt>
+          <dd>{{ item.course }}</dd>
+        </template>
+
+        <template v-if="item.completed">
+          <dt>Completed</dt>
+          <dd>{{ item.completed }}</dd>
+        </template>
+
+        <template v-if="item.engine">
+          <dt>Engine</dt>
+          <dd>{{ item.engine }}</dd>
+        </template>
+
+        <template v-if="item.languages && item.languages.length">
+          <dt>Languages</dt>
+          <dd>{{ item.languages.join(', ') }}</dd>
+        </template>
+
+        <template v-if="item.developmentDuration">
+          <dt>Development Duration</dt>
+          <dd>{{ item.developmentDuration }}</dd>
+        </template>
+
+        <dt>Objective</dt>
+        <dd>{{ item.objective }}</dd>
+
+        <dt>Team Size</dt>
+        <dd>{{ teamLabel }}</dd>
+
+        <template v-if="showCollaborators">
+          <dt>Collaborators</dt>
+          <dd>{{ item.collaborators?.join(', ') }}</dd>
+        </template>
+
+        <template v-if="item.myRole">
+          <dt>My Role</dt>
+          <dd>{{ item.myRole }}</dd>
+        </template>
+
+        <template v-if="item.myContributions && item.myContributions.length">
+          <dt>My Contributions</dt>
+          <dd>
+            <ul class="contrib-list">
+              <li v-for="(c, i) in item.myContributions" :key="i">{{ c }}</li>
+            </ul>
+          </dd>
+        </template>
+      </dl>
+    </div>
+
+    <div class="description-block">
+      <h3>Description</h3>
+      <div class="long-description" v-html="longHtml"></div>
+    </div>
+
     <div v-if="downloads.length" class="downloads">
       <h3>Downloads</h3>
 
@@ -36,6 +92,10 @@
         </div>
       </div>
     </div>
+
+    <!-- █ 2½. Artistic Inspiration -->
+    <div v-if="item.artisticInfluences" class="credits" v-html="artspoHtml"></div>
+
 
     <!-- █ 2½. Credits -->
     <div v-if="item.credits" class="credits" v-html="creditsHtml"></div>
@@ -120,10 +180,17 @@ const md = new MarkdownIt({
   breaks:  true,   // keep your <br> breaks
   linkify: true    // auto-link plain URLs
 })
+/* markdown */
+const mdNoBreaks = new MarkdownIt({
+  breaks:  false,  // only longDescription uses this
+  linkify: true
+})
 
 /* long-description → HTML */
 const longHtml = computed(() =>
-    item?.longDescription ? item.longDescription : ''
+        item?.longDescription ? mdNoBreaks.render(dedent(item.longDescription)) : ''
+    // item?.longDescription ? md.render(dedent(item.longDescription)) : ''
+    // item?.longDescription ? item.longDescription : ''
 )
 
 /* parsed credits HTML */
@@ -131,6 +198,28 @@ const creditsHtml = computed(() =>
     item?.credits ? md.render(dedent(item.credits)) : ''
 )
 
+/* parsed credits HTML */
+const artspoHtml = computed(() =>
+    item?.artisticInfluences ? md.render(dedent(item.artisticInfluences)) : ''
+)
+
+/* details labels (structured overview) */
+const statusLabel = computed(() => {
+  const s = item?.status ?? 'completed'
+  if (s === 'in-progress') return 'In progress'
+  if (s === 'prototype') return 'Prototype'
+  return 'Completed'
+})
+
+const teamLabel = computed(() => {
+  const n = item?.teamSize ?? 1
+  return n === 1 ? 'Solo' : `Team of ${n}`
+})
+
+const showCollaborators = computed(() => {
+  const n = item?.teamSize ?? 1
+  return n > 1 && (item?.collaborators?.length ?? 0) > 0
+})
 
 /* helpers ------------------------------------------------ */
 const isVideo = (src: string) => /\.(mp4|webm)$/i.test(src)
@@ -157,7 +246,8 @@ function dedent(mdText: string) {
   return lines
       .map(l => l.slice(indent))          // strip indent
       .join('\n')
-      .replace(/^• /gm, '- ')             // turn bullets into markdown list
+      // .replace(/^• /gm, '- ')             // turn bullets into markdown list
+      .replace(/^\s*•\s+/gm, '- ')        // // turn "• ..." into "- ..." even if indented
 }
 
 /* item lookup ------------------------------------------- */
@@ -210,12 +300,27 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
 </script>
 
 <style scoped lang="scss">
+// font
 .detail-container {
   padding: 2rem;
   max-width: 1200px;
   margin: 0 auto;
   background: var(--bg);
   color: var(--text);
+
+  .description-block {
+    margin: 0.35rem 0 1.1rem;
+    padding: 1rem 1.25rem;
+    background: var(--card);
+    border-radius: 6px;
+
+    h3 { margin: 0 0 0.75rem; }
+
+    .long-description { margin: 0; }
+
+    /* optional: remove extra space after last paragraph */
+    .long-description :deep(p:last-child) { margin-bottom: 0; }
+  }
 
   .downloads {
     margin-top: 1.5rem;
@@ -257,6 +362,71 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
   /* nicer spacing under title */
   .meta-row {
     margin: 0.35rem 0 1.1rem;
+  }
+
+  /* Project Details block */
+  .project-details {
+    margin: 0.35rem 0 1.1rem;
+    padding: 1rem 1.25rem;
+    background: var(--card);
+    border-radius: 6px;
+  }
+
+  .project-details h3 {
+    margin-bottom: 0.75rem;
+  }
+
+  .details-grid {
+    display: grid;
+    grid-template-columns: 190px 1fr;
+    gap: 0.6rem 1.25rem;
+  }
+
+  @media (max-width: 700px) {
+    .details-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .details-grid dt {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+  }
+
+  .details-grid dd {
+    margin: 0;
+    font-weight: 600;
+  }
+
+  .contrib-list {
+    margin: 0.25rem 0 0;
+    padding-left: 1.25rem;
+  }
+
+  .contrib-list li {
+    margin-bottom: 0.35rem;
+    font-weight: 500;
+  }
+
+  .contrib-list li:last-child {
+    margin-bottom: 0;
+  }
+
+  /* spacing for markdown-rendered description (global reset removes default margins) */
+  .long-description :deep(p) {
+    margin: 0 0 0.9rem;
+  }
+
+  .long-description :deep(ul),
+  .long-description :deep(ol) {
+    margin: 0 0 0.9rem;
+    padding-left: 1.25rem;
+  }
+
+  .long-description :deep(a) {
+    color: var(--link);
   }
 
   /* media wrapper */
@@ -345,13 +515,56 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
     margin: 1.5rem 0 0;
     padding: 1rem 1.25rem;
     background: var(--card);
-    border-left: 4px solid #444;
+    border-left: 15px solid #444;
     border-radius: 6px;
-    font-size: 0.85rem;
-    white-space: pre-wrap;
+    font-size: 0.97rem;
+    line-height: 2.0;
+    white-space: normal;
 
     a       { color: var(--link); }
     a:hover { text-decoration: underline; }
+  }
+
+  /* Make the first bold line in credits act like a header */
+  .credits :deep(p:first-child) {
+    margin: 0 0 0.6rem;
+  }
+  .credits :deep(p:first-child strong) {
+    display: block;
+    font-size: 1.05rem;   /* try 1.0 – 1.15rem */
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  /* Tighten Markdown defaults */
+  :deep(p) {
+    margin: 0.35rem 0;
+  }
+  :deep(p:first-child) { margin-top: 0; }
+  :deep(p:last-child)  { margin-bottom: 0; }
+
+  :deep(ul),
+  :deep(ol) {
+    margin: 0.5rem 0 0;
+    padding-left: 1.25rem;
+  }
+
+  :deep(li) {
+    margin: 0.25rem 0;
+  }
+
+  /* markdown-it often wraps list items in <p> */
+  :deep(li > p) {
+    margin: 0;
+  }
+
+  :deep(a) {
+    color: var(--link);
+    text-decoration: none;
+    overflow-wrap: anywhere; /* better than word-break for long URLs */
+  }
+  :deep(a:hover) {
+    text-decoration: underline;
   }
 
   /* long description */
