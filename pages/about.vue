@@ -25,49 +25,66 @@
       <div class="about-content">
         <h2>About Me</h2>
         <p>
-          I am completing my undergraduate degree in Psychology with a minor
-          in Computational Arts. My artistic background spans both digital and
-          traditional media, including pottery, acrylic painting, pastels, and
-          photography. I also play the flute and once traveled to the U.K. to
-          perform in a chamber orchestra. In addition, I’m an avid outdoors
-          enthusiast who completed the West Coast Trail in seven days.
+          My name is Acacia Williams. I am Coast Salish and a Cowichan Tribes member, born and raised in the Cowichan Valley on
+          Vancouver Island within Cowichan Tribes territories. My connection to home is grounded in the land and waters that hold our
+          histories, teachings, and relationships. I carry those values with me as I grow in education and creative practice—showing up
+          with humility, consistency, and care.
         </p>
 
         <p>
-          My equestrian journey started at age six, and I now have 13 years
-          of experience in hunter, jumper, and dressage. I enjoy practicing Parelli
-          horsemanship, emphasizing mutual respect and trust between
-          horse and rider.
+          I’m completing a Bachelor of Arts in Psychology with a minor in Computational Arts at Concordia University. I began my degree
+          in a Psychology specialization, then pivoted to a Psychology major and added a Computational Arts minor when I realized I
+          wanted to build interactive digital work—especially games and real-time 3D environments. That shift reflects how I learn:
+          quickly, hands-on, and through making. My projects now sit at the intersection of human experience and digital systems:
+          player psychology, visual storytelling, interaction design, and world-building.
+        </p>
+
+        <p>
+          My artistic background spans both digital and traditional media, including pottery, acrylic painting, pastels, and
+          photography. I also play the flute and once traveled to the U.K. to perform in a chamber orchestra. Outside of studio work,
+          I’m an avid outdoors enthusiast who completed the West Coast Trail in seven days.
+        </p>
+
+        <p>
+          My equestrian journey started at age six, and I now have 13 years of experience in hunter, jumper, and dressage. I enjoy
+          practicing Parelli horsemanship, emphasizing mutual respect and trust between horse and rider—values that strongly influence
+          how I approach design, iteration, and teamwork.
         </p>
 
         <h2>Mission</h2>
         <p>
-          In an increasingly tech-driven world, my goal is to foster a
-          healthier relationship with technology. I aim to develop innovative,
-          immersive, and challenging games that promote cognitive and dexterity
-          training, ultimately improving mental well-being for gamers. I also
-          hope to create a visually enriching open-world game that offers a
-          restorative niche.
+          I’m passionate about building interactive experiences that feel intentional—where the mechanics, environment, and feedback
+          work together to create meaning. My focus is real-time 3D world-building and interaction design, bridging art, design, and
+          prototyping. I love working across engines and tools (especially Unreal Engine, Unity, and Blender) to bring ideas to life,
+          and I’m drawn to the creative challenge of making worlds that feel readable, immersive, and alive.
+        </p>
+
+        <p>
+          My Psychology background shapes how I think about players: how people learn systems, how attention and perception affect
+          readability, and how design choices influence emotion and decision-making. I’m most excited when a project lets me combine
+          those insights with hands-on building—designing the experience and then implementing it through scripting, systems design,
+          and iteration.
         </p>
 
         <h2>Hobbies</h2>
         <p>
-          In my free time, I’m learning French and Japanese, reading,
-          and playing games like Magic: The Gathering. I also enjoy open-world
-          titles (like <em>Satisfactory</em>) and platformers
-          (<em>Super Mario Bros. Wonder</em>, <em>Super Mario 3D</em>),
-          refining dexterity skills. Committed to overall wellness,
-          I’m currently exploring yoga.
+          In my free time, I’m learning French and Japanese, reading, and playing games like Magic: The Gathering. I enjoy open-world
+          titles and platformers—not only for fun, but because I love studying how games teach players through level design, pacing,
+          and feedback. I also enjoy photography, being outdoors, and staying active.
         </p>
 
         <h2>Future Aspirations</h2>
         <p>
-          Looking ahead, I plan to develop many games and apps that encourage
-          healthier lifestyles—such as wellness apps that reward positive
-          habits, provide restorative spaces, encourage physical activity,
-          promote connection, and foster critical thinking.
-          Driven by a desire to support youth, I also hope to incorporate
-          both art therapy and horse therapy into my future career.
+          Professionally, I’m working toward a career in the creative technology industry—ideally in a hybrid role where I can keep
+          designing and building: technical art, gameplay systems, interaction design, and world-building. Long-term, I want to explore
+          entrepreneurship and eventually run a small game studio, which is why I’m actively building not just my portfolio, but also
+          my skills in collaboration, production, and communicating ideas clearly.
+        </p>
+
+        <p>
+          I’m proud to be the first in my family to pursue and complete university. That milestone carries deep personal significance
+          for me, and it continues to shape how I approach my work: with discipline, gratitude, and a drive to earn opportunities
+          through consistent effort.
         </p>
       </div>
     </div>

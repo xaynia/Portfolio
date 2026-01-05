@@ -126,6 +126,21 @@
             immersive cymatic audio-visual installation using water-themed
             sound sources.
           </li>
+          <li>
+            <strong>CART 361 – 3D Digital Production I</strong>:
+            3D production foundations in Blender (modelling, materials, lighting, rendering). Created a technical model and a conceptual transformation exploring meaning through form.
+          </li>
+
+          <li>
+            <strong>CART 415 – Game Studio I</strong>:
+            Experimental game design and rapid prototyping. Built <em>Horse Jumper Simulator</em> in Unreal Engine 5.6 using Blueprints, focusing on moment‑to‑moment feel, timing, and readable goals.
+          </li>
+
+          <li>
+            <strong>CART 498 – Special Topics in Computation Arts</strong>:
+            Advanced studio focusing on a specialized topic in digital fine arts (topic varies by term).
+          </li>
+
         </ul>
       </ul>
 
@@ -183,21 +198,38 @@
           A Max MSP & Jitter patch combining six water-themed audio sources with cymatic-inspired visuals, showcasing how
           sound vibrations produce distinct patterns in physical media.
         </li>
+        <li>
+          <a href="/work/horse-jumper" target="_blank" rel="noopener">
+            <strong>Horse Jumper Simulator</strong>
+          </a>
+          <b> (CART 415)</b>
+          A small 3D show‑jumping prototype built in Unreal Engine 5.6. Ride a horse around an arena and complete a jump course in the correct order while minimizing faults and time.
+        </li>
+
+        <li>
+          <a href="/work/blender" target="_blank" rel="noopener">
+            <strong>Blender 3D Modeling</strong>
+          </a>
+          <b> (CART 361)</b>
+          Created two 3D models in Blender: one technically accurate everyday object, and one conceptual transformation (hourglass) using modifiers and visual metaphor.
+        </li>
+
       </ol>
       <hr/>
 
       <!-- Technical Skills -->
       <h2>Technical Skills</h2>
       <ul>
-        <li><strong>Programming Languages:</strong> C#, JavaScript, HTML, CSS</li>
+        <li><strong>Programming Languages:</strong> C#, JavaScript/TypeScript, HTML, CSS, Lua (PICO‑8)</li>
         <li><strong>Frameworks & Tools:</strong>
-          Nuxt (Vue.js, TypeScript, SCSS - semi-proficient), Unity, Adobe Creative Cloud (Illustrator, Photoshop, Premiere
-          Pro, After Effects), Max MSP (RNBO & Jitter)
+          Nuxt (Vue.js, TypeScript, SCSS), Unity, Unreal Engine 5 (Blueprints), Blender,
+          Phaser.js, p5.js, Adobe Creative Cloud (Illustrator, Photoshop, Premiere Pro, After Effects),
+          Max MSP (RNBO & Jitter)
         </li>
-        <li><strong>Editors & IDEs:</strong> Rider, WebStorm, Visual Studio Code, Github Desktop</li>
-        <li><strong>Other:</strong> PICO-8 (Lua), p5.js, MUSE Headband/App,
-          data analysis with Excel/manual stats</li>
+        <li><strong>Editors & IDEs:</strong> Rider, WebStorm, Visual Studio Code, GitHub Desktop</li>
+        <li><strong>Other:</strong> PICO‑8, Muse Headband/App, data analysis with Excel/manual stats</li>
       </ul>
+
 
       <hr/>
 

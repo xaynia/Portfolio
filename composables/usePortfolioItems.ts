@@ -118,15 +118,17 @@ export const usePortfolioItems = () => {
             teamSize: 1,
             myRole: 'Designer / Gameplay / Systems Programmer',
             myContributions: [
-                'Implemented core gameplay loop (waves, win/lose conditions)',
-                'Built spell swapping system and elemental unlock progression',
-                'Created UI/HUD feedback for spells, core health, and wave state',
-                'Integrated pickups and tuned pacing through playtesting/iteration',
+                'Built the horse riding controller (movement states, turning, camera follow, input mapping)',
+                'Implemented jump interactions and scoring logic (faults, course completion, reset/retry flow)',
+                'Designed and scripted ordered jump progression using triggers/checkpoints and a round timer',
+                'Created UI feedback for time, faults, current objective, and course order readability',
+                'Iterated on arena scale, jump spacing, and responsiveness through playtesting and tuning',
             ],
             engine: 'Unreal Engine 5.6',
             languages: ['Blueprint Visual Scripting'],
             developmentDuration: '4 week course project',
-            objective: 'Its objective is to exercise game design and development skillfullness through creating a short digital games which explores a personal theme.',
+            objective:
+                'Exercise game design and development skills by creating a short digital game prototype that explores a personal theme through mechanics, feel, and readable player goals.',
 
 
         },
