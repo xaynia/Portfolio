@@ -26,15 +26,13 @@
         <h2>About Me</h2>
         <p>
           My name is Acacia Williams. I am Coast Salish and a Cowichan Tribes member, born and raised in the Cowichan Valley on
-          Vancouver Island within Cowichan Tribes territories. My connection to home is grounded in the land and waters that hold our
-          histories, teachings, and relationships. I carry those values with me as I grow in education and creative practice—showing up
-          with humility, consistency, and care.
+          Vancouver Island.
         </p>
 
         <p>
           I’m completing a Bachelor of Arts in Psychology with a minor in Computational Arts at Concordia University. I began my degree
           in a Psychology specialization, then pivoted to a Psychology major and added a Computational Arts minor when I realized I
-          wanted to build interactive digital work—especially games and real-time 3D environments. That shift reflects how I learn:
+          wanted to build interactive digital work, especially games and real-time 3D environments. That shift reflects how I learn:
           quickly, hands-on, and through making. My projects now sit at the intersection of human experience and digital systems:
           player psychology, visual storytelling, interaction design, and world-building.
         </p>
@@ -42,7 +40,7 @@
         <p>
           My artistic background spans both digital and traditional media, including pottery, acrylic painting, pastels, and
           photography. I also play the flute and once traveled to the U.K. to perform in a chamber orchestra. Outside of studio work,
-          I’m an avid outdoors enthusiast who completed the West Coast Trail in seven days.
+          I’m ann outdoors enthusiast who completed the West Coast Trail in seven days.
         </p>
 
         <p>
@@ -53,7 +51,7 @@
 
         <h2>Mission</h2>
         <p>
-          I’m passionate about building interactive experiences that feel intentional—where the mechanics, environment, and feedback
+          I’m passionate about building interactive experiences that feel intentional, where the mechanics, environment, and feedback
           work together to create meaning. My focus is real-time 3D world-building and interaction design, bridging art, design, and
           prototyping. I love working across engines and tools (especially Unreal Engine, Unity, and Blender) to bring ideas to life,
           and I’m drawn to the creative challenge of making worlds that feel readable, immersive, and alive.
@@ -69,13 +67,13 @@
         <h2>Hobbies</h2>
         <p>
           In my free time, I’m learning French and Japanese, reading, and playing games like Magic: The Gathering. I enjoy open-world
-          titles and platformers—not only for fun, but because I love studying how games teach players through level design, pacing,
+          titles and platformers, not only for fun, but because I love studying how games teach players through level design, pacing,
           and feedback. I also enjoy photography, being outdoors, and staying active.
         </p>
 
         <h2>Future Aspirations</h2>
         <p>
-          Professionally, I’m working toward a career in the creative technology industry—ideally in a hybrid role where I can keep
+          Professionally, I’m working toward a career in the creative technology industry, ideally in a hybrid role where I can keep
           designing and building: technical art, gameplay systems, interaction design, and world-building. Long-term, I want to explore
           entrepreneurship and eventually run a small game studio, which is why I’m actively building not just my portfolio, but also
           my skills in collaboration, production, and communicating ideas clearly.

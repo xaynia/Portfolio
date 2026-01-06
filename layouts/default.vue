@@ -48,7 +48,7 @@
 
     <!-- Footer -->
     <footer class="site-footer">
-      <p>© 2025 Acacia Williams — All rights reserved</p>
+      <p>© 2026 Acacia Williams — All rights reserved</p>
       <button class="back-to-top" @click="scrollTop">↑ Back to top</button>
     </footer>
   </div>

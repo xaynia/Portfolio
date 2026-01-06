@@ -30,6 +30,147 @@ export interface PortfolioItem {
 export const usePortfolioItems = () => {
     const items: PortfolioItem[] = [
 
+        // ── CART 498 ─────────────────────────────────────────────────────
+        {
+            slug: 'hide-and-seek',
+            title: 'Hide And Seek: (Sky Museum)',
+            image: '/HideAndSeek.png',
+            course: 'CART 498 - Special Topics in CART: Real Time 3D Environments',
+            // completed: 'Fall 2025', // optional (add if you want it displayed)
+            description:
+                'A cinematic walkthrough of a sci‑fi “sky museum” built around a 4D, Antichamber‑style cube that preserves fragments of a lost Earth—portals, impossible frames, and a final “LAST TREE” exhibit.',
+            longDescription: `
+Hide And Seek is a cinematic walkthrough of a sci‑fi “sky museum” built around a 4D, Antichamber‑style cube that preserves fragments of a lost Earth. Floating islands are connected by walkways, non‑Euclidean door frames, and sculptural portals. At the entrance, a two‑sided frame shows a galaxy as you walk in and the moon as you leave, establishing a world where perspective and direction rewrite reality.
+
+At the center, a glass 4D cube displays four distinct interior scenes on its faces (Earth, lounge, laser room, and chroma‑saturation room), with small robots posed as curious viewers. Further along, a triangular portal presents three different “space mushrooms” on its faces; emissive flowers line the walkways; and a second two‑way door frame alternates between a galaxy and a shrub as you pass it. The route culminates on an end island where a gigantic glass tube contains a single willow, crowned by an LED warning banner reading “LAST TREE.” Surrounding islands carry hologram trees and color‑coded foliage—an artificial halo of nature contrasted against the one remaining “real” organism.
+
+**Technical + design checkpoints**
+- Built a 4D / Antichamber‑style effect using opacity/masked materials so different cube faces reveal different interiors.
+- Implemented a Blueprint material-array loop (Create/Set material instance dynamic / SetMaterial) so a single mesh can present multiple “exhibits” across indices (not just index 0).
+- Designed the floating-island horseshoe route as a sequence of readable “stages” for the final cinematic.
+- Produced the walkthrough/trailer with Unreal Sequencer (drone camera pathing and beats).
+- Balanced a retro cyber‑punk lighting mood against Unreal performance constraints (Lumen/Nanite-heavy scenes caused frequent crashes, requiring iterative trimming/tuning).
+
+**Reflection (concept frame)**
+Framed through Nadim Samman’s *Poetics of Encryption*, the museum stages an imaginative landscape of “black sites / black boxes / black holes”: sealed zones of preservation, visible outputs with hidden mechanisms, and portal-frames where time and meaning bend. The player-character robot reads as a maintenance process walking through encrypted exhibits—able to preserve the archive, but incapable of restoring what it contains.
+  `,
+            iframeUrl: 'https://www.youtube.com/embed/lfePGNEVp08',
+            // videoUrl: '/media/PortfolioRender_New_1.[0001-1848].mp4',
+            ratio: '2560 / 1440',
+
+
+            // Documentation only (screenshots). TODO
+            screenshots: [
+                // '/498/HideAndSeek/doc-01.png',
+                // '/498/HideAndSeek/doc-02.png',
+                // '/498/HideAndSeek/doc-03.png',
+                // '/498/HideAndSeek/doc-04.png',
+                // '/498/HideAndSeek/doc-05.png',
+            ],
+            status: 'completed',
+            teamSize: 1,
+            myRole: 'Environment / Technical Art + Level Design (Cinematic)',
+            myContributions: [
+                'Built the sky-museum level layout (floating islands + staged traversal beats for a cinematic route)',
+                'Implemented non‑Euclidean portal/cube presentation using masked/opacity materials and view/perspective logic',
+                'Authored and debugged a Blueprint loop to iterate through a material array and assign multiple exhibit materials across indices',
+                'Integrated Blender-built room scenes into Unreal (FBX iteration: scale, smoothing, pivots, normals, material slots)',
+                'Created the cinematic walkthrough using Unreal Sequencer (drone camera blocking, pacing, reveals)',
+                'Iterated for stability/performance while preserving a retro cyber‑punk lighting look (Lumen/Nanite-heavy crash troubleshooting)',
+            ],
+            engine: 'Unreal Engine (Sequencer, Blueprints); Blender',
+            languages: ['Blueprint Visual Scripting'],
+            developmentDuration: 'Course project',
+            objective:
+                'Create a cinematic, non‑Euclidean environment that uses portal logic and view-dependent framing to explore “archived nature” as artifact, projection, and encrypted experience.',
+            artisticInfluences: `
+**Artistic / theoretical influences**
+• Antichamber — view-dependent space + non‑Euclidean framing  
+• Nadim Samman — *Poetics of Encryption* (black sites, black boxes, black holes)
+  `,
+            credits: `
+**References / sources**
+Tutorial
+- Bojan V03. *Unreal Engine 4 Tutorial: Antichamber 4D Art Gallery (Impossible Objects).*
+
+Assets (Fab / Unreal Engine)
+- Artem Bayankin. *Asteroids Planet (Sci-fi planets/asteroids pack).* https://www.fab.com/listings/7ab65e5e-5769-4332-ae10-08af042415cb
+- nighttimes. *Holo-Gen Hologram Creator System.* https://www.fab.com/listings/b93edf11-8738-482c-8bf1-a98e4685bc8f
+- AleksandrIvanov. *Stylized Sky Dungeon.* https://www.fab.com/listings/fce76096-4cc6-4f21-a040-55ddd3355a0c
+- Fairy Fantasy. *Fairy Fantasy Stylized Plants 01.* https://www.fab.com/listings/858d0901-8e33-4f9e-8225-6997198bc4ee
+- Marcelo Barrio. *Alien Robot.* https://www.fab.com/listings/d40a3ed8-6e97-470f-8302-73211ad90fce
+  `,
+            // ratio: '16 / 9',
+        },
+
+// ── CART 361 ─────────────────────────────────────────────────────
+        {
+            slug: 'ouroboros-loop',
+            title: 'Ouroboros Loop — iAcorn: Scheduled Growth',
+            image: '/361/Ouroboros/iAcorn.gif',
+            course: 'CART 361 - 3D Digital Production I',
+            completed: 'Fall 2025',
+            description:
+                'A looping Blender animation reframing self‑care as smartphone‑scheduled maintenance: hydrate to 100% and an acorn becomes an oak, then the cycle resets.',
+            longDescription: `
+iAcorn: Scheduled Growth began from a personal care metaphor: being encouraged to draw a flower on my hand as a reminder that we need regular care to thrive. In practice, it’s hard to prioritize even basic self‑care like drinking water when busy—and many of us rely on smartphone notifications to tell us when to act.
+
+Drawing on Cory Arcangel’s ideas about contemporary life running on defaults, presets, and schedules (where UI is instruction), iAcorn uses a looping animation to argue that care has become maintenance performed on cue—and that “progress” is more of a feeling than a fixed state.
+
+Inside an iPhone-style UI, a hydration meter fills toward 100% while an acorn gradually grows into a full oak tree. When the oak produces a new acorn, the camera zooms into the falling acorn and the loop resets back to the beginning—returning to an empty 0% hydration state. The piece reflects a smartphone-dependent culture where reminders function as instructions and self-care becomes a gamified progress bar.
+
+**Key checkpoints**
+- Switched from manually modeling each growth stage to integrating a “Growing Tree” animation asset to focus on concept + integration.
+- Replaced foliage using Geometry Nodes by building an oak leaf texture set (alpha/normal/roughness/opacity/UV) and swapping leaf groups/collections, troubleshooting texture coordinates and instance realization.
+- Modeled an acorn and animated a “baby → mature” material transition using Blender shading nodes (Gradient Texture + Separate XYZ + Mapping + Texture Coordinate) with keyframes.
+- Built environment + lighting: particle-system grass, keyframed day-to-night using Sun Cycles add-on, and world brightness tuning to avoid overly contrasted skies.
+- Animated acorn cracking via fracture add-on and hand-keyframed breakup as the sapling emerges.
+- Built character arm animation with Rigify (append rig/mesh, generate rig, parent with auto-weights, pose-mode keyframes).
+- Designed phone UI: video texture on a plane for the screen, shape keys for a water progress bar, and keyframed hourly text changes.
+- Edited timing and revisions using Blender’s Video Sequencer (clip/re-time/re-import updated renders).
+
+**Reflection**
+This project accelerated my Blender troubleshooting (Geometry Nodes, rigging, shading, VSE, keyframed lighting) and strengthened my ability to prioritize core mechanics over perfectionism—especially when dense keyframe systems make late-stage changes costly.
+  `,
+            screenshots: [
+                '/361/Ouroboros/iAcorn.pdf',
+                '/361/Ouroboros/iacorn1.png',
+                '/361/Ouroboros/iacorn2.png',
+                '/361/Ouroboros/iacorn3.png',
+                '/361/Ouroboros/iacorn5.png',
+                '/361/Ouroboros/iacorn6.png',
+                '/361/Ouroboros/iacorn7.png',
+                '/361/Ouroboros/iacorn8.png',
+                '/361/Ouroboros/iacorn9.png',
+                '/361/Ouroboros/iacorn10.png'
+
+            ],
+            status: 'completed',
+            teamSize: 1,
+            myRole: '3D Artist / Animator',
+
+            myContributions: [
+                'Developed the concept + loop structure (hydration UI driving an acorn→oak→acorn reset)',
+                'Integrated a Growing Tree animation asset and aligned its timing/reads to the UI narrative',
+                'Authored custom oak leaf texture maps and replaced foliage across the tree via Geometry Nodes',
+                'Modeled the acorn and keyframed shader-based material transitions from “baby” to mature',
+                'Built environment + cinematography (grass particles, camera animation, day/night lighting keyframes)',
+                'Rigged and animated character arms with Rigify, and constructed the phone UI (video texture screen, shape-key loading bar, timed text)',
+                'Iterated timing/lighting and re-render workflows using Blender Video Sequencer',
+            ],
+            engine: 'Blender (Geometry Nodes, Shader Nodes, Video Sequencer)',
+            developmentDuration: 'Course project',
+            objective:
+                'Create a looping 3D animation that links a self-care metaphor to scheduled UI behavior, using motion, materials, and interface framing to critique “progress” as a recurring maintenance ritual.',
+            artisticInfluences: `
+**Artistic influences**
+• Cory Arcangel — defaults/presets/schedules; UI as instruction  
+• Self-care metaphor from therapy (care as regular practice, not a one-time fix)
+  `,
+            ratio: '16 / 9',
+        },
+
+
         // ── Blender ──────────────────────────────
         {
             slug: 'blender',
