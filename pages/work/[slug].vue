@@ -16,6 +16,13 @@
       <video :src="item.videoUrl" autoplay controls preload="auto" muted loop playsinline :poster="item.image" />
     </div>
 
+    <!-- █ 2½. Image hero -->
+    <div v-else-if="item.heroImage"
+         class="media-wrapper"
+         :style="{ aspectRatio: item.ratio || '16 / 9' }">
+      <img :src="`/media${item.heroImage}`" :alt="item.title" />
+    </div>
+
     <!-- Project Details (structured, review-friendly) -->
     <div class="project-details">
       <h3>Project Details</h3>

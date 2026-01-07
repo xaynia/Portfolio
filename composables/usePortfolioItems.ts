@@ -6,6 +6,7 @@ export interface PortfolioItem {
     longDescription?: string; // extended text (detail page)
     iframeUrl?: string;     // for web game embed
     videoUrl?: string;     // self-hosted MP4/WebM
+    heroImage?: string;    // optional hero image for detail page
     screenshots?: string[]; // array of media filenames
     artisticInfluences?: string;
     credits?: string
@@ -56,6 +57,7 @@ Framed through Nadim Samman’s *Poetics of Encryption*, the museum stages an im
   `,
             iframeUrl: 'https://www.youtube.com/embed/lfePGNEVp08',
             // videoUrl: '/media/PortfolioRender_New_1.[0001-1848].mp4',
+            // heroImage: '/HideAndSeek.png',
             ratio: '2560 / 1440',
 
 
