@@ -61,13 +61,16 @@ Framed through Nadim Samman’s *Poetics of Encryption*, the museum stages an im
             ratio: '2560 / 1440',
 
 
-            // Documentation only (screenshots). TODO
+            // Documentation only (screenshots).
             screenshots: [
-                // '/498/HideAndSeek/doc-01.png',
-                // '/498/HideAndSeek/doc-02.png',
-                // '/498/HideAndSeek/doc-03.png',
-                // '/498/HideAndSeek/doc-04.png',
-                // '/498/HideAndSeek/doc-05.png',
+                '/498/HideAndSeek/Cube1.png',
+                '/498/HideAndSeek/Cube2.png',
+                '/498/HideAndSeek/Cube3.png',
+                '/498/HideAndSeek/Chroma.png',
+                '/498/HideAndSeek/Chroma1.png',
+                '/498/HideAndSeek/Chroma2.png',
+                '/498/HideAndSeek/Chroma3.png',
+                '/498/HideAndSeek/Lounge1.png',
             ],
             status: 'completed',
             teamSize: 1,
