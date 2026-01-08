@@ -44,17 +44,16 @@ export const usePortfolioItems = () => {
             longDescription: `
 Hide And Seek is a cinematic walkthrough of a sci‑fi “sky museum” built around a 4D non-euclidean physics cube that preserves fragments of a lost Earth. Floating islands are connected by walkways, non‑Euclidean door frames, and sculptural portals. At the entrance, a two‑sided frame shows a galaxy as you walk in and the moon as you leave, establishing a world where perspective and direction rewrite reality.
 
-At the center, a glass 4D cube displays four distinct interior scenes on its faces (Earth, lounge, laser room, and chroma‑saturation room), with small robots posed as curious viewers. Further along, a triangular portal presents three different “space mushrooms” on its faces; emissive flowers line the walkways; and a second two‑way door frame alternates between a galaxy and a shrub as you pass it. The route culminates on an end island where a gigantic glass tube contains a single willow, crowned by an LED warning banner reading “LAST TREE.” Surrounding islands carry hologram trees and color‑coded foliage—an artificial halo of nature contrasted against the one remaining “real” organism.
+At the center, a glass 4D cube displays four distinct interior scenes on its faces (Earth, lounge, laser room, and chroma‑saturation room), with small robots posed as curious viewers. Further along, triangular portal presents three different “space fauna” on its faces; emissive flowers line the walkways; and a second two‑way door frame alternates between a galaxy and a shrub as you pass it. A gigantic glass tube contains a single willow, crowned by an LED warning banner reading “LAST TREE.” Surrounding islands carry hologram trees and color‑coded foliage—an artificial halo of nature contrasted against the one remaining “real” organism.
 
 **Technical + design checkpoints**
-- Built a 4D / Antichamber‑style effect using opacity/masked materials so different cube faces reveal different interiors.
-- Implemented a Blueprint material-array loop (Create/Set material instance dynamic / SetMaterial) so a single mesh can present multiple “exhibits” across indices (not just index 0).
+- Built a 4D non euclidean‑style effect using opacity/masked materials so different cube faces reveal different interiors.
 - Designed the floating-island horseshoe route as a sequence of readable “stages” for the final cinematic.
 - Produced the walkthrough/trailer with Unreal Sequencer (drone camera pathing and beats).
 - Balanced a retro cyber‑punk lighting mood against Unreal performance constraints (Lumen/Nanite-heavy scenes caused frequent crashes, requiring iterative trimming/tuning).
 
 **Reflection (concept frame)**
-Framed through Nadim Samman’s *Poetics of Encryption*, the museum stages an imaginative landscape of “black sites / black boxes / black holes”: sealed zones of preservation, visible outputs with hidden mechanisms, and portal-frames where time and meaning bend. The player-character robot reads as a maintenance process walking through encrypted exhibits—able to preserve the archive, but incapable of restoring what it contains.
+Framed through Nadim Samman’s *Poetics of Encryption*, the museum stages an imaginative landscape of the dark side of technology: In reference to the authors theories on sealed zones of preservation, visible outputs with hidden mechanisms, and portal-frames where time and meaning bend - The player-character robot reads as a maintenance process walking through encrypted exhibits—able to preserve the archive, but incapable of restoring what it contains.
   `,
             iframeUrl: 'https://www.youtube.com/embed/6Mti1VvlCkA',
             // videoUrl: '/media/PortfolioRender_New_1.[0001-1848].mp4',
@@ -91,8 +90,8 @@ Framed through Nadim Samman’s *Poetics of Encryption*, the museum stages an im
                 'Use Unreal Engine 5 to create a real-time 3D work that engages with themes of secrecy, encryption, or hidden architectures—whether technological, spatial, social, or symbolic; Deliver a playable build and a video trailer..',
             artisticInfluences: `
 **Artistic / theoretical influences**
-• Antichamber — view-dependent space + non‑Euclidean framing  
-• Nadim Samman — *Poetics of Encryption* 
+• Antichamber: view-dependent space + non‑Euclidean framing  
+• Nadim Samman: *Poetics of Encryption* 
 • James Turrell: Ganzfeld Rooms
 • Carlos-Cruz-Diez: Chromasaturation Room
 • James Turrell: Ganzfeld Rooms
@@ -103,11 +102,11 @@ Tutorial
 - Bojan V03. *Unreal Engine 4 Tutorial: Antichamber 4D Art Gallery (Impossible Objects).*
 
 Assets (Fab / Unreal Engine)
-- Artem Bayankin. *Asteroids Planet (Sci-fi planets/asteroids pack).* https://www.fab.com/listings/7ab65e5e-5769-4332-ae10-08af042415cb
-- nighttimes. *Holo-Gen Hologram Creator System.* https://www.fab.com/listings/b93edf11-8738-482c-8bf1-a98e4685bc8f
-- AleksandrIvanov. *Stylized Sky Dungeon.* https://www.fab.com/listings/fce76096-4cc6-4f21-a040-55ddd3355a0c
-- Fairy Fantasy. *Fairy Fantasy Stylized Plants 01.* https://www.fab.com/listings/858d0901-8e33-4f9e-8225-6997198bc4ee
-- Marcelo Barrio. *Alien Robot.* https://www.fab.com/listings/d40a3ed8-6e97-470f-8302-73211ad90fce
+- Artem Bayankin: *Asteroids Planet (Sci-fi planets/asteroids pack).* https://www.fab.com/listings/7ab65e5e-5769-4332-ae10-08af042415cb
+- nighttimes: *Holo-Gen Hologram Creator System.* https://www.fab.com/listings/b93edf11-8738-482c-8bf1-a98e4685bc8f
+- AleksandrIvanov: *Stylized Sky Dungeon.* https://www.fab.com/listings/fce76096-4cc6-4f21-a040-55ddd3355a0c
+- Fairy Fantasy: *Fairy Fantasy Stylized Plants 01.* https://www.fab.com/listings/858d0901-8e33-4f9e-8225-6997198bc4ee
+- Marcelo Barrio: *Alien Robot.* https://www.fab.com/listings/d40a3ed8-6e97-470f-8302-73211ad90fce
   `,
             // ratio: '16 / 9',
         },
@@ -129,10 +128,9 @@ Drawing on Cory Arcangel’s ideas about contemporary life running on defaults, 
 Inside an iPhone-style UI, a hydration meter fills toward 100% while an acorn gradually grows into a full oak tree. When the oak produces a new acorn, the camera zooms into the falling acorn and the loop resets back to the beginning—returning to an empty 0% hydration state. The piece reflects a smartphone-dependent culture where reminders function as instructions and self-care becomes a gamified progress bar.
 
 **Key checkpoints**
-- Switched from manually modeling each growth stage to integrating a “Growing Tree” animation asset to focus on concept + integration.
-- Replaced foliage using Geometry Nodes by building an oak leaf texture set (alpha/normal/roughness/opacity/UV) and swapping leaf groups/collections, troubleshooting texture coordinates and instance realization.
 - Modeled an acorn and animated a “baby → mature” material transition using Blender shading nodes (Gradient Texture + Separate XYZ + Mapping + Texture Coordinate) with keyframes.
 - Built environment + lighting: particle-system grass, keyframed day-to-night using Sun Cycles add-on, and world brightness tuning to avoid overly contrasted skies.
+- Replaced foliage using Geometry Nodes by building an oak leaf texture set (alpha/normal/roughness/opacity/UV) and swapping leaf groups/collections, troubleshooting texture coordinates and instance realization.
 - Animated acorn cracking via fracture add-on and hand-keyframed breakup as the sapling emerges.
 - Built character arm animation with Rigify (append rig/mesh, generate rig, parent with auto-weights, pose-mode keyframes).
 - Designed phone UI: video texture on a plane for the screen, shape keys for a water progress bar, and keyframed hourly text changes.
@@ -244,6 +242,8 @@ This project accelerated my Blender troubleshooting (Geometry Nodes, rigging, sh
             videoUrl: '/media/HD2.mp4',
             ratio: '1484 / 872',
 
+
+
             downloads: [
                 {
                     platform: 'macOS',
@@ -281,6 +281,12 @@ This project accelerated my Blender troubleshooting (Geometry Nodes, rigging, sh
             objective:
                 'Exercise game design and development skills by creating a short digital game prototype that explores a personal theme through mechanics, feel, and readable player goals.',
 
+            credits: `
+            **References / sources**
+            Assets (Fab / Unreal Engine)
+            - CT Game. *Advanced Riding Locomotion System (Riding System).* https://www.fab.com/listings/2140716c-a8b4-46d4-86d8-6cea729db48f  [oai_citation:0‡Fab.com](https://www.fab.com/de/listings/2140716c-a8b4-46d4-86d8-6cea729db48f)
+            - MalberS Animations. *Horse Animset.* https://www.fab.com/listings/e0fc6520-8c9d-425d-9d25-3b6dc9ed56f8  [oai_citation:1‡Fab.com](https://www.fab.com/ja/listings/e0fc6520-8c9d-425d-9d25-3b6dc9ed56f8)
+  `,
 
         },
 
