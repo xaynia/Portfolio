@@ -93,9 +93,9 @@ Framed through Nadim Samman’s *Poetics of Encryption*, the museum stages an im
 **Artistic / theoretical influences**
 • Antichamber — view-dependent space + non‑Euclidean framing  
 • Nadim Samman — *Poetics of Encryption* 
-• JAMES TURRELL: GANZFELD ROOMS
-• CARLOS-CRUZ-DIEZ: CHROMOSATURATION ROOM
-• JAMES TURRELL: GANZFELD ROOMS
+• James Turrell: Ganzfeld Rooms
+• Carlos-Cruz-Diez: Chromasaturation Room
+• James Turrell: Ganzfeld Rooms
   `,
             credits: `
 **References / sources**
@@ -160,18 +160,18 @@ This project accelerated my Blender troubleshooting (Geometry Nodes, rigging, sh
             myRole: '3D Artist / Animator',
 
             myContributions: [
-                'Developed the concept + loop structure (hydration UI driving an acorn→oak→acorn reset)',
+                'Developed the concept + loop structure (hydration UI driving an acorn → oak → acorn reset)',
                 'Integrated a Growing Tree animation asset and aligned its timing/reads to the UI narrative',
                 'Authored custom oak leaf texture maps and replaced foliage across the tree via Geometry Nodes',
                 'Modeled the acorn and keyframed shader-based material transitions from “baby” to mature',
                 'Built environment + cinematography (grass particles, camera animation, day/night lighting keyframes)',
-                'Rigged and animated character arms with Rigify, and constructed the phone UI (video texture screen, shape-key loading bar, timed text)',
+                'Rigged and animated character arms, and constructed the phone screen + UI (video texture screen, shape-key loading bar, timed text)',
                 'Iterated timing/lighting and re-render workflows using Blender Video Sequencer',
             ],
             engine: 'Blender (Geometry Nodes, Shader Nodes, Video Sequencer)',
             developmentDuration: 'Course project',
             objective:
-                'Create a looping 3D animation that links a self-care metaphor to scheduled UI behavior, using motion, materials, and interface framing to critique “progress” as a recurring maintenance ritual.',
+                'Use linear keyframe animation techniques to create a 15-20 looping sequence render in Blender (EEVEE).',
             artisticInfluences: `
 **Artistic influences**
 • Cory Arcangel — defaults/presets/schedules; UI as instruction  

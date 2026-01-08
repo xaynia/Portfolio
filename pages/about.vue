@@ -31,7 +31,7 @@
 
         <p>
           I’m completing a Bachelor of Arts in Psychology with a minor in Computational Arts at Concordia University. I began my degree
-          in a Psychology specialization, then pivoted to a Psychology major and added a Computational Arts minor when I realized I
+          in a Psychology specialization, then pivoted to Computational Arts when I realized I
           wanted to build interactive digital work, especially games and real-time 3D environments. That shift reflects how I learn:
           quickly, hands-on, and through making. My projects now sit at the intersection of human experience and digital systems:
           player psychology, visual storytelling, interaction design, and world-building.
@@ -39,8 +39,8 @@
 
         <p>
           My artistic background spans both digital and traditional media, including pottery, acrylic painting, pastels, and
-          photography. I also play the flute and once traveled to the U.K. to perform in a chamber orchestra. Outside of studio work,
-          I’m ann outdoors enthusiast who completed the West Coast Trail in seven days.
+          photography. Outside of studio work, I’m an outdoors enthusiast who completed the West Coast Trail in seven days.
+          I enjoy playing musical instruments, performing in the U.K. to play flute in my school's chamber orchestra.
         </p>
 
         <p>

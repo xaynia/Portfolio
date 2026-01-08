@@ -18,10 +18,7 @@
       <!-- Personal Statement -->
       <h2>Personal Statement</h2>
       <p>
-        I am an undergraduate <strong>Psychology</strong> major with a <strong>Computational Arts</strong> minor,
-        blending art and technology to explore how interactive multimedia can illuminate psychological concepts.
-        My academic work demonstrates a passion for creative coding, game development, and digital media,
-        reflecting a unique perspective on human behavior and sensory experience.
+        I’m a cross-disciplinary builder who can take an idea from concept to a polished prototype and presentation. I create 3D assets in Blender, implement interactive systems in Unreal Engine or Unity, and produce real-time cinematics and trailers through capture and post-production in Premiere Pro and After Effects. My focus is designing readable, intentional experiences where mechanics, environment, and feedback work together. I combine hands-on prototyping with a psychology-informed design lens to build immersive, readable experiences through iteration.
       </p>
 
       <hr/>
