@@ -55,7 +55,7 @@ At the center, a glass 4D cube displays four distinct interior scenes on its fac
 **Reflection (concept frame)**
 Framed through Nadim Samman’s *Poetics of Encryption*, the museum stages an imaginative landscape of “black sites / black boxes / black holes”: sealed zones of preservation, visible outputs with hidden mechanisms, and portal-frames where time and meaning bend. The player-character robot reads as a maintenance process walking through encrypted exhibits—able to preserve the archive, but incapable of restoring what it contains.
   `,
-            iframeUrl: 'https://www.youtube.com/embed/lfePGNEVp08',
+            iframeUrl: 'https://www.youtube.com/embed/6Mti1VvlCkA',
             // videoUrl: '/media/PortfolioRender_New_1.[0001-1848].mp4',
             // heroImage: '/HideAndSeek.png',
             ratio: '2560 / 1440',
@@ -134,6 +134,7 @@ Inside an iPhone-style UI, a hydration meter fills toward 100% while an acorn gr
 **Reflection**
 This project accelerated my Blender troubleshooting (Geometry Nodes, rigging, shading, VSE, keyframed lighting) and strengthened my ability to prioritize core mechanics over perfectionism—especially when dense keyframe systems make late-stage changes costly.
   `,
+            heroImage: '/361/Ouroboros/iacorn9.png',
             screenshots: [
                 '/361/Ouroboros/iAcorn.pdf',
                 '/361/Ouroboros/iacorn1.png',

@@ -17,9 +17,7 @@
     </div>
 
     <!-- █ 2½. Image hero -->
-    <div v-else-if="item.heroImage"
-         class="media-wrapper"
-         :style="{ aspectRatio: item.ratio || '16 / 9' }">
+    <div v-else-if="item.heroImage" class="media-wrapper image-wrapper">
       <img :src="`/media${item.heroImage}`" :alt="item.title" />
     </div>
 
@@ -439,7 +437,7 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
   /* media wrapper */
   .media-wrapper {
     width: 100%;
-    height: 100%;
+    height: auto;
     overflow: hidden;
     iframe,
     video {
@@ -448,6 +446,17 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
       border: 0;
       object-fit: cover;
     }
+  }
+
+  .media-wrapper.image-wrapper {
+    height: auto;      /* overrides your .media-wrapper { height: 100%; } */
+  }
+
+  .media-wrapper.image-wrapper img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain; /* optional; use cover if you want cropping */
   }
 
   /* screenshots / thumbnails */
