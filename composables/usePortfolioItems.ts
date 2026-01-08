@@ -36,12 +36,13 @@ export const usePortfolioItems = () => {
             slug: 'hide-and-seek',
             title: 'Hide And Seek: (Sky Museum)',
             image: '/HideAndSeek.png',
+            completed: 'Fall 2025',
             course: 'CART 498 - Special Topics in CART: Real Time 3D Environments',
             // completed: 'Fall 2025', // optional (add if you want it displayed)
             description:
-                'A cinematic walkthrough of a sci‑fi “sky museum” built around a 4D, Antichamber‑style cube that preserves fragments of a lost Earth—portals, impossible frames, and a final “LAST TREE” exhibit.',
+                'Built in Blender, Unreal Engine 5, Adobe Premiere Pro & After Effects: A cinematic walkthrough of a sci‑fi “sky museum” built around a 4D non-euclidean physics cube that preserves fragments of a lost Earth exhibit.',
             longDescription: `
-Hide And Seek is a cinematic walkthrough of a sci‑fi “sky museum” built around a 4D, Antichamber‑style cube that preserves fragments of a lost Earth. Floating islands are connected by walkways, non‑Euclidean door frames, and sculptural portals. At the entrance, a two‑sided frame shows a galaxy as you walk in and the moon as you leave, establishing a world where perspective and direction rewrite reality.
+Hide And Seek is a cinematic walkthrough of a sci‑fi “sky museum” built around a 4D non-euclidean physics cube that preserves fragments of a lost Earth. Floating islands are connected by walkways, non‑Euclidean door frames, and sculptural portals. At the entrance, a two‑sided frame shows a galaxy as you walk in and the moon as you leave, establishing a world where perspective and direction rewrite reality.
 
 At the center, a glass 4D cube displays four distinct interior scenes on its faces (Earth, lounge, laser room, and chroma‑saturation room), with small robots posed as curious viewers. Further along, a triangular portal presents three different “space mushrooms” on its faces; emissive flowers line the walkways; and a second two‑way door frame alternates between a galaxy and a shrub as you pass it. The route culminates on an end island where a gigantic glass tube contains a single willow, crowned by an LED warning banner reading “LAST TREE.” Surrounding islands carry hologram trees and color‑coded foliage—an artificial halo of nature contrasted against the one remaining “real” organism.
 
@@ -74,24 +75,27 @@ Framed through Nadim Samman’s *Poetics of Encryption*, the museum stages an im
             ],
             status: 'completed',
             teamSize: 1,
-            myRole: 'Environment / Technical Art + Level Design (Cinematic)',
+            myRole: 'Environment / Technical Art + Level Design (Cinematic), Editor',
             myContributions: [
+                'Created and integrated Blender-built room scenes into Unreal (FBX iteration: scale, smoothing, pivots, normals, material slots)',
                 'Built the sky-museum level layout (floating islands + staged traversal beats for a cinematic route)',
-                'Implemented non‑Euclidean portal/cube presentation using masked/opacity materials and view/perspective logic',
-                'Authored and debugged a Blueprint loop to iterate through a material array and assign multiple exhibit materials across indices',
-                'Integrated Blender-built room scenes into Unreal (FBX iteration: scale, smoothing, pivots, normals, material slots)',
-                'Created the cinematic walkthrough using Unreal Sequencer (drone camera blocking, pacing, reveals)',
-                'Iterated for stability/performance while preserving a retro cyber‑punk lighting look (Lumen/Nanite-heavy crash troubleshooting)',
+                'Implemented non‑Euclidean cube presentation using masked/opacity materials and view/perspective logic',
+                'Created the cinematic walkthrough using Unreal Sequencer (crane camera blocking, pacing, reveals)',
+                'Iterated for stability/performance while preserving a retro cyber‑punk lighting look (Lumen/Nanite/Niagara-heavy crash troubleshooting)',
+                'Exported Unreal Engine sequencer to Premiere Pro for cinematic editing and rendered edited footage',
             ],
-            engine: 'Unreal Engine (Sequencer, Blueprints); Blender',
+            engine: 'Unreal Engine (Sequencer, Blueprints); Blender, Adobe Premiere Pro, Adobe After Effects',
             languages: ['Blueprint Visual Scripting'],
             developmentDuration: 'Course project',
             objective:
-                'Create a cinematic, non‑Euclidean environment that uses portal logic and view-dependent framing to explore “archived nature” as artifact, projection, and encrypted experience.',
+                'Use Unreal Engine 5 to create a real-time 3D work that engages with themes of secrecy, encryption, or hidden architectures—whether technological, spatial, social, or symbolic; Deliver a playable build and a video trailer..',
             artisticInfluences: `
 **Artistic / theoretical influences**
 • Antichamber — view-dependent space + non‑Euclidean framing  
-• Nadim Samman — *Poetics of Encryption* (black sites, black boxes, black holes)
+• Nadim Samman — *Poetics of Encryption* 
+• JAMES TURRELL: GANZFELD ROOMS
+• CARLOS-CRUZ-DIEZ: CHROMOSATURATION ROOM
+• JAMES TURRELL: GANZFELD ROOMS
   `,
             credits: `
 **References / sources**
@@ -265,7 +269,7 @@ This project accelerated my Blender troubleshooting (Geometry Nodes, rigging, sh
             teamSize: 1,
             myRole: 'Designer / Gameplay / Systems Programmer',
             myContributions: [
-                'Built the horse riding controller (movement states, turning, camera follow, input mapping)',
+                'Modified the horse riding controller (movement states, turning, camera follow, input mapping)',
                 'Implemented jump interactions and scoring logic (faults, course completion, reset/retry flow)',
                 'Designed and scripted ordered jump progression using triggers/checkpoints and a round timer',
                 'Created UI feedback for time, faults, current objective, and course order readability',
