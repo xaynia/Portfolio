@@ -35,7 +35,7 @@ export const usePortfolioItems = () => {
         {
             slug: 'hide-and-seek',
             title: 'Hide And Seek: (Sky Museum)',
-            image: '/HideAndSeek.png',
+            image: '/498/HideAndSeek/HideSeekCover.png',
             completed: 'Fall 2025',
             course: 'CART 498 - Special Topics in CART: Real Time 3D Environments',
             // completed: 'Fall 2025', // optional (add if you want it displayed)
