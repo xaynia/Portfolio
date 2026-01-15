@@ -49,7 +49,7 @@ At the center, a glass 4D cube displays four distinct interior scenes on its fac
 **Technical + design checkpoints**
 - Built a 4D non euclidean‑style effect using opacity/masked materials so different cube faces reveal different interiors.
 - Designed the floating-island horseshoe route as a sequence of readable “stages” for the final cinematic.
-- Produced the walkthrough/trailer with Unreal Sequencer (drone camera pathing and beats).
+- Produced the walkthrough/trailer with Unreal Sequencer (crane camera pathing and beats).
 - Balanced a retro cyber‑punk lighting mood against Unreal performance constraints (Lumen/Nanite-heavy scenes caused frequent crashes, requiring iterative trimming/tuning).
 
 **Reflection (concept frame)**
@@ -80,7 +80,7 @@ Framed through Nadim Samman’s *Poetics of Encryption*, the museum stages an im
                 'Built the sky-museum level layout (floating islands + staged traversal beats for a cinematic route)',
                 'Implemented non‑Euclidean cube presentation using masked/opacity materials and view/perspective logic',
                 'Created the cinematic walkthrough using Unreal Sequencer (crane camera blocking, pacing, reveals)',
-                'Iterated for stability/performance while preserving a retro cyber‑punk lighting look (Lumen/Nanite/Niagara-heavy crash troubleshooting)',
+                'Iterated for stability/performance while preserving lighting look (Lumen/Nanite/Niagara-heavy crash troubleshooting)',
                 'Exported Unreal Engine sequencer to Premiere Pro for cinematic editing and rendered edited footage',
             ],
             engine: 'Unreal Engine (Sequencer, Blueprints); Blender, Adobe Premiere Pro, Adobe After Effects',
@@ -133,11 +133,11 @@ Inside an iPhone-style UI, a hydration meter fills toward 100% while an acorn gr
 - Replaced foliage using Geometry Nodes by building an oak leaf texture set (alpha/normal/roughness/opacity/UV) and swapping leaf groups/collections, troubleshooting texture coordinates and instance realization.
 - Animated acorn cracking via fracture add-on and hand-keyframed breakup as the sapling emerges.
 - Built character arm animation with Rigify (append rig/mesh, generate rig, parent with auto-weights, pose-mode keyframes).
-- Designed phone UI: video texture on a plane for the screen, shape keys for a water progress bar, and keyframed hourly text changes.
+- Designed phone UI: with acorn frame render for transition - on a plane for the screen, shape keys for a water progress bar, and keyframed hourly text changes.
 - Edited timing and revisions using Blender’s Video Sequencer (clip/re-time/re-import updated renders).
 
 **Reflection**
-This project accelerated my Blender troubleshooting (Geometry Nodes, rigging, shading, VSE, keyframed lighting) and strengthened my ability to prioritize core mechanics over perfectionism—especially when dense keyframe systems make late-stage changes costly.
+This project accelerated my Blender linear keyframing and troubleshooting (Geometry Nodes, rigging, shading, VSE, keyframed lighting) and strengthened my ability to prioritize core mechanics especially when dense keyframe systems make late-stage changes costly.
   `,
             heroImage: '/361/Ouroboros/iacorn9.png',
             screenshots: [
@@ -164,6 +164,7 @@ This project accelerated my Blender troubleshooting (Geometry Nodes, rigging, sh
                 'Modeled the acorn and keyframed shader-based material transitions from “baby” to mature',
                 'Built environment + cinematography (grass particles, camera animation, day/night lighting keyframes)',
                 'Rigged and animated character arms, and constructed the phone screen + UI (video texture screen, shape-key loading bar, timed text)',
+                'Keyframed and edited the looping sequence, including lighting and camera animation',
                 'Iterated timing/lighting and re-render workflows using Blender Video Sequencer',
             ],
             engine: 'Blender (Geometry Nodes, Shader Nodes, Video Sequencer)',
@@ -227,14 +228,10 @@ This project accelerated my Blender troubleshooting (Geometry Nodes, rigging, sh
        This project is a small 3D show‑jumping game built in Unreal Engine 5.6, where 
        the player rides a horse around an arena and tries to complete a course of jumps
        in the correct order and as cleanly as possible. This project grew directly out of
-        my own history with horses and show jumping. I’ve been riding since I was six and
-         competed in hunters and jumpers. Instead of trying to simulate every part of riding
-          (grooming, feeding, stable management, etc.), I deliberately concentrated on a very 
-          specific moment jumpers equestrians know well:  the specific feeling I was chasing:
-           the rhythm and adrenaline of a jumper round: with the primary goal of accomplishing
+        my own history with horses and show jumping. I concentrated on a very 
+          specific moment jumpers equestrians know well: with the primary goal of accomplishing
             a fast round time with as little faults, which in reality involves factors like 
-            counting strides, committing to a line, taking calculated risks, and knowing that one
-             bad decision can mean a pole, a refusal, or even a fall. The game tries to capture that
+            counting strides, committing to a line, taking calculated risks. The game tries to capture that
               same edge between mastery and mistake, but in a safe, replayable way.
       `,
 
@@ -269,6 +266,7 @@ This project accelerated my Blender troubleshooting (Geometry Nodes, rigging, sh
             teamSize: 1,
             myRole: 'Designer / Gameplay / Systems Programmer',
             myContributions: [
+                'Modeled jumps in Blender and imported into Unreal Engine',
                 'Modified the horse riding controller (movement states, turning, camera follow, input mapping)',
                 'Implemented jump interactions and scoring logic (faults, course completion, reset/retry flow)',
                 'Designed and scripted ordered jump progression using triggers/checkpoints and a round timer',
@@ -298,7 +296,7 @@ This project accelerated my Blender troubleshooting (Geometry Nodes, rigging, sh
             image: '/ghoulrush2.mp4',
             course: 'CART 315 - Digital Game Prototyping',
             completed: 'Winter 2025',
-            description: 'A fast-paced 3D horde-survival magic shooter game. Swap elemental spells to fend off endless ghost waves while defending the magical core!',
+            description: 'A 3D horde-survival magic shooter game. Swap elemental spells to fend off endless ghost waves while defending the magical core!',
             longDescription: `
         Ghoul Rush is a Unity-made survival shooter where you defend a magical core
         against hordes. Collect elemental mushrooms to unlock different elemental spells.
@@ -344,6 +342,13 @@ This project accelerated my Blender troubleshooting (Geometry Nodes, rigging, sh
         Each level is initially gloomy (inspired by the game Limbo, and seasonal affective disorder), however
         as you gather Sakura petals, you fill each level with rainbow pastel colours, representing
         spring and transformation. Use your arrow keys to move and space to jump.
+        
+        Move using the arrow keys:
+        - Left / Right arrows to run
+        - Up arrow (while on the ground) to jump
+        - Collect sakura blossoms to fill your color meter. 
+        - Beware bombs (that will drain your progress).
+        - Reach 100% color to open the magic door and restore the land’s hue completely.
       `,
             iframeUrl: '/games/ChromaticChameleon/index.html',
             screenshots: [
