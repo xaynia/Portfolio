@@ -139,7 +139,7 @@ Inside an iPhone-style UI, a hydration meter fills toward 100% while an acorn gr
 **Reflection**
 This project accelerated my Blender linear keyframing and troubleshooting (Geometry Nodes, rigging, shading, VSE, keyframed lighting) and strengthened my ability to prioritize core mechanics especially when dense keyframe systems make late-stage changes costly.
   `,
-            heroImage: '/361/Ouroboros/iacorn9.png',
+            iframeUrl: 'https://www.youtube.com/embed/AV_ZBpfOjCA',
             screenshots: [
                 '/361/Ouroboros/iAcorn.pdf',
                 '/361/Ouroboros/iacorn1.png',
