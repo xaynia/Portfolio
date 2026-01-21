@@ -170,7 +170,7 @@ This project accelerated my Blender linear keyframing and troubleshooting (Geome
             engine: 'Blender (Geometry Nodes, Shader Nodes, Video Sequencer)',
             developmentDuration: 'Course project',
             objective:
-                'Use linear keyframe animation techniques to create a 15-20 looping sequence render in Blender (EEVEE).',
+                'Use linear keyframe animation techniques to create a looping sequence render in Blender (EEVEE).',
             artisticInfluences: `
 **Artistic influences**
 • Cory Arcangel — defaults/presets/schedules; UI as instruction  
