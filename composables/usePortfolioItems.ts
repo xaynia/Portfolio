@@ -115,7 +115,7 @@ Assets (Fab / Unreal Engine)
         {
             slug: 'ouroboros-loop',
             title: 'Ouroboros Loop — iAcorn: Scheduled Growth',
-            image: '/361/Ouroboros/iAcorn.gif',
+            image: '/361/Ouroboros/iAcorn.png',
             course: 'CART 361 - 3D Digital Production I',
             completed: 'Fall 2025',
             description:
@@ -139,7 +139,7 @@ Inside an iPhone-style UI, a hydration meter fills toward 100% while an acorn gr
 **Reflection**
 This project accelerated my Blender linear keyframing and troubleshooting (Geometry Nodes, rigging, shading, VSE, keyframed lighting) and strengthened my ability to prioritize core mechanics especially when dense keyframe systems make late-stage changes costly.
   `,
-            iframeUrl: 'https://www.youtube.com/embed/AV_ZBpfOjCA',
+            iframeUrl: 'https://www.youtube.com/embed/bhjxbDqTC7Q',
             screenshots: [
                 '/361/Ouroboros/iAcorn.pdf',
                 '/361/Ouroboros/iacorn1.png',
