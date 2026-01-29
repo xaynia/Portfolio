@@ -24,3 +24,9 @@ logs
 !.env.example
 
 public/media/gifs
+# Local Netlify folder
+.netlify
+
+exports
+
+scripts

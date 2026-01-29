@@ -27,7 +27,13 @@ exports.handler = async (event, context) => {
         const headerIp = (xff.split(",")[0] || "").trim();
 
         const ip = (context && context.ip) || headerIp || null;
-        const geo = (context && context.geo) || null;
+        const countryCode =
+            headers["x-nf-geo-country"] ||
+            headers["X-Nf-Geo-Country"] ||
+            null;
+
+        const geo = countryCode ? { country: { code: countryCode } } : null;
+
 
         const ipHash = ip ? crypto.createHash("sha256").update(ip).digest("hex") : null;
 
