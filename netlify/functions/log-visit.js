@@ -50,6 +50,16 @@ exports.handler = async (event, context) => {
                 origin: headers["origin"] || headers["Origin"] || null,
             },
             client,
+            // add inside entry
+            geoHeaders: {
+                xNfGeoCountry: headers["x-nf-geo-country"] || headers["X-Nf-Geo-Country"] || null,
+                xNfGeoCity: headers["x-nf-geo-city"] || headers["X-Nf-Geo-City"] || null,
+                xNfGeoRegion: headers["x-nf-geo-region"] || headers["X-Nf-Geo-Region"] || null,
+                xNfGeoTimezone: headers["x-nf-geo-timezone"] || headers["X-Nf-Geo-Timezone"] || null,
+            },
+            countryCode: countryCode,
+
+
         };
 
         if (!process.env.NETLIFY_SITE_ID || !process.env.NETLIFY_AUTH_TOKEN) {
