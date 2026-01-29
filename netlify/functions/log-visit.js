@@ -36,7 +36,7 @@ exports.handler = async (event, context) => {
             ip,
             ipHash,
             geo,
-            requestId: context.awsRequestId || context.requestId || null,
+            requestId: (context && (context.awsRequestId || context.requestId)) || null,
             headers: {
                 userAgent: headers["user-agent"] || headers["User-Agent"] || null,
                 acceptLanguage: headers["accept-language"] || headers["Accept-Language"] || null,
@@ -46,8 +46,17 @@ exports.handler = async (event, context) => {
             client,
         };
 
-        const store = getStore("visit-logs");
-        const key = `ip/${ipHash || "unknown"}/${day}/${Date.now()}.json`;
+        if (!process.env.NETLIFY_SITE_ID || !process.env.NETLIFY_AUTH_TOKEN) {
+            console.error("Missing NETLIFY_SITE_ID or NETLIFY_AUTH_TOKEN");
+            return { statusCode: 500, body: "Blobs not configured" };
+        }
+
+        const store = getStore("visit-logs", {
+            siteID: process.env.NETLIFY_SITE_ID,
+            token: process.env.NETLIFY_AUTH_TOKEN,
+        });
+
+        const key = `ip/${ipHash || "unknown"}/${day}/${Date.now()}_${crypto.randomUUID()}.json`;
 
         await store.setJSON(key, entry);
 
