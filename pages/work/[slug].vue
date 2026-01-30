@@ -1,4 +1,7 @@
 <template>
+
+
+
   <div class="detail-container" v-if="item">
     <h2>{{ item.title }}</h2>
 
@@ -172,6 +175,35 @@
              :alt="item.title" />
       </div>
     </transition>
+
+    <!-- Nav markup (prev/next links) -->
+    <!-- █ 5. Prev / Next navigation -->
+    <nav class="proj-nav">
+      <button
+          type="button"
+          class="proj-nav-link"
+          :disabled="!hasPrev"
+          @click="goPrev"
+      >
+        ← Previous
+      </button>
+
+      <NuxtLink to="/" class="proj-nav-link proj-nav-main">
+        All work
+      </NuxtLink>
+
+      <button
+          type="button"
+          class="proj-nav-link"
+          :disabled="!hasNext"
+          @click="goNext"
+      >
+        Next →
+      </button>
+    </nav>
+
+
+
   </div>
 
   <div v-else><p>Item not found.</p></div>
@@ -179,7 +211,7 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { usePortfolioItems } from '~/composables/usePortfolioItems'
 import MarkdownIt from 'markdown-it'
 /* markdown */
@@ -200,38 +232,54 @@ function renderInlineMd(s: string) {
 }
 
 /* long-description → HTML */
-const longHtml = computed(() =>
-        item?.longDescription ? mdNoBreaks.render(dedent(item.longDescription)) : ''
+const longHtml = computed(() => {
+  const current = item.value
+  if (!current?.longDescription) return ''
+  return mdNoBreaks.render(dedent(current.longDescription))
+})
+// const longHtml = computed(() =>
+//         item.value?.longDescription
+//             ? mdNoBreaks.render(dedent(item.value.longDescription))
+//             : ''
+        // item?.longDescription ? mdNoBreaks.render(dedent(item.longDescription)) : ''
     // item?.longDescription ? md.render(dedent(item.longDescription)) : ''
     // item?.longDescription ? item.longDescription : ''
-)
+
 
 /* parsed credits HTML */
 const creditsHtml = computed(() =>
-    item?.credits ? md.render(dedent(item.credits)) : ''
+    item.value?.credits ? md.render(dedent(item.value.credits)) : ''
+// const creditsHtml = computed(() =>
+//     item?.credits ? md.render(dedent(item.credits)) : ''
 )
 
 /* parsed credits HTML */
 const artspoHtml = computed(() =>
-    item?.artisticInfluences ? md.render(dedent(item.artisticInfluences)) : ''
+    item.value?.artisticInfluences ? md.render(dedent(item.value.artisticInfluences)) : ''
+// const artspoHtml = computed(() =>
+//     item?.artisticInfluences ? md.render(dedent(item.artisticInfluences)) : ''
 )
 
 /* details labels (structured overview) */
 const statusLabel = computed(() => {
-  const s = item?.status ?? 'completed'
+  // const s = item?.status ?? 'completed'
+  const s = item.value?.status ?? 'completed'
   if (s === 'in-progress') return 'In progress'
   if (s === 'prototype') return 'Prototype'
   return 'Completed'
 })
 
 const teamLabel = computed(() => {
-  const n = item?.teamSize ?? 1
+  const n = item.value?.teamSize ?? 1
+  // const n = item?.teamSize ?? 1
   return n === 1 ? 'Solo' : `Team of ${n}`
 })
 
 const showCollaborators = computed(() => {
-  const n = item?.teamSize ?? 1
-  return n > 1 && (item?.collaborators?.length ?? 0) > 0
+  const n = item.value?.teamSize ?? 1
+  return n > 1 && (item.value?.collaborators?.length ?? 0) > 0
+  // const n = item?.teamSize ?? 1
+  // return n > 1 && (item?.collaborators?.length ?? 0) > 0
 })
 
 /* helpers ------------------------------------------------ */
@@ -264,23 +312,34 @@ function dedent(mdText: string) {
 }
 
 /* item lookup ------------------------------------------- */
+// const route = useRoute()
+// const { items } = usePortfolioItems()
+// const item = items.find(i => i.slug === route.params.slug)
+// const downloads = item?.downloads ?? []
 const route = useRoute()
 const { items } = usePortfolioItems()
-const item = items.find(i => i.slug === route.params.slug)
-const downloads = item?.downloads ?? []
+
+// reactive current item – updates when /work/:slug changes
+const item = computed(() =>
+    items.find(i => i.slug === String(route.params.slug))
+)
+
+// downloads derived from the current item
+const downloads = computed(() => item.value?.downloads ?? [])
 
 
 /* A. longDescription -------------------------- */
-const formatted = computed(() => {
-  return (item?.longDescription ?? '')
-      // remove indent that follows each newline
-      .replace(/\r?\n[ \t]+/g, '\n')
-      // blank line → paragraph break (<br><br>)
-      .replace(/\n{2,}/g, '<br><br>')
-      // leftover single newline → space
-      .replace(/\n/g, ' ')
-      .trim()
-})
+// const formatted = computed(() => {
+//   return (item.value?.longDescription ?? '')
+//       // remove indent that follows each newline
+//       .replace(/\r?\n[ \t]+/g, '\n')
+//       // blank line → paragraph break (<br><br>)
+//       .replace(/\n{2,}/g, '<br><br>')
+//       // leftover single newline → space
+//       .replace(/\n/g, ' ')
+//       .trim()
+// })
+
 // old formatted long description:
 // const formatted = computed(() =>
 //     (item?.longDescription ?? '').replace(/\n/g, '<br>')
@@ -288,7 +347,8 @@ const formatted = computed(() => {
 
 /* B. screenshots array ------------------------------------------- */
 const mediaShots = computed(() =>
-    item?.screenshots?.map(s =>
+    item.value?.screenshots?.map(s =>
+        // item?.screenshots?.map(s =>
         s.startsWith('/') ? `/media${s}` : `/media/${s}`
     ) ?? []
 )
@@ -311,6 +371,31 @@ function onKey(e: KeyboardEvent) {
 }
 onMounted(() => window.addEventListener('keydown', onKey))
 onUnmounted(() => window.removeEventListener('keydown', onKey))
+
+/*  prev/next project navigation  -------------------------------------- */
+const router = useRouter()
+
+const currentIndex = computed(() =>
+    items.findIndex(i => i.slug === item.value?.slug)
+)
+
+const hasPrev = computed(() => currentIndex.value > 0)
+const hasNext = computed(
+    () => currentIndex.value >= 0 && currentIndex.value < items.length - 1
+)
+
+function goPrev() {
+  if (!hasPrev.value) return
+  const target = items[currentIndex.value - 1]
+  router.push(`/work/${target.slug}`)
+}
+
+function goNext() {
+  if (!hasNext.value) return
+  const target = items[currentIndex.value + 1]
+  router.push(`/work/${target.slug}`)
+}
+
 </script>
 
 <style scoped lang="scss">
@@ -335,6 +420,53 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
     /* optional: remove extra space after last paragraph */
     .long-description :deep(p:last-child) { margin-bottom: 0; }
   }
+
+  /* front / back minimal styles
+    */
+  .proj-nav {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--pill-border);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .proj-nav-link {
+    color: var(--link);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  .proj-nav-link[disabled] {
+    opacity: 0.4;
+    cursor: default;
+  }
+
+  .proj-nav-main {
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 700px) {
+    .proj-nav {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .proj-nav-main {
+      margin: 0;
+    }
+  }
+
+
 
   .downloads {
     margin-top: 1.5rem;
