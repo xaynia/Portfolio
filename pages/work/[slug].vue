@@ -269,6 +269,7 @@ const { items } = usePortfolioItems()
 const item = items.find(i => i.slug === route.params.slug)
 const downloads = item?.downloads ?? []
 
+
 /* A. longDescription -------------------------- */
 const formatted = computed(() => {
   return (item?.longDescription ?? '')
@@ -596,4 +597,6 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
     margin-bottom: 1rem;
     line-height: 1.6; }
 }
+
+
 </style>
