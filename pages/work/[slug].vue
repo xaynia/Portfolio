@@ -376,10 +376,20 @@ function nextMedia()          { lbIndex.value = (lbIndex.value + 1) % mediaShots
 function prevMedia()          { lbIndex.value = (lbIndex.value + mediaShots.value.length - 1) % mediaShots.value.length }
 
 function onKey(e: KeyboardEvent) {
-  if (!lbVisible.value) return
-  if (e.key === 'Escape')      closeLightbox()
-  else if (e.key === 'ArrowRight') nextMedia()
-  else if (e.key === 'ArrowLeft')  prevMedia()
+  // If lightbox is open, keep current behavior
+  if (lbVisible.value) {
+    if (e.key === 'Escape')      closeLightbox()
+    else if (e.key === 'ArrowRight') nextMedia()
+    else if (e.key === 'ArrowLeft')  prevMedia()
+    return
+  }
+
+  // Lightbox is closed → use arrows for project navigation
+  if (e.key === 'ArrowRight') {
+    goNext()
+  } else if (e.key === 'ArrowLeft') {
+    goPrev()
+  }
 }
 onMounted(() => window.addEventListener('keydown', onKey))
 onUnmounted(() => window.removeEventListener('keydown', onKey))
