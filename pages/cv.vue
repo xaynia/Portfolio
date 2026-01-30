@@ -30,55 +30,84 @@
         Concordia University, Montreal, Quebec</p>
 
       <ul>
-        <li><strong>Psychology Courses:</strong> Courses Particularly Useful/Relevant to Game Design:
+        <!-- Psychology (matches Comp Arts format: intro line + nested list) -->
+        <li>
+          <strong>Psychology:</strong> Courses specifically useful/relevant to game design.
+          <ul>
+            <li>
+              <strong>Selected coursework:</strong>
+              PSYC 310 (Research Methods), PSYC 315 (Statistics), PSYC 351 (Learning),
+              PSYC 363 (Sensation &amp; Perception), PSYC 364 (Cognition), PSYC 447 (Psychophysiology)
+            </li>
+          </ul>
+
+          <details class="edu-details">
+            <summary class="edu-summary"><strong>Psychology course descriptions</strong></summary>
+            <ul class="edu-detail-list">
+              <li><strong>PSYC 310 – Research Methods &amp; Designs</strong>: Experimental design, ethics, APA style, proposal writing.</li>
+              <li><strong>PSYC 315 – Statistical Analysis</strong>: Descriptive/inferential stats, hypothesis testing.</li>
+              <li><strong>PSYC 321 – Fundamentals of Personality</strong>: Personality theories and application to behavior/character.</li>
+              <li><strong>PSYC 340 – Fundamentals of Psychopathology</strong>: Disorders, mechanisms; useful for mental health–oriented work.</li>
+              <li><strong>PSYC 351 – Fundamentals of Learning</strong>: Conditioning, reinforcement, adaptation in interactive systems.</li>
+              <li><strong>PSYC 355 – Fundamentals of Behavioral Neurobiology</strong>: Neural bases of behavior.</li>
+              <li><strong>PSYC 363 – Fundamentals of Sensation &amp; Perception</strong>: Sensory processing for audio/visual design.</li>
+              <li><strong>PSYC 364 – Fundamentals of Cognition</strong>: Memory, attention, mental models.</li>
+              <li><strong>PSYC 447 – Psychophysiology</strong>: ECG/GSR/EEG; capstone on physiological responses to games.</li>
+            </ul>
+          </details>
         </li>
-        <ul>
-          <li>
-            <strong>PSYC 310 – Research Methods &amp; Designs</strong>:
-            Experimental design, ethics, APA style, and research proposal writing.
-          </li>
-          <li>
-            <strong>PSYC 315 – Statistical Analysis</strong>:
-            Descriptive/inferential stats, hypothesis testing using Excel and manual
-            calculations.
-          </li>
-          <li>
-            <strong>PSYC 321 – Fundamentals of Personality</strong>:
-            Trait/biological/cognitive theories and their application to character
-            creation and behavior.
-          </li>
-          <li>
-            <strong>PSYC 340 – Fundamentals of Psychopathology</strong>:
-            Explored mental disorders, symptomatology, and underlying
-            psychological/biological mechanisms—key for designing mental
-            health–oriented interactive experiences or apps.
-          </li>
-          <li>
-            <strong>PSYC 351 – Fundamentals of Learning</strong>:
-            Classical/operant conditioning principles, reinforcement, and how
-            players learn and adapt in interactive systems.
-          </li>
-          <li>
-            <strong>PSYC 355 – Fundamentals of Behavioral Neurobiology</strong>:
-            Neural bases of behavior, bridging physiological and psychological
-            aspects relevant to game-based experimentation.
-          </li>
-          <li>
-            <strong>PSYC 363 – Fundamentals of Sensation &amp; Perception</strong>:
-            How sensory information is processed, informing immersive audio/visual
-            design.
-          </li>
-          <li>
-            <strong>PSYC 364 – Fundamentals of Cognition</strong>:
-            Mental representations, memory, attention, and computational models of
-            the mind—crucial for player experience design.
-          </li>
-          <li>
-            <strong>PSYC 447 – Psychophysiology</strong>:
-            Mind-body interactions (ECG, GSR, EEG). Completed a capstone project
-            measuring physiological responses to video games.
-          </li>
-        </ul>
+
+
+
+
+
+        <!--        <ul>-->
+<!--          <li>-->
+<!--            <strong>PSYC 310 – Research Methods &amp; Designs</strong>:-->
+<!--            Experimental design, ethics, APA style, and research proposal writing.-->
+<!--          </li>-->
+<!--          <li>-->
+<!--            <strong>PSYC 315 – Statistical Analysis</strong>:-->
+<!--            Descriptive/inferential stats, hypothesis testing using Excel and manual-->
+<!--            calculations.-->
+<!--          </li>-->
+<!--          <li>-->
+<!--            <strong>PSYC 321 – Fundamentals of Personality</strong>:-->
+<!--            Trait/biological/cognitive theories and their application to character-->
+<!--            creation and behavior.-->
+<!--          </li>-->
+<!--          <li>-->
+<!--            <strong>PSYC 340 – Fundamentals of Psychopathology</strong>:-->
+<!--            Explored mental disorders, symptomatology, and underlying-->
+<!--            psychological/biological mechanisms—key for designing mental-->
+<!--            health–oriented interactive experiences or apps.-->
+<!--          </li>-->
+<!--          <li>-->
+<!--            <strong>PSYC 351 – Fundamentals of Learning</strong>:-->
+<!--            Classical/operant conditioning principles, reinforcement, and how-->
+<!--            players learn and adapt in interactive systems.-->
+<!--          </li>-->
+<!--          <li>-->
+<!--            <strong>PSYC 355 – Fundamentals of Behavioral Neurobiology</strong>:-->
+<!--            Neural bases of behavior, bridging physiological and psychological-->
+<!--            aspects relevant to game-based experimentation.-->
+<!--          </li>-->
+<!--          <li>-->
+<!--            <strong>PSYC 363 – Fundamentals of Sensation &amp; Perception</strong>:-->
+<!--            How sensory information is processed, informing immersive audio/visual-->
+<!--            design.-->
+<!--          </li>-->
+<!--          <li>-->
+<!--            <strong>PSYC 364 – Fundamentals of Cognition</strong>:-->
+<!--            Mental representations, memory, attention, and computational models of-->
+<!--            the mind—crucial for player experience design.-->
+<!--          </li>-->
+<!--          <li>-->
+<!--            <strong>PSYC 447 – Psychophysiology</strong>:-->
+<!--            Mind-body interactions (ECG, GSR, EEG). Completed a capstone project-->
+<!--            measuring physiological responses to video games.-->
+<!--          </li>-->
+
         <li><strong>Computational Arts:</strong> Focused on game design, creative coding, generative art,
           and multimedia design.</li>
         <ul>
@@ -134,12 +163,26 @@
           </li>
 
           <li>
-            <strong>CART 498 – Special Topics in Computation Arts</strong>:
-            Advanced studio focusing on a specialized topic in digital fine arts (topic varies by term).
+            <strong>CART 498 – Special Topics in Computation Arts: Real Time 3D Enviroments</strong>:
+            Advanced studio in real-time 3D digital animation and environments using Unreal Engine 5.4 and Blender 4.5, covering Blender↔Unreal workflows, character/avatar integration, Blueprint interactivity, and real-time lighting/rendering.
+          </li>
+          <li>
+            <strong>In Progress (Winter 2026)</strong>
+            <ul>
+              <li>
+                <strong>CART 362 – 3D Digital Production II</strong>:
+                Intermediate 3D animation studio in Blender 5.0 covering procedural workflows (Geometry Nodes), dynamics/simulations, shaders/materials, and environment lighting + rendering.
+              </li>
+
+              <li>
+                <strong>CART 498 / CART 498 – Special Topics in Computation Arts: Generative Artificial Intelligence </strong>:
+                Generative AI for creative practice: ML fundamentals and generative architectures (transformers, diffusion), prompt engineering, creative toolchains (Hugging Face, Pinokio, Runway ML, Firefly/ComfyUI), and ethics (authorship, datasets, originality, bias, copyright, cultural appropriation).
+              </li>
+            </ul>
           </li>
 
+
         </ul>
-      </ul>
 
 
       <hr/>
@@ -211,37 +254,120 @@
           Created two 3D models in Blender: one technically accurate everyday object, and one conceptual transformation (hourglass) using modifiers and visual metaphor.
         </li>
 
+        <li>
+          <a
+              href="https://acaciawilliams.netlify.app/work/ouroboros-loop"
+              target="_blank"
+              rel="noopener"
+          >
+            <strong>Ouroboros Loop — iAcorn: Scheduled Growth</strong>
+          </a>
+          <b>(CART 361)</b>
+          15–20s looping Blender animation: a hydration UI drives an acorn → oak → reset loop; used
+          shader-node material transitions, Geometry Nodes foliage replacement, and Video Sequencer
+          iteration.
+        </li>
+
+        <li>
+          <a
+              href="https://acaciawilliams.netlify.app/work/hide-and-seek"
+              target="_blank"
+              rel="noopener"
+          >
+            <strong>Hide and Seek (Sky Museum)</strong>
+          </a>
+          <b>(CART 498)</b>
+          Solo real-time cinematic 3D environment build in Unreal Engine 5.6 (Sequencer, Blueprints, Movie Render Queue) with
+          Blender asset workflow; built a non-Euclidean cube presentation effect and edited the trailer
+          in Premiere/After Effects.
+        </li>
+
       </ol>
       <hr/>
 
       <!-- Technical Skills -->
       <h2>Technical Skills</h2>
-      <ul>
-        <li><strong>Programming Languages:</strong> C#, JavaScript/TypeScript, HTML, CSS, Lua (PICO‑8)</li>
-        <li><strong>Frameworks & Tools:</strong>
-          Nuxt (Vue.js, TypeScript, SCSS), Unity, Unreal Engine 5 (Blueprints), Blender,
-          Phaser.js, p5.js, Adobe Creative Cloud (Illustrator, Photoshop, Premiere Pro, After Effects),
-          Max MSP (RNBO & Jitter)
+
+      <ul class="skills-list">
+        <li><strong>Programming:</strong> C# (Unity, OOP), JavaScript/TypeScript, HTML/CSS, Lua (PICO-8), Python (in progress)</li>
+
+        <li>
+          <strong>Game / Real-Time:</strong>
+          Unity; Unreal Engine 5 (Blueprints/Event Graphs, Animation Blueprints, Blend Spaces, character setup, input/controls,
+          UI Widgets/UMG, post-processing, Sequencer, Movie Render Queue, packaged builds)
         </li>
-        <li><strong>Editors & IDEs:</strong> Rider, WebStorm, Visual Studio Code, GitHub Desktop</li>
-        <li><strong>Other:</strong> PICO‑8, Muse Headband/App, data analysis with Excel/manual stats</li>
+
+        <li>
+          <strong>3D:</strong>
+          Blender (modeling, sculpting/character creation, UV mapping, materials/shaders, lighting, animation, rigging, weight painting,
+          particle systems, rendering, Video Sequencer);
+          <em>in progress (CART 362):</em> Geometry Nodes/procedural workflows, dynamics &amp; simulations, intermediate shaders/materials,
+          environment lighting + rendering
+        </li>
+
+        <li><strong>Texturing:</strong> Substance Painter; PBR workflows (albedo/base color, normal, roughness, metallic, AO, packed maps)</li>
+
+        <li><strong>Creative Coding:</strong> Phaser.js, p5.js, Canvas, SVG, JSON, Web/media APIs</li>
+
+        <li><strong>Web / Deployment:</strong> Nuxt (Vue.js, TypeScript, SCSS), Netlify, Unity WebGL exports, Itch.io publishing</li>
+
+        <li><strong>Media:</strong> Premiere Pro, After Effects, Photoshop, Illustrator, Media Encoder</li>
+
+        <li><strong>Audio:</strong> Max MSP (RNBO, Jitter)</li>
+
+        <li><strong>Tools / IDEs:</strong> Rider, WebStorm, PyCharm, Visual Studio Code, GitHub Desktop</li>
+
+        <li><strong>Version Control:</strong> Git, GitHub</li>
+
+        <li><strong>Data / Research:</strong> Excel (stats/data analysis), MUSE Headband/App (basic EEG workflows)</li>
+
+        <li><strong>Workflow:</strong> iterative prototyping/playtesting, process documentation (design journals, project write-ups), critique-driven iteration</li>
       </ul>
 
+      <details class="skills-details">
+        <summary class="skills-summary">
+          <strong>More detail (pipelines + Generative AI tooling)</strong>
+        </summary>
 
+        <ul class="skills-detail-list">
+          <li>
+            <strong>3D pipeline:</strong>
+            FBX export/import Blender ↔ Unreal (meshes, UVs, texture maps incl. packed maps, rigs/animations);
+            manual rigging + weight painting; Mixamo auto-rig/animation integration
+          </li>
+
+          <li>
+            <strong>Character pipeline:</strong>
+            sculpt/character creation in Blender → rigging + weight painting → export (FBX) → Unreal import →
+            1st/3rd-person setup, animation integration, blended animations, controls, Blueprint logic
+          </li>
+
+          <li>
+            <strong>Rendering / deliverables:</strong>
+            Blender renders + Video Sequencer iteration; Unreal Sequencer + MRQ renders and/or packaged builds → edit/composite in
+            Premiere Pro + After Effects
+          </li>
+
+          <li>
+            <strong>Generative AI (in progress):</strong>
+            OpenAI API, Google Colab prototyping, Hugging Face, Runway ML, Pinokio, ComfyUI, Adobe Firefly;
+            prompt iteration/evaluation, dataset curation, parameter tuning/fine-tuning (intro), transformers + diffusion models (intro)
+          </li>
+        </ul>
+      </details>
+
+
+
+
+
+      </ul>
       <hr/>
-
-      <!-- Additional Info -->
-<!--      <h2>Additional Information</h2>-->
-<!--      <ul>-->
-<!--        <li><strong>References:</strong> Available upon request.</li>-->
-<!--        <li><strong>Work/Internships:</strong> None completed; currently exploring research opportunities.</li>-->
-<!--      </ul>-->
 
     </section>
   </template>
 
   <script setup>
-  // No script needed for a static CV page, but you could import custom components if desired.
+  // Custom Components
   </script>
 
   <style scoped>
@@ -267,12 +393,109 @@
     margin: 1.5rem 0;
   }
 
-  .cv-page ul, .cv-page ol {
+  .cv-page ul,
+  .cv-page ol {
     margin-left: 1.75rem;
     margin-bottom: 1.5rem;
   }
 
-  .cv-page p, .cv-page li {
+  .cv-page p,
+  .cv-page li {
     margin-bottom: 1rem;
+  }
+
+  /* Skills layout */
+  .skills-list {
+    margin-left: 1.75rem;
+  }
+
+  /* Skills dropdown styling */
+  .skills-details {
+    margin-top: 1rem;
+    background: var(--card);
+    border-radius: 6px;
+    padding: 0.25rem;
+  }
+
+  .skills-summary {
+    cursor: pointer;
+    padding: 0.45rem 0.6rem;
+    border-radius: 6px;
+    list-style: none;
+    user-select: none;
+  }
+
+  .skills-summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .skills-summary::before {
+    content: "▸";
+    display: inline-block;
+    margin-right: 0.5rem;
+    transition: transform 0.15s ease;
+  }
+
+  .skills-details[open] .skills-summary::before {
+    transform: rotate(90deg);
+  }
+
+  .skills-details[open] .skills-summary {
+    margin-bottom: 0.5rem;
+  }
+
+  .skills-summary:focus-visible {
+    outline: 2px solid var(--link);
+    outline-offset: 2px;
+  }
+
+  .skills-detail-list {
+    margin: 0.5rem 0 0.25rem;
+    padding-left: 1.75rem;
+  }
+
+  /* Education dropdown styling */
+  .edu-details {
+    margin-top: 0.75rem;
+    background: var(--card);
+    border-radius: 6px;
+    padding: 0.25rem;
+  }
+
+  .edu-summary {
+    cursor: pointer;
+    padding: 0.45rem 0.6rem;
+    border-radius: 6px;
+    list-style: none;
+    user-select: none;
+  }
+
+  .edu-summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .edu-summary::before {
+    content: "▸";
+    display: inline-block;
+    margin-right: 0.5rem;
+    transition: transform 0.15s ease;
+  }
+
+  .edu-details[open] .edu-summary::before {
+    transform: rotate(90deg);
+  }
+
+  .edu-details[open] .edu-summary {
+    margin-bottom: 0.5rem;
+  }
+
+  .edu-summary:focus-visible {
+    outline: 2px solid var(--link);
+    outline-offset: 2px;
+  }
+
+  .edu-detail-list {
+    margin: 0.5rem 0 0.25rem;
+    padding-left: 1.75rem;
   }
   </style>
