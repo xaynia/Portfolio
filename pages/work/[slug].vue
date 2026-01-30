@@ -10,6 +10,13 @@
       ← All work
     </NuxtLink>
 
+    <!-- Optional: Re‑use pills on the detail page header -->
+    <div v-if="item.course || item.completed" class="meta-row">
+      <span v-if="item.course" class="meta-pill">{{ item.course }}</span>
+      <span v-if="item.completed" class="meta-pill">{{ item.completed }}</span>
+    </div>
+
+
     <!-- █ 1. Playable iframe (game / YouTube) -->
     <div v-if="item.iframeUrl"
          class="media-wrapper"
