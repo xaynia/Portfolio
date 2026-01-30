@@ -5,6 +5,11 @@
   <div class="detail-container" v-if="item">
     <h2>{{ item.title }}</h2>
 
+    <!-- Optional: top crumb back to index -->
+    <NuxtLink to="/" class="top-crumb">
+      ← All work
+    </NuxtLink>
+
     <!-- █ 1. Playable iframe (game / YouTube) -->
     <div v-if="item.iframeUrl"
          class="media-wrapper"
@@ -407,6 +412,7 @@ function goNext() {
   background: var(--bg);
   color: var(--text);
 
+
   .description-block {
     margin: 0.35rem 0 1.1rem;
     padding: 1rem 1.25rem;
@@ -465,6 +471,20 @@ function goNext() {
       margin: 0;
     }
   }
+
+  .top-crumb {
+    display: inline-block;
+    margin: 0.4rem 0 0.8rem;
+    font-size: 0.9rem;
+    color: var(--link);
+    text-decoration: none;
+    font-weight: 500;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
 
 
 
