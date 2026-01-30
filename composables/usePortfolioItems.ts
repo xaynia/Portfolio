@@ -517,7 +517,7 @@ This project accelerated my Blender linear keyframing and troubleshooting (Geome
 
         },
 
-        // ── Cymatic Water Symphony ──────────────────────────────
+        // ── Cymatic Water Symphony ────────────────────────────── https://www.youtube.com/embed/cNs-FJQlheU
         {
             slug: 'cymatic-water-symphony',
             title: 'Cymatic Water Symphony',
@@ -532,6 +532,8 @@ This project accelerated my Blender linear keyframing and troubleshooting (Geome
         representations inspired by cymatics—the study of how sound vibrations
         produce patterns in physical matter. See the attatched PDF for a comprehensive report.
       `,
+            iframeUrl: 'https://www.youtube.com/embed/cNs-FJQlheU',
+
             screenshots: [
                 '/cymatic-nodes.png',
                 '/cymatic-thumbnail.png',
