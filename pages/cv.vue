@@ -231,11 +231,11 @@
       <hr/>
 
       <!-- Additional Info -->
-      <h2>Additional Information</h2>
-      <ul>
-        <li><strong>References:</strong> Available upon request.</li>
-        <li><strong>Work/Internships:</strong> None completed; currently exploring research opportunities.</li>
-      </ul>
+<!--      <h2>Additional Information</h2>-->
+<!--      <ul>-->
+<!--        <li><strong>References:</strong> Available upon request.</li>-->
+<!--        <li><strong>Work/Internships:</strong> None completed; currently exploring research opportunities.</li>-->
+<!--      </ul>-->
 
     </section>
   </template>

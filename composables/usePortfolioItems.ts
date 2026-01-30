@@ -220,7 +220,8 @@ This project accelerated my Blender linear keyframing and troubleshooting (Geome
         {
             slug: 'horse-jumper',
             title: 'Horse Jumper Simulator',
-            image: '/HorseJumperPreview.mp4',
+            image: '/Jumper1.png',
+            // HorseJumperPreview.mp4 - gid
             course: 'CART 415 - Game Studio #1',
             completed: 'Fall 2025',
             description: 'A small 3D show‑jumping game built in Unreal Engine 5.6, where the player rides a horse around an arena and tries to complete a course of jumps in the correct order and as cleanly as possible!',
@@ -260,6 +261,7 @@ This project accelerated my Blender linear keyframing and troubleshooting (Geome
             ],
             screenshots: [
                 '/JumperReport.pdf',
+                '/Jumper.png',
             ],
 
             status: 'prototype',
