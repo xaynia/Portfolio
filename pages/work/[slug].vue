@@ -274,11 +274,6 @@ import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { usePortfolioItems } from '~/composables/usePortfolioItems'
 import MarkdownIt from 'markdown-it'
-// import PdfThumb from '~/components/PdfThumb.client.vue'
-
-
-
-
 
 
 /* item lookup ------------------------------------------- */
