@@ -274,7 +274,7 @@ import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { usePortfolioItems } from '~/composables/usePortfolioItems'
 import MarkdownIt from 'markdown-it'
-import PdfThumb from '~/components/PdfThumb.client.vue'
+// import PdfThumb from '~/components/PdfThumb.client.vue'
 
 
 
@@ -515,12 +515,18 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
     background: var(--card);
     border-radius: 6px;
 
-    h3 { margin: 0 0 0.75rem; }
+    h3 {
+      margin: 0 0 0.75rem;
+    }
 
-    .long-description { margin: 0; }
+    .long-description {
+      margin: 0;
+    }
 
     /* optional: remove extra space after last paragraph */
-    .long-description :deep(p:last-child) { margin-bottom: 0; }
+    .long-description :deep(p:last-child) {
+      margin-bottom: 0;
+    }
   }
 
   /* front / back minimal styles
@@ -541,7 +547,7 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
     align-items: center;
     gap: 0.25rem;
 
-    background: var(--card);              /* visible pill */
+    background: var(--card); /* visible pill */
     border-radius: 999px;
     border: 1px solid var(--pill-border); /* visible border */
 
@@ -596,8 +602,6 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
   }
 
 
-
-
   .downloads {
     margin-top: 1.5rem;
     padding: 1rem 1.25rem;
@@ -624,7 +628,10 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
     text-decoration: none;
     font-weight: 600;
   }
-  .download-link:hover { text-decoration: underline; }
+
+  .download-link:hover {
+    text-decoration: underline;
+  }
 
   .download-missing {
     opacity: 0.8;
@@ -710,6 +717,7 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
     width: 100%;
     height: auto;
     overflow: hidden;
+
     iframe,
     video {
       width: 100%;
@@ -720,7 +728,7 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
   }
 
   .media-wrapper.image-wrapper {
-    height: auto;      /* overrides your .media-wrapper { height: 100%; } */
+    height: auto; /* overrides your .media-wrapper { height: 100%; } */
   }
 
   .media-wrapper.image-wrapper img {
@@ -733,179 +741,233 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
   /* screenshots / thumbnails */
   .screenshots {
     margin-top: 2rem;
+
     .screenshot-grid {
       display: flex;
       flex-wrap: wrap;
       gap: 1rem;
+
       .thumb {
         max-width: 200px;
         max-height: 150px;
         border-radius: 4px;
         cursor: pointer;
         transition: transform 0.2s;
+
         img,
         video {
           width: 100%;
           height: 100%;
           object-fit: cover;
         }
-        &:hover { transform: scale(1.03); }
+
+        &:hover {
+          transform: scale(1.03);
+        }
 
         &.small {
           max-width: 50px;
           max-height: 20px;
-          img { width: auto; height: auto; object-fit: contain; }
+
+          img {
+            width: auto;
+            height: auto;
+            object-fit: contain;
+          }
         }
       }
-      .pdf-thumb img { object-fit: contain; background: #fff; }
+
+      .pdf-thumb :deep(canvas) {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        background: #fff;
+        display: block;
+      }
+    }
+
+    /* overlay */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 900;
+    }
+
+    .full {
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: 6px;
+    }
+
+    .close,
+    .nav-button {
+      font: 2.5rem/1 monospace;
+      background: none;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .nav-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.2);
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.3);
+      }
+    }
+
+    .prev {
+      left: 2rem;
+    }
+
+    .next {
+      right: 2rem;
+    }
+
+    /* credits box */
+    .credits {
+      margin: 1.5rem 0 0;
+      padding: 1rem 1.25rem;
+      background: var(--card);
+      border-left: 15px solid #444;
+      border-radius: 6px;
+      font-size: 0.97rem;
+      line-height: 2.0;
+      white-space: normal;
+
+      a {
+        color: var(--link);
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+    }
+
+    /* Make the first bold line in credits act like a header */
+    .credits :deep(p:first-child) {
+      margin: 0 0 0.6rem;
+    }
+
+    .credits :deep(p:first-child strong) {
+      display: block;
+      font-size: 1.05rem; /* try 1.0 – 1.15rem */
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+
+    /* iframe carousels */
+    .embed-wrapper {
+      position: relative;
+    }
+
+    .embed-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 3rem;
+      height: 3rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      background: rgba(0, 0, 0, 0.35);
+      color: #fff;
+      font: 2rem/1 monospace;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+    }
+
+    .embed-nav.prev {
+      left: 0.75rem;
+    }
+
+    .embed-nav.next {
+      right: 0.75rem;
+    }
+
+    .embed-dots {
+      position: absolute;
+      left: 50%;
+      bottom: 0.75rem;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .dot {
+      width: 0.6rem;
+      height: 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      background: rgba(0, 0, 0, 0.35);
+      cursor: pointer;
+    }
+
+    .dot.active {
+      background: rgba(255, 255, 255, 0.75);
+    }
+
+
+    /* Tighten Markdown defaults */
+    :deep(p) {
+      margin: 0.35rem 0;
+    }
+
+    :deep(p:first-child) {
+      margin-top: 0;
+    }
+
+    :deep(p:last-child) {
+      margin-bottom: 0;
+    }
+
+    :deep(ul),
+    :deep(ol) {
+      margin: 0.5rem 0 0;
+      padding-left: 1.25rem;
+    }
+
+    :deep(li) {
+      margin: 0.25rem 0;
+    }
+
+    /* markdown-it often wraps list items in <p> */
+    :deep(li > p) {
+      margin: 0;
+    }
+
+    :deep(a) {
+      color: var(--link);
+      text-decoration: none;
+      overflow-wrap: anywhere; /* better than word-break for long URLs */
+    }
+
+    :deep(a:hover) {
+      text-decoration: underline;
+    }
+
+    /* long description */
+    .long-description {
+      margin-bottom: 1rem;
+      line-height: 1.6;
     }
   }
-
-  /* overlay */
-  .overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.85);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 900;
-  }
-  .full {
-    max-width: 90vw;
-    max-height: 90vh;
-    border-radius: 6px;
-  }
-  .close,
-  .nav-button {
-    font: 2.5rem/1 monospace;
-    background: none;
-    border: none;
-    color: #fff;
-    cursor: pointer;
-  }
-  .nav-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 3rem; height: 3rem;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    background: rgba(255, 255, 255, 0.2);
-    &:hover { background: rgba(255, 255, 255, 0.3); }
-  }
-  .prev { left: 2rem; }
-  .next { right: 2rem; }
-
-  /* credits box */
-  .credits {
-    margin: 1.5rem 0 0;
-    padding: 1rem 1.25rem;
-    background: var(--card);
-    border-left: 15px solid #444;
-    border-radius: 6px;
-    font-size: 0.97rem;
-    line-height: 2.0;
-    white-space: normal;
-
-    a       { color: var(--link); }
-    a:hover { text-decoration: underline; }
-  }
-
-  /* Make the first bold line in credits act like a header */
-  .credits :deep(p:first-child) {
-    margin: 0 0 0.6rem;
-  }
-  .credits :deep(p:first-child strong) {
-    display: block;
-    font-size: 1.05rem;   /* try 1.0 – 1.15rem */
-    font-weight: 700;
-    line-height: 1.2;
-  }
-
-
-  /* iframe carousels */
-  .embed-wrapper {
-    position: relative;
-  }
-
-  .embed-nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 3rem;
-    height: 3rem;
-    border-radius: 999px;
-    border: 1px solid rgba(255,255,255,0.25);
-    background: rgba(0,0,0,0.35);
-    color: #fff;
-    font: 2rem/1 monospace;
-    display: grid;
-    place-items: center;
-    cursor: pointer;
-  }
-
-  .embed-nav.prev { left: 0.75rem; }
-  .embed-nav.next { right: 0.75rem; }
-
-  .embed-dots {
-    position: absolute;
-    left: 50%;
-    bottom: 0.75rem;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 0.5rem;
-  }
-
-  .dot {
-    width: 0.6rem;
-    height: 0.6rem;
-    border-radius: 999px;
-    border: 1px solid rgba(255,255,255,0.35);
-    background: rgba(0,0,0,0.35);
-    cursor: pointer;
-  }
-  .dot.active {
-    background: rgba(255,255,255,0.75);
-  }
-
-
-  /* Tighten Markdown defaults */
-  :deep(p) {
-    margin: 0.35rem 0;
-  }
-  :deep(p:first-child) { margin-top: 0; }
-  :deep(p:last-child)  { margin-bottom: 0; }
-
-  :deep(ul),
-  :deep(ol) {
-    margin: 0.5rem 0 0;
-    padding-left: 1.25rem;
-  }
-
-  :deep(li) {
-    margin: 0.25rem 0;
-  }
-
-  /* markdown-it often wraps list items in <p> */
-  :deep(li > p) {
-    margin: 0;
-  }
-
-  :deep(a) {
-    color: var(--link);
-    text-decoration: none;
-    overflow-wrap: anywhere; /* better than word-break for long URLs */
-  }
-  :deep(a:hover) {
-    text-decoration: underline;
-  }
-
-  /* long description */
-  .long-description {
-    margin-bottom: 1rem;
-    line-height: 1.6; }
 }
+
 
 
 </style>
