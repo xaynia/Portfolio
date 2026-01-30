@@ -5,17 +5,16 @@
   <div class="detail-container" v-if="item">
     <h2>{{ item.title }}</h2>
 
-    <!-- Optional: top crumb back to index -->
-    <NuxtLink to="/" class="top-crumb">
-      ← All work
-    </NuxtLink>
-
     <!-- Optional: Re‑use pills on the detail page header -->
     <div v-if="item.course || item.completed" class="meta-row">
       <span v-if="item.course" class="meta-pill">{{ item.course }}</span>
       <span v-if="item.completed" class="meta-pill">{{ item.completed }}</span>
     </div>
 
+    <!-- Optional: top crumb back to index -->
+    <NuxtLink to="/" class="top-crumb">
+      ← All work
+    </NuxtLink>
 
     <!-- █ 1. Playable iframe (game / YouTube) -->
     <div v-if="item.iframeUrl"
@@ -454,18 +453,32 @@ function goNext() {
     flex-wrap: wrap;
     gap: 0.75rem;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center; /* center all three */
   }
 
   .proj-nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+
+    background: var(--card);              /* visible pill */
+    border-radius: 999px;
+    border: 1px solid var(--pill-border); /* visible border */
+
+    padding: 0.3rem 0.9rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+
+    color: var(--text);
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .proj-nav-link:hover:not([disabled]) {
+    background: var(--bg);
+    border-color: var(--link);
     color: var(--link);
     text-decoration: none;
-    font-weight: 600;
-    font-size: 0.95rem;
-    background: none;
-    border: none;
-    padding: 0;
-    cursor: pointer;
   }
 
   .proj-nav-link[disabled] {
@@ -475,7 +488,7 @@ function goNext() {
 
   .proj-nav-main {
     text-align: center;
-    margin: 0 auto;
+    margin: 0 0.5rem;
   }
 
   @media (max-width: 700px) {
