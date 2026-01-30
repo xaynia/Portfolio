@@ -74,7 +74,9 @@
           <dt>My Contributions</dt>
           <dd>
             <ul class="contrib-list">
-              <li v-for="(c, i) in item.myContributions" :key="i">{{ c }}</li>
+<!--            replaced with below for markdown in contributions:  <li v-for="(c, i) in item.myContributions" :key="i">{{ c }}</li>-->
+              <li v-for="(c, i) in item.myContributions" :key="i" v-html="renderInlineMd(c)"></li>
+
             </ul>
           </dd>
         </template>
@@ -190,6 +192,12 @@ const mdNoBreaks = new MarkdownIt({
   breaks:  false,  // only longDescription uses this
   linkify: true
 })
+
+// add markdown to myContributions
+function renderInlineMd(s: string) {
+  // inline render: no wrapping <p> tags
+  return md.renderInline(s)
+}
 
 /* long-description → HTML */
 const longHtml = computed(() =>

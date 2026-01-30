@@ -6,11 +6,12 @@
       <h2 class="section-title">Featured</h2>
 
       <div class="featured-grid">
-        <div
+        <NuxtLink
             v-for="item in featuredItems"
             :key="item.slug"
+            :to="`/work/${item.slug}`"
             class="masonry-item featured-card"
-            @click="goToDetail(item.slug)"
+            :aria-label="`Open project: ${item.title}`"
         >
           <video
               v-if="isVideo(item.image)"
@@ -19,12 +20,15 @@
               muted
               loop
               playsinline
-              preload="auto"
+              preload="metadata"
+              aria-hidden="true"
           />
           <img
               v-else
               :src="`/media${item.image}`"
-              alt=""
+              :alt="item.title"
+              loading="lazy"
+              decoding="async"
           />
 
           <div class="info">
@@ -37,7 +41,7 @@
 
             <p class="desc">{{ item.description }}</p>
           </div>
-        </div>
+        </NuxtLink>
       </div>
     </section>
 
@@ -48,11 +52,12 @@
       <div class="masonry">
         <!-- Left column -->
         <div class="masonry-col">
-          <div
+          <NuxtLink
               v-for="item in leftItems"
               :key="item.slug"
+              :to="`/work/${item.slug}`"
               class="masonry-item"
-              @click="goToDetail(item.slug)"
+              :aria-label="`Open project: ${item.title}`"
           >
             <video
                 v-if="isVideo(item.image)"
@@ -61,12 +66,15 @@
                 muted
                 loop
                 playsinline
-                preload="auto"
+                preload="metadata"
+                aria-hidden="true"
             />
             <img
                 v-else
                 :src="`/media${item.image}`"
-                alt=""
+                :alt="item.title"
+                loading="lazy"
+                decoding="async"
             />
 
             <div class="info">
@@ -79,16 +87,17 @@
 
               <p class="desc">{{ item.description }}</p>
             </div>
-          </div>
+          </NuxtLink>
         </div>
 
         <!-- Right column -->
         <div class="masonry-col">
-          <div
+          <NuxtLink
               v-for="item in rightItems"
               :key="item.slug"
+              :to="`/work/${item.slug}`"
               class="masonry-item"
-              @click="goToDetail(item.slug)"
+              :aria-label="`Open project: ${item.title}`"
           >
             <video
                 v-if="isVideo(item.image)"
@@ -97,12 +106,15 @@
                 muted
                 loop
                 playsinline
-                preload="auto"
+                preload="metadata"
+                aria-hidden="true"
             />
             <img
                 v-else
                 :src="`/media${item.image}`"
-                alt=""
+                :alt="item.title"
+                loading="lazy"
+                decoding="async"
             />
 
             <div class="info">
@@ -115,7 +127,7 @@
 
               <p class="desc">{{ item.description }}</p>
             </div>
-          </div>
+          </NuxtLink>
         </div>
       </div>
     </section>
@@ -125,19 +137,13 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useRouter } from 'vue-router'
 import { usePortfolioItems } from '~/composables/usePortfolioItems'
 
 function isVideo(file: string) {
   return /\.(mp4|webm)$/i.test(file)
 }
 
-const router = useRouter()
 const { items } = usePortfolioItems()
-
-function goToDetail(slug: string) {
-  router.push(`/work/${slug}`)
-}
 
 /** ✅ Featured first (sorted), then everything else below */
 const featuredItems = computed(() =>
@@ -149,11 +155,8 @@ const featuredItems = computed(() =>
 // featured WILL appear in all work:
 const nonFeaturedItems = computed(() => items)
 
-// featured will NOT appear in all work:
-// const nonFeaturedItems = computed(() => items.filter(i => !i.featured))
-
-// Split non-featured items: even indices => left, odd => right
-const leftItems = computed(() => nonFeaturedItems.value.filter((_, i) => i % 2 === 0))
+// Split items: even indices => left, odd => right
+const leftItems  = computed(() => nonFeaturedItems.value.filter((_, i) => i % 2 === 0))
 const rightItems = computed(() => nonFeaturedItems.value.filter((_, i) => i % 2 === 1))
 </script>
 
@@ -217,9 +220,13 @@ const rightItems = computed(() => nonFeaturedItems.value.filter((_, i) => i % 2 
   gap: 1rem;
 }
 
+/* IMPORTANT: masonry-item is now a NuxtLink (<a>) but should look identical */
 .masonry-item {
+  display: block;              /* anchors are inline by default */
+  text-decoration: none;
+  color: inherit;
+
   background: var(--card);
-  color: var(--text);
   border-radius: 6px;
   overflow: hidden;
   text-align: left;
@@ -229,6 +236,11 @@ const rightItems = computed(() => nonFeaturedItems.value.filter((_, i) => i % 2 
   &:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--link);
+    outline-offset: 3px;
   }
 
   video,

@@ -1,3 +1,9 @@
+export type PortfolioLinkKind = 'demo' | 'video' | 'code' | 'download' | 'paper' | 'docs'
+export interface PortfolioLink {
+    label: string
+    url: string
+    kind?: PortfolioLinkKind
+}
 export interface PortfolioItem {
     slug: string;
     title: string;
@@ -27,6 +33,9 @@ export interface PortfolioItem {
 
     featured?: boolean;
     featuredOrder?: number;
+    highlights?: string[]         // 3–5 bullets: strongest evidence
+    controls?: string[]           // quick “how to play” list (keep separate from longDescription)
+    links?: PortfolioLink[]       // demo/code/paper links (great for “original code” evidence)
 }
 
 /* ─────────────────────────────────────────────────────────── */
@@ -45,20 +54,31 @@ export const usePortfolioItems = () => {
             featured: true,
             featuredOrder: 1,
             description:
-                'Built in Blender, Unreal Engine 5, Adobe Premiere Pro & After Effects: A cinematic walkthrough of a sci‑fi “sky museum” built around a 4D non-euclidean physics cube that preserves fragments of a lost Earth exhibit.',
+                'Built in Blender, Unreal Engine 5, Adobe Premiere Pro & After Effects: A cinematic walkthrough of a sci-fi sky museum (an archive preserving fragments of a lost Earth) featuring 4D non-Euclidean showcases.',
             longDescription: `
-Hide And Seek is a cinematic walkthrough of a sci‑fi “sky museum” built around a 4D non-euclidean physics cube that preserves fragments of a lost Earth. Floating islands are connected by walkways, non‑Euclidean door frames, and sculptural portals. At the entrance, a two‑sided frame shows a galaxy as you walk in and the moon as you leave, establishing a world where perspective and direction rewrite reality.
+The environment stages three forms of hidden systems to explore the dark side of technology. It asks a central question: what does it mean to encounter nature mainly as an encrypted, mediated asset? The floating museum becomes a Technocene archive where advanced tools arrive too late for the biosphere they catalogue, and “preservation” is achieved through containment rather than recovery.
 
-At the center, a glass 4D cube displays four distinct interior scenes on its faces (Earth, lounge, laser room, and chroma‑saturation room), with small robots posed as curious viewers. Further along, triangular portal presents three different “space fauna” on its faces; emissive flowers line the walkways; and a second two‑way door frame alternates between a galaxy and a shrub as you pass it. A gigantic glass tube contains a single willow, crowned by an LED warning banner reading “LAST TREE.” Surrounding islands carry hologram trees and color‑coded foliage—an artificial halo of nature contrasted against the one remaining “real” organism.
+Some spaces function as sealed interiors you are allowed to view but not inhabit, black sites. Others behave like black boxes, where you can only infer rules from outputs, such as non Euclidean perspective shifts, vanishing point lasers, and edges dissolving under saturated RGB, while the generating logic stays concealed. The 4D glass display drifts toward a black hole, a contradiction space where multiple interiors remain true at once and reflections blur the boundary between inside and outside. (These terms are drawn from Nadim Samman’s *Poetics of Encryption*.)
 
-**Technical + design checkpoints**
-- Built a 4D non euclidean‑style effect using opacity/masked materials so different cube faces reveal different interiors.
-- Designed the floating-island horseshoe route as a sequence of readable “stages” for the final cinematic.
-- Produced the walkthrough/trailer with Unreal Sequencer (crane camera pathing and beats).
-- Balanced a retro cyber‑punk lighting mood against Unreal performance constraints (Lumen/Nanite-heavy scenes caused frequent crashes, requiring iterative trimming/tuning).
+Placing Earth on the entrance face sharpens the premise. The entrance and exit are framed by a doorway that flips between galaxy and moon depending on direction. Earth reads as both origin and relic, present as image and absent as habitat.
 
-**Reflection (concept frame)**
-Framed through Nadim Samman’s *Poetics of Encryption*, the museum stages an imaginative landscape of the dark side of technology: In reference to the authors theories on sealed zones of preservation, visible outputs with hidden mechanisms, and portal-frames where time and meaning bend - The player-character robot reads as a maintenance process walking through encrypted exhibits—able to preserve the archive, but incapable of restoring what it contains.
+Making the player and the viewing NPCs robots pushes the timeline forward. Agency becomes maintenance. Instead of a human witness mourning loss, the avatar moves like a process walking its own log files, checking portals, watching loops, scanning warnings written for someone who is not there. It is perfectly tuned to keep the archive running, yet incapable of restoring what it preserves.
+
+Ultimately, the cube and the “LAST TREE” operate as encryption devices. They protect images of nature by sealing them into immaculate containers, making loss feel clean, legible, even beautiful. Building the work forced me to sit with that contradiction: the satisfaction of elegant technical solutions, and the discomfort that, within the fiction of the project, those techniques are the only way Earth is still seen. This is care as display, not repair.
+
+And that leaves a harder question. Hopkins warned that “after-comers cannot guess the beauty been.” If what survives is only an “after nature,” as Jon McCormack describes, can beauty survive translation into archive and interface, or does it only make absence easier to live with?
+
+
+
+
+
+**Technical + Design Ceckpoints**
+- Design in Blender, export to Unreal Engine (FBX iteration: scale, smoothing, pivots, normals, material slots, UV unwrapping, maps).
+- View-dependent non-Euclidean exhibits (UE): masked/for-loop opacity materials reveal different interiors per face.
+- Build 3D world environment (sky, floating islands, crane for a cinematic sequence).
+- Lumen/Niagara-heavy scene optimization under real-time constraints (console variables, debugging, performance optimization)
+- Exported Unreal Engine sequencer (exr) to Premiere Pro for cinematic editing and rendered edited footage.
+
   `,
             iframeUrl: 'https://www.youtube.com/embed/upM9bRzj3sg',
             // videoUrl: '/media/PortfolioRender_New_1.[0001-1848].mp4',
@@ -95,11 +115,10 @@ Framed through Nadim Samman’s *Poetics of Encryption*, the museum stages an im
                 'Use Unreal Engine 5 to create a real-time 3D work that engages with themes of secrecy, encryption, or hidden architectures—whether technological, spatial, social, or symbolic; Deliver a playable build and a video trailer..',
             artisticInfluences: `
 **Artistic / theoretical influences**
-• Antichamber: view-dependent space + non‑Euclidean framing  
-• Nadim Samman: *Poetics of Encryption* 
-• James Turrell: Ganzfeld Rooms
-• Carlos-Cruz-Diez: Chromasaturation Room
-• James Turrell: Ganzfeld Rooms
+• Nadim Samman: *Poetics of Encryption* (sealed zones, hidden mechanisms, encrypted thresholds)  
+• M.C. Escher and Antichamber: view-dependent space, non-Euclidean framing  
+• James Turrell: Ganzfeld environments (perception as structure)  
+• Carlos Cruz-Diez: Chromosaturation (color as spatial experience)  
   `,
             credits: `
 **References / sources**
@@ -135,13 +154,14 @@ Drawing on Cory Arcangel’s ideas about contemporary life running on defaults, 
 Inside an iPhone-style UI, a hydration meter fills toward 100% while an acorn gradually grows into a full oak tree. When the oak produces a new acorn, the camera zooms into the falling acorn and the loop resets back to the beginning—returning to an empty 0% hydration state. The piece reflects a smartphone-dependent culture where reminders function as instructions and self-care becomes a gamified progress bar.
 
 **Key checkpoints**
-- Modeled an acorn and animated a “baby → mature” material transition using Blender shading nodes (Gradient Texture + Separate XYZ + Mapping + Texture Coordinate) with keyframes.
+- Modeled an acorn, oak leaf (and [waterbottle ('Blender 3D Modeling')](/work/blender) 
+- Animated a “baby → mature” material transition using Blender shading nodes (Gradient Texture + Separate XYZ + Mapping + Texture Coordinate) with keyframes.
 - Built environment + lighting: particle-system grass, keyframed day-to-night using Sun Cycles add-on, and world brightness tuning to avoid overly contrasted skies.
-- Replaced foliage using Geometry Nodes by building an oak leaf texture set (alpha/normal/roughness/opacity/UV) and swapping leaf groups/collections, troubleshooting texture coordinates and instance realization.
-- Animated acorn cracking via fracture add-on and hand-keyframed breakup as the sapling emerges.
+- Replaced foliage using Geometry Nodes with oak leaf texture set (alpha/normal/roughness/opacity/UV) and swapping leaf groups/collections
 - Built character arm animation with Rigify (append rig/mesh, generate rig, parent with auto-weights, pose-mode keyframes).
 - Designed phone UI: with acorn frame render for transition - on a plane for the screen, shape keys for a water progress bar, and keyframed hourly text changes.
-- Edited timing and revisions using Blender’s Video Sequencer (clip/re-time/re-import updated renders).
+- Added keyframes: Camera; materials (e.g., acorn maturation); objects (e.g., acorn stages: shell cracking; acorn falling); lighting (e.g., sunset/sunrise); rig (arm animation)
+- Video sequence and Render (clip/re-time/re-import updated renders).
 
 **Reflection**
 This project accelerated my Blender linear keyframing and troubleshooting (Geometry Nodes, rigging, shading, VSE, keyframed lighting) and strengthened my ability to prioritize core mechanics especially when dense keyframe systems make late-stage changes costly.
@@ -166,9 +186,10 @@ This project accelerated my Blender linear keyframing and troubleshooting (Geome
 
             myContributions: [
                 'Developed the concept + loop structure (hydration UI driving an acorn → oak → acorn reset)',
+                'Modeled the acorn (and references previously modeled work: [Blender 3D Modeling](/work/blender))',
+                'Keyframed cinematic scene (e.g., acorn shader-based material transitions from “baby” to mature; camera; sun transitions; etc)',
                 'Integrated a Growing Tree animation asset and aligned its timing/reads to the UI narrative',
                 'Authored custom oak leaf texture maps and replaced foliage across the tree via Geometry Nodes',
-                'Modeled the acorn and keyframed shader-based material transitions from “baby” to mature',
                 'Built environment + cinematography (grass particles, camera animation, day/night lighting keyframes)',
                 'Rigged and animated character arms, and constructed the phone screen + UI (video texture screen, shape-key loading bar, timed text)',
                 'Keyframed and edited the looping sequence, including lighting and camera animation',
@@ -233,7 +254,7 @@ This project accelerated my Blender linear keyframing and troubleshooting (Geome
             completed: 'Fall 2025',
             featured: true,
             featuredOrder: 2,
-            description: 'A small 3D show‑jumping game built in Unreal Engine 5.6, where the player rides a horse around an arena and tries to complete a course of jumps in the correct order and as cleanly as possible!',
+            description: 'A small 3D show‑jumping game built in Unreal Engine 5.6, where the player rides a horse, with the goal to complete a course of four jumps in the correct order and as quickly as possible.',
             longDescription: `
        This project is a small 3D show‑jumping game built in Unreal Engine 5.6, where 
        the player rides a horse around an arena and tries to complete a course of jumps
