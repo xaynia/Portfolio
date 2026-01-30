@@ -14,13 +14,16 @@
     "markdown-it": "^14.1.0",
     "nuxt": "^3.17.1",
     "nuxt-easy-lightbox": "^1.0.2",
+    "pdfjs-dist": "^5.4.530",
     "vue": "^3.5.13",
     "vue-router": "^4.5.1"
   },
   "devDependencies": {
     "@netlify/functions": "^5.1.2",
     "@types/markdown-it": "^14.1.2",
-    "netlify-cli": "^23.14.0",
     "sass": "^1.87.0"
+  },
+  "overrides": {
+    "tar": "7.5.7"
   }
 }

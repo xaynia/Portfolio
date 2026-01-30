@@ -1,7 +1,4 @@
 <template>
-
-
-
   <div class="detail-container" v-if="item">
     <h2>{{ item.title }}</h2>
 
@@ -16,12 +13,55 @@
       ← All work
     </NuxtLink>
 
-    <!-- █ 1. Playable iframe (game / YouTube) -->
-    <div v-if="item.iframeUrl"
-         class="media-wrapper"
-         :style="{ aspectRatio: item.ratio || '16 / 9' }">
-      <iframe :src="item.iframeUrl" allowfullscreen />
+    <!-- █ 1. Hero Embed - Playable iframe (game / YouTube) -->
+    <div v-if="heroIframes.length"
+         class="media-wrapper embed-wrapper"
+         :style="{ aspectRatio: item?.ratio || '16 / 9' }">
+
+      <iframe
+          :src="heroIframes[heroIndex]"
+          :title="`${item.title} video ${heroIndex + 1}`"
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+      />
+
+
+      <button
+          v-if="heroIframes.length > 1"
+          class="embed-nav prev"
+          type="button"
+          aria-label="Previous video"
+          @click.stop="prevHero"
+      >
+        ‹
+      </button>
+
+      <button
+          v-if="heroIframes.length > 1"
+          class="embed-nav next"
+          type="button"
+          aria-label="Next video"
+          @click.stop="nextHero"
+      >›</button>
+
+      <div v-if="heroIframes.length > 1" class="embed-dots">
+        <button
+            v-for="(src2, i) in heroIframes"
+            :key="src2"
+            type="button"
+            :class="['dot', { active: i === heroIndex }]"
+            :aria-label="`Go to video ${i + 1}`"
+            @click.stop="heroIndex = i"
+        />
+      </div>
     </div>
+<!--    <div v-if="item.iframeUrl"-->
+<!--         class="media-wrapper"-->
+<!--         :style="{ aspectRatio: item.ratio || '16 / 9' }">-->
+<!--      <iframe :src="item.iframeUrl" allowfullscreen />-->
+<!--    </div>-->
 
     <!-- █ 2. Self-hosted movie -->
     <div v-else-if="item.videoUrl"
@@ -128,25 +168,34 @@
       <div class="screenshot-grid">
         <template v-for="(src, idx) in mediaShots" :key="idx">
           <!-- PDF thumb -->
-          <div v-if="isPdf(src)" class="thumb pdf-thumb" @click="open(idx)">
-            <img :src="thumbFor(src)"
-                 @error="e => (e.currentTarget as HTMLImageElement).src = '/media/default-pdf-thumb.png'">
+          <div
+              v-if="isPdf(src)"
+              class="thumb pdf-thumb"
+              @click="open(idx)"
+          >
+            <PdfThumb :src="src" :alt="`${item.title} PDF`" />
             <span class="badge">PDF</span>
           </div>
 
-          <!-- Video thumbnail -->
-          <video v-else-if="isVideo(src)"
-                 :src="src"
-                 class="thumb"
-                 autoplay muted loop playsinline preload="auto"
-                 @click="open(idx)" />
+          <video
+              v-else-if="isVideo(src)"
+              :src="src"
+              class="thumb"
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="auto"
+              @click="open(idx)"
+          />
 
-          <!-- Image thumbnail -->
-          <img v-else
-               :src="src"
-               :class="['thumb', { small: isTiny(src) }]"
-               :alt="item.title"
-               @click="open(idx)" />
+          <img
+              v-else
+              :src="src"
+              :class="['thumb', { small: isTiny(src) }]"
+              :alt="item.title"
+              @click="open(idx)"
+          />
         </template>
       </div>
     </div>
@@ -221,10 +270,86 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { usePortfolioItems } from '~/composables/usePortfolioItems'
 import MarkdownIt from 'markdown-it'
+import PdfThumb from '~/components/PdfThumb.client.vue'
+
+
+
+
+
+
+/* item lookup ------------------------------------------- */
+// const route = useRoute()
+// const { items } = usePortfolioItems()
+// const item = items.find(i => i.slug === route.params.slug)
+// const downloads = item?.downloads ?? []
+const route = useRoute()
+const router = useRouter()
+const { items } = usePortfolioItems()
+
+// reactive current item – updates when /work/:slug changes
+const item = computed(() =>
+    items.find(i => i.slug === String(route.params.slug))
+)
+
+// downloads derived from the current item
+const downloads = computed(() => item.value?.downloads ?? [])
+
+
+/* iframes carousel */
+const heroIndex = ref(0)
+
+const heroIframes = computed(() => {
+  const it = item.value
+  if (!it) return []
+  if (it.iframeUrls?.length) return it.iframeUrls
+  if (it.iframeUrl) return [it.iframeUrl]
+  return []
+})
+
+const currentIndex = computed(() =>
+    items.findIndex(i => i.slug === String(route.params.slug))
+)
+
+const hasPrev = computed(() => currentIndex.value > 0)
+
+const hasNext = computed(() =>
+    currentIndex.value >= 0 && currentIndex.value < items.length - 1
+)
+
+function goPrev() {
+  if (!hasPrev.value) return
+  const target = items[currentIndex.value - 1]
+  router.push(`/work/${target.slug}`)
+}
+
+function goNext() {
+  if (!hasNext.value) return
+  const target = items[currentIndex.value + 1]
+  router.push(`/work/${target.slug}`)
+}
+
+
+function nextHero() {
+  if (heroIframes.value.length < 2) return
+  heroIndex.value = (heroIndex.value + 1) % heroIframes.value.length
+}
+
+function prevHero() {
+  if (heroIframes.value.length < 2) return
+  heroIndex.value = (heroIndex.value + heroIframes.value.length - 1) % heroIframes.value.length
+}
+
+// Reset to first embed when navigating to a new project
+watch(
+    () => route.params.slug,
+    () => { heroIndex.value = 0 }
+)
+
+
 /* markdown */
 const md = new MarkdownIt({
   breaks:  true,   // keep your <br> breaks
@@ -300,11 +425,6 @@ const isPdf   = (src: string) => /\.pdf$/i.test(src)
 const tinySprites = ['/chameleon.png', '/enemy.png', '/sakura.png']
 const isTiny      = (src: string) => tinySprites.some(p => src.endsWith(p))
 
-function thumbFor(src: string) {
-  if (!isPdf(src)) return src
-  const custom = src.replace(/\.pdf$/i, '-thumb.jpg')
-  return `/media${custom}`.replace('//', '/')
-}
 /* helper to remove common leading indent */
 function dedent(mdText: string) {
   const lines = mdText.replace(/\r\n/g, '\n').split('\n')
@@ -321,23 +441,6 @@ function dedent(mdText: string) {
       // .replace(/^• /gm, '- ')             // turn bullets into markdown list
       .replace(/^\s*•\s+/gm, '- ')        // // turn "• ..." into "- ..." even if indented
 }
-
-/* item lookup ------------------------------------------- */
-// const route = useRoute()
-// const { items } = usePortfolioItems()
-// const item = items.find(i => i.slug === route.params.slug)
-// const downloads = item?.downloads ?? []
-const route = useRoute()
-const { items } = usePortfolioItems()
-
-// reactive current item – updates when /work/:slug changes
-const item = computed(() =>
-    items.find(i => i.slug === String(route.params.slug))
-)
-
-// downloads derived from the current item
-const downloads = computed(() => item.value?.downloads ?? [])
-
 
 /* A. longDescription -------------------------- */
 // const formatted = computed(() => {
@@ -393,29 +496,6 @@ function onKey(e: KeyboardEvent) {
 onMounted(() => window.addEventListener('keydown', onKey))
 onUnmounted(() => window.removeEventListener('keydown', onKey))
 
-/*  prev/next project navigation  -------------------------------------- */
-const router = useRouter()
-
-const currentIndex = computed(() =>
-    items.findIndex(i => i.slug === item.value?.slug)
-)
-
-const hasPrev = computed(() => currentIndex.value > 0)
-const hasNext = computed(
-    () => currentIndex.value >= 0 && currentIndex.value < items.length - 1
-)
-
-function goPrev() {
-  if (!hasPrev.value) return
-  const target = items[currentIndex.value - 1]
-  router.push(`/work/${target.slug}`)
-}
-
-function goNext() {
-  if (!hasNext.value) return
-  const target = items[currentIndex.value + 1]
-  router.push(`/work/${target.slug}`)
-}
 
 </script>
 
@@ -742,6 +822,53 @@ function goNext() {
     font-weight: 700;
     line-height: 1.2;
   }
+
+
+  /* iframe carousels */
+  .embed-wrapper {
+    position: relative;
+  }
+
+  .embed-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3rem;
+    height: 3rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.25);
+    background: rgba(0,0,0,0.35);
+    color: #fff;
+    font: 2rem/1 monospace;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+  }
+
+  .embed-nav.prev { left: 0.75rem; }
+  .embed-nav.next { right: 0.75rem; }
+
+  .embed-dots {
+    position: absolute;
+    left: 50%;
+    bottom: 0.75rem;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .dot {
+    width: 0.6rem;
+    height: 0.6rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.35);
+    background: rgba(0,0,0,0.35);
+    cursor: pointer;
+  }
+  .dot.active {
+    background: rgba(255,255,255,0.75);
+  }
+
 
   /* Tighten Markdown defaults */
   :deep(p) {

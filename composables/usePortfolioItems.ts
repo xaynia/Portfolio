@@ -11,6 +11,7 @@ export interface PortfolioItem {
     description?: string;   // short text (home page)
     longDescription?: string; // extended text (detail page)
     iframeUrl?: string;     // for web game embed
+    iframeUrls?: string[];   // multiple web media / game embeds (YouTube, web games, etc.)
     videoUrl?: string;     // self-hosted MP4/WebM
     heroImage?: string;    // optional hero image for detail page
     screenshots?: string[]; // array of media filenames
@@ -532,7 +533,11 @@ This project accelerated my Blender linear keyframing and troubleshooting (Geome
         representations inspired by cymatics—the study of how sound vibrations
         produce patterns in physical matter. See the attatched PDF for a comprehensive report.
       `,
-            iframeUrl: 'https://www.youtube.com/embed/cNs-FJQlheU',
+            iframeUrls: [
+                'https://www.youtube.com/embed/cNs-FJQlheU',
+                'hhttps://www.youtube.com/embed/4KOkAUYdPpw'
+            ],
+
 
             screenshots: [
                 '/cymatic-nodes.png',
@@ -541,7 +546,8 @@ This project accelerated my Blender linear keyframing and troubleshooting (Geome
                 '/cymatic-patch-1.png',
                 '/cymatic-patch-2.png',
                 '/cymatic-patch-3.png',
-                '/visual-symphony-report.pdf'
+                // '/visual-symphony-report.pdf',
+                '/public/media/visual-symphony-report-thumb.jpg',
             ],
             teamSize: 1,
             engine: 'Max MSP',
