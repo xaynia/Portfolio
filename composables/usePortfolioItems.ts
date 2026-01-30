@@ -24,6 +24,9 @@ export interface PortfolioItem {
     languages?: string[];     // e.g. ["TypeScript", "C#", "Lua"]
     developmentDuration?: string; // e.g. "40 hours" / "6 weeks"
     objective?: string
+
+    featured?: boolean;
+    featuredOrder?: number;
 }
 
 /* ─────────────────────────────────────────────────────────── */
@@ -39,6 +42,8 @@ export const usePortfolioItems = () => {
             completed: 'Fall 2025',
             course: 'CART 498 - Special Topics in CART: Real Time 3D Environments',
             // completed: 'Fall 2025', // optional (add if you want it displayed)
+            featured: true,
+            featuredOrder: 1,
             description:
                 'Built in Blender, Unreal Engine 5, Adobe Premiere Pro & After Effects: A cinematic walkthrough of a sci‑fi “sky museum” built around a 4D non-euclidean physics cube that preserves fragments of a lost Earth exhibit.',
             longDescription: `
@@ -118,6 +123,8 @@ Assets (Fab / Unreal Engine)
             image: '/361/Ouroboros/iAcorn.png',
             course: 'CART 361 - 3D Digital Production I',
             completed: 'Fall 2025',
+            featured: true,
+            featuredOrder: 3,
             description:
                 'A looping Blender animation reframing self‑care as smartphone‑scheduled maintenance: hydrate to 100% and an acorn becomes an oak, then the cycle resets.',
             longDescription: `
@@ -224,6 +231,8 @@ This project accelerated my Blender linear keyframing and troubleshooting (Geome
             // HorseJumperPreview.mp4 - gid
             course: 'CART 415 - Game Studio #1',
             completed: 'Fall 2025',
+            featured: true,
+            featuredOrder: 2,
             description: 'A small 3D show‑jumping game built in Unreal Engine 5.6, where the player rides a horse around an arena and tries to complete a course of jumps in the correct order and as cleanly as possible!',
             longDescription: `
        This project is a small 3D show‑jumping game built in Unreal Engine 5.6, where 

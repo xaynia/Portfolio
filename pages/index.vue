@@ -1,15 +1,17 @@
 <template>
   <div class="home-container">
-    <div class="masonry">
-      <!-- Left column -->
-      <div class="masonry-col">
+
+    <!-- ✅ FEATURED -->
+    <section v-if="featuredItems.length" class="featured-section">
+      <h2 class="section-title">Featured</h2>
+
+      <div class="featured-grid">
         <div
-            v-for="item in leftItems"
+            v-for="item in featuredItems"
             :key="item.slug"
-            class="masonry-item"
+            class="masonry-item featured-card"
             @click="goToDetail(item.slug)"
         >
-          <!-- Video or image -->
           <video
               v-if="isVideo(item.image)"
               :src="`/media${item.image}`"
@@ -25,11 +27,9 @@
               alt=""
           />
 
-          <!-- Text content -->
           <div class="info">
             <h3 class="title">{{ item.title }}</h3>
 
-            <!-- Course + completion date -->
             <div v-if="item.course || item.completed" class="meta-row center">
               <span v-if="item.course" class="meta-pill">{{ item.course }}</span>
               <span v-if="item.completed" class="meta-pill">{{ item.completed }}</span>
@@ -39,46 +39,87 @@
           </div>
         </div>
       </div>
+    </section>
 
-      <!-- Right column -->
-      <div class="masonry-col">
-        <div
-            v-for="item in rightItems"
-            :key="item.slug"
-            class="masonry-item"
-            @click="goToDetail(item.slug)"
-        >
-          <!-- Video or image -->
-          <video
-              v-if="isVideo(item.image)"
-              :src="`/media${item.image}`"
-              autoplay
-              muted
-              loop
-              playsinline
-              preload="auto"
-          />
-          <img
-              v-else
-              :src="`/media${item.image}`"
-              alt=""
-          />
+    <!-- ✅ ALL WORK -->
+    <section class="allwork-section">
+      <h2 class="section-title">All Work</h2>
 
-          <!-- Text content -->
-          <div class="info">
-            <h3 class="title">{{ item.title }}</h3>
+      <div class="masonry">
+        <!-- Left column -->
+        <div class="masonry-col">
+          <div
+              v-for="item in leftItems"
+              :key="item.slug"
+              class="masonry-item"
+              @click="goToDetail(item.slug)"
+          >
+            <video
+                v-if="isVideo(item.image)"
+                :src="`/media${item.image}`"
+                autoplay
+                muted
+                loop
+                playsinline
+                preload="auto"
+            />
+            <img
+                v-else
+                :src="`/media${item.image}`"
+                alt=""
+            />
 
-            <!-- Course + completion date -->
-            <div v-if="item.course || item.completed" class="meta-row center">
-              <span v-if="item.course" class="meta-pill">{{ item.course }}</span>
-              <span v-if="item.completed" class="meta-pill">{{ item.completed }}</span>
+            <div class="info">
+              <h3 class="title">{{ item.title }}</h3>
+
+              <div v-if="item.course || item.completed" class="meta-row center">
+                <span v-if="item.course" class="meta-pill">{{ item.course }}</span>
+                <span v-if="item.completed" class="meta-pill">{{ item.completed }}</span>
+              </div>
+
+              <p class="desc">{{ item.description }}</p>
             </div>
+          </div>
+        </div>
 
-            <p class="desc">{{ item.description }}</p>
+        <!-- Right column -->
+        <div class="masonry-col">
+          <div
+              v-for="item in rightItems"
+              :key="item.slug"
+              class="masonry-item"
+              @click="goToDetail(item.slug)"
+          >
+            <video
+                v-if="isVideo(item.image)"
+                :src="`/media${item.image}`"
+                autoplay
+                muted
+                loop
+                playsinline
+                preload="auto"
+            />
+            <img
+                v-else
+                :src="`/media${item.image}`"
+                alt=""
+            />
+
+            <div class="info">
+              <h3 class="title">{{ item.title }}</h3>
+
+              <div v-if="item.course || item.completed" class="meta-row center">
+                <span v-if="item.course" class="meta-pill">{{ item.course }}</span>
+                <span v-if="item.completed" class="meta-pill">{{ item.completed }}</span>
+              </div>
+
+              <p class="desc">{{ item.description }}</p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
+
   </div>
 </template>
 
@@ -87,7 +128,6 @@ import { computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { usePortfolioItems } from '~/composables/usePortfolioItems'
 
-/** Determine if the given file is a video (mp4/webm) */
 function isVideo(file: string) {
   return /\.(mp4|webm)$/i.test(file)
 }
@@ -99,36 +139,84 @@ function goToDetail(slug: string) {
   router.push(`/work/${slug}`)
 }
 
-// Split items: even indices => left, odd => right
-const leftItems = computed(() => items.filter((_, i) => i % 2 === 0))
-const rightItems = computed(() => items.filter((_, i) => i % 2 === 1))
+/** ✅ Featured first (sorted), then everything else below */
+const featuredItems = computed(() =>
+    [...items]
+        .filter(i => i.featured)
+        .sort((a, b) => (a.featuredOrder ?? 999) - (b.featuredOrder ?? 999))
+)
+
+// featured WILL appear in all work:
+const nonFeaturedItems = computed(() => items)
+
+// featured will NOT appear in all work:
+// const nonFeaturedItems = computed(() => items.filter(i => !i.featured))
+
+// Split non-featured items: even indices => left, odd => right
+const leftItems = computed(() => nonFeaturedItems.value.filter((_, i) => i % 2 === 0))
+const rightItems = computed(() => nonFeaturedItems.value.filter((_, i) => i % 2 === 1))
 </script>
 
 <style lang="scss">
 .home-container {
   padding: 2rem;
-  text-align: center;
+}
+
+/* Section titles */
+.section-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0 0 1rem;
+}
+
+/* ✅ Featured section */
+.featured-section {
+  margin-bottom: 2.5rem;
+}
+
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+
+  @media (max-width: 900px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Reuse your masonry card styling, but make featured subtly stand out */
+.featured-card {
+  outline: 1px solid var(--pill-border);
+}
+
+/* Clamp featured descriptions so they don’t become massive cards */
+.featured-card .desc {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 /* Masonry wrapper: 2 columns side by side */
 .masonry {
   display: flex;
-  gap: 1rem; /* space between columns */
+  gap: 1rem;
 
-  /* If you want them stacked on small screens, break to 1 col: */
   @media (max-width: 600px) {
     flex-direction: column;
   }
 }
 
 .masonry-col {
-  flex: 1;               /* each column expands equally */
+  flex: 1;
   display: flex;
-  flex-direction: column; /* stack items in a vertical flow */
-  gap: 1rem;             /* spacing between items in each column */
+  flex-direction: column;
+  gap: 1rem;
 }
 
-/* The item card styling can stay the same as before */
 .masonry-item {
   background: var(--card);
   color: var(--text);
@@ -163,7 +251,6 @@ const rightItems = computed(() => items.filter((_, i) => i % 2 === 1))
       color: var(--text);
     }
 
-    /* tighten spacing a bit so the pills sit nicely */
     .meta-row {
       margin: 0.35rem 0 0.65rem;
     }
