@@ -419,6 +419,23 @@ Assets (Fab / Unreal Engine)
             languages: ['C#'],
             developmentDuration: 'Course project (term)',
             objective: 'Design and implement a playable horde-survival prototype focused on elemental spell swapping, wave pacing, and moment-to-moment combat readability.',
+
+            links: [
+                {
+                    kind: 'code',
+                    label: 'Source code: Ghoul Rush (GitHub)',
+                    url: 'https://github.com/Noe235/CART315FinalProject',
+
+                }
+                ,
+                {
+                    kind: 'Documentation',
+                    label: 'Weekly Process Journal',
+                    url: 'https://github.com/xaynia/CART-315/blob/main/Process/Journal.md#week-7-iterative-prototype-1',
+                }
+            ]
+
+
         },
 
 

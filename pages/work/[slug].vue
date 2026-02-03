@@ -154,6 +154,21 @@
       </div>
     </div>
 
+    <!-- Links (code, docs, etc.) -->
+    <div v-if="item.links && item.links.length" class="links-block">
+      <h3>Links</h3>
+      <ul class="link-list">
+        <li v-for="link in item.links" :key="link.url">
+          <a :href="link.url" target="_blank" rel="noopener">
+            <span v-if="link.kind" class="link-pill">
+              {{ link.kind === 'code' ? 'Code' : link.kind }}
+            </span>
+            {{ link.label }}
+          </a>
+        </li>
+      </ul>
+    </div>
+
     <!-- █ 2½. Artistic Inspiration -->
     <div v-if="item.artisticInfluences" class="credits" v-html="artspoHtml"></div>
 
@@ -634,6 +649,52 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
     }
   }
 
+  // links styling
+  .links-block {
+    margin-top: 1.5rem;
+    padding: 1rem 1.25rem;
+    background: var(--card);
+    border-radius: 6px;
+
+    h3 {
+      margin: 0 0 0.75rem;
+    }
+  }
+
+  .link-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .link-list a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    text-decoration: none;
+    color: var(--link);
+    font-weight: 600;
+  }
+
+  .link-list a:hover {
+    text-decoration: underline;
+  }
+
+  .link-pill {
+    padding: 0.1rem 0.5rem;
+    border-radius: 999px;
+    border: 1px solid var(--pill-border);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+  }
+
+
+  // downloads block
   .top-crumb {
     display: inline-block;
     margin: 0.4rem 0 0.8rem;
