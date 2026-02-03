@@ -73,7 +73,7 @@ And that leaves a harder question. Hopkins warned that “after-comers cannot gu
 
 
 
-**Technical + Design Ceckpoints**
+**Technical + Design Checkpoints**
 - Design in Blender, export to Unreal Engine (FBX iteration: scale, smoothing, pivots, normals, material slots, UV unwrapping, maps).
 - View-dependent non-Euclidean exhibits (UE): masked/for-loop opacity materials reveal different interiors per face.
 - Build 3D world environment (sky, floating islands, crane for a cinematic sequence).
@@ -131,23 +131,30 @@ And that leaves a harder question. Hopkins warned that “after-comers cannot gu
             objective:
                 'Use Unreal Engine 5 to create a real-time 3D work that engages with themes of secrecy, encryption, or hidden architectures—whether technological, spatial, social, or symbolic; Deliver a playable build and a video trailer..',
             artisticInfluences: `
-**Artistic / theoretical influences**
+**Artistic Influences**
 • Nadim Samman: *Poetics of Encryption* (sealed zones, hidden mechanisms, encrypted thresholds)  
 • M.C. Escher and Antichamber: view-dependent space, non-Euclidean framing  
 • James Turrell: Ganzfeld environments (perception as structure)  
 • Carlos Cruz-Diez: Chromosaturation (color as spatial experience)  
   `,
             credits: `
-**References / sources**
-Tutorial
+**References**
+Tutorial:
 - Bojan V03. *Unreal Engine 4 Tutorial: Antichamber 4D Art Gallery (Impossible Objects).*
 
-Assets (Fab / Unreal Engine)
+Assets (Fab / Unreal Engine):
 - Artem Bayankin: *Asteroids Planet (Sci-fi planets/asteroids pack).* https://www.fab.com/listings/7ab65e5e-5769-4332-ae10-08af042415cb
 - nighttimes: *Holo-Gen Hologram Creator System.* https://www.fab.com/listings/b93edf11-8738-482c-8bf1-a98e4685bc8f
 - AleksandrIvanov: *Stylized Sky Dungeon.* https://www.fab.com/listings/fce76096-4cc6-4f21-a040-55ddd3355a0c
 - Fairy Fantasy: *Fairy Fantasy Stylized Plants 01.* https://www.fab.com/listings/858d0901-8e33-4f9e-8225-6997198bc4ee
 - Marcelo Barrio: *Alien Robot.* https://www.fab.com/listings/d40a3ed8-6e97-470f-8302-73211ad90fce
+
+**Sound / Music (Pixabay)**
+- "Ethereal Landscape Space Music": BackgroundMusicForVideos  
+  https://pixabay.com/music/upbeat-ethereal-landscape-space-music-301238/
+
+- "energy hum": firestorm185 (Freesound) via Pixabay  
+  https://pixabay.com/sound-effects/film-special-effects-energy-hum-29083/
   `,
             // ratio: '16 / 9',
         },
@@ -171,7 +178,7 @@ Drawing on Cory Arcangel’s ideas about contemporary life running on defaults, 
 Inside an iPhone-style UI, a hydration meter fills toward 100% while an acorn gradually grows into a full oak tree. When the oak produces a new acorn, the camera zooms into the falling acorn and the loop resets back to the beginning—returning to an empty 0% hydration state. The piece reflects a smartphone-dependent culture where reminders function as instructions and self-care becomes a gamified progress bar.
 
 **Key checkpoints**
-- Modeled an acorn, oak leaf (and [waterbottle ('Blender 3D Modeling')](/work/blender) 
+- Modeled an acorn and an oak leaf (building on my previous water bottle model: [Blender 3D Modeling](/work/blender))
 - Animated a “baby → mature” material transition using Blender shading nodes (Gradient Texture + Separate XYZ + Mapping + Texture Coordinate) with keyframes.
 - Built environment + lighting: particle-system grass, keyframed day-to-night using Sun Cycles add-on, and world brightness tuning to avoid overly contrasted skies.
 - Replaced foliage using Geometry Nodes with oak leaf texture set (alpha/normal/roughness/opacity/UV) and swapping leaf groups/collections
@@ -212,16 +219,43 @@ This project accelerated my Blender linear keyframing and troubleshooting (Geome
                 'Keyframed and edited the looping sequence, including lighting and camera animation',
                 'Iterated timing/lighting and re-render workflows using Blender Video Sequencer',
             ],
-            engine: 'Blender (Geometry Nodes, Shader Nodes, Video Sequencer)',
+            engine: 'Blender (Keyframes, Geometry Nodes, Shader Nodes, Video Sequencer)',
             developmentDuration: 'Course project',
             objective:
                 'Use linear keyframe animation techniques to create a looping sequence render in Blender (EEVEE).',
             artisticInfluences: `
 **Artistic influences**
 • Cory Arcangel — defaults/presets/schedules; UI as instruction  
-• Self-care metaphor from therapy (care as regular practice, not a one-time fix)
   `,
             ratio: '16 / 9',
+            credits: `
+**Sound / SFX (Pixabay)**  
+- "Level Up": Universfield  
+  https://pixabay.com/sound-effects/film-special-effects-level-up-191997/
+
+- "014_PlantaCreciendo-003": (Freesound author via Pixabay)  
+  https://pixabay.com/fr/sound-effects/films-et-effets-sp%c3%a9ciaux-014-plantacreciendo-003-44289/
+
+- "055906_nut cracking 5.wav": Freesound Community via Pixabay  
+  https://pixabay.com/sound-effects/055906-nut-cracking-5wav-46863/
+
+- "A Nature": EAGLAXLE  
+  https://pixabay.com/sound-effects/nature-a-nature-453405/
+
+- "glug glug glug": iwanPlays (Freesound) via Pixabay  
+  https://pixabay.com/sound-effects/people-glug-glug-glug-39140/
+
+- "leaves rustling": Soul_Serenity_Sounds  
+  https://pixabay.com/sound-effects/nature-leaves-rustling-236742/
+
+- "quiet thud hits": toddcircle (Freesound) via Pixabay  
+  https://pixabay.com/sound-effects/nature-quiet-thud-hits-100179/
+
+- "Sfx29 - Wind by (Wind gust)": Data_pion  
+  https://pixabay.com/sound-effects/film-special-effects-sfx29-wind-by-wind-gust-338387/
+`,
+
+
         },
 
 
@@ -233,13 +267,11 @@ This project accelerated my Blender linear keyframing and troubleshooting (Geome
             course: 'CART 361 - 3D Digital Production I',
             completed: 'Fall 2025',
             description: 'Create two models (a technical, and conceptual model) using Blender. The technical model was of a everyday object (my water bottle). The conceptual model was a modified version of the water bottle, with modifiers to create a new understanding of the object.',
-            longDescription: `
-        For my technical model, I transformed my everyday water bottle into a conceptual model: an hourglass whose "sand"
+            longDescription: ` For my technical model, I transformed my everyday water bottle into a conceptual model: an hourglass whose "sand"
          is shrinking, self-replicating mini bottles. This juxtaposes the eco-friendly aura of reusable merch:
           even when the object is pink, cute, and marketed as responsible, it still participates in consumerism 
           and greenwashing. Even when framed as "eco-friendly," branded plastics persist, break down, and multiply,
            mirroring how plastics become microplastics over time. 
-        
       `,
 
             screenshots: [
@@ -329,11 +361,12 @@ This project accelerated my Blender linear keyframing and troubleshooting (Geome
                 'Exercise game design and development skills by creating a short digital game prototype that explores a personal theme through mechanics, feel, and readable player goals.',
 
             credits: `
-            **References / sources**
-            Assets (Fab / Unreal Engine)
-            - CT Game. *Advanced Riding Locomotion System (Riding System).* https://www.fab.com/listings/2140716c-a8b4-46d4-86d8-6cea729db48f  [oai_citation:0‡Fab.com](https://www.fab.com/de/listings/2140716c-a8b4-46d4-86d8-6cea729db48f)
-            - MalberS Animations. *Horse Animset.* https://www.fab.com/listings/e0fc6520-8c9d-425d-9d25-3b6dc9ed56f8  [oai_citation:1‡Fab.com](https://www.fab.com/ja/listings/e0fc6520-8c9d-425d-9d25-3b6dc9ed56f8)
-  `,
+**References / sources**
+Assets (Fab / Unreal Engine)
+- CT Game: *Advanced Riding Locomotion System (Riding System).* https://www.fab.com/listings/2140716c-a8b4-46d4-86d8-6cea729db48f
+- MalberS Animations: *Horse Animset.* https://www.fab.com/listings/e0fc6520-8c9d-425d-9d25-3b6dc9ed56f8
+`,
+
 
         },
 
@@ -535,7 +568,7 @@ This project accelerated my Blender linear keyframing and troubleshooting (Geome
       `,
             iframeUrls: [
                 'https://www.youtube.com/embed/cNs-FJQlheU',
-                'hhttps://www.youtube.com/embed/4KOkAUYdPpw'
+                'https://www.youtube.com/embed/4KOkAUYdPpw'
             ],
 
 

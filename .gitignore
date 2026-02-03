@@ -30,3 +30,4 @@ public/media/gifs
 exports
 
 scripts
+/deno.lock

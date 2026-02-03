@@ -524,6 +524,57 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
     }
   }
 
+  /* credits box */
+  .credits {
+    margin: 1.5rem 0 0;
+    padding: 1rem 1.25rem;
+    background: var(--card);
+    border-left: 15px solid #444;
+    border-radius: 6px;
+    font-size: 0.97rem;
+    line-height: 1.7;
+    white-space: normal;
+
+    a {
+      color: var(--link);
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  }
+
+  /* paragraph and list spacing inside credits */
+  :deep(p) {
+    margin: 0.35rem 0;
+  }
+
+  /* Make the first bold line in credits act like a header */
+  .credits :deep(p:first-child) {
+    margin: 0 0 0.6rem;
+  }
+  :deep(ul),
+  :deep(ol) {
+    margin: 0.5rem 0 0;
+    padding-left: 1.25rem;
+  }
+
+  :deep(li) {
+    margin: 0.25rem 0;
+  }
+
+  /* markdown-it often wraps list items in <p> */
+  :deep(li > p) {
+    margin: 0;
+  }
+
+  //.credits :deep(p:first-child strong) {
+  //  display: block;
+  //  font-size: 1.05rem; /* try 1.0 – 1.15rem */
+  //  font-weight: 700;
+  //  line-height: 1.2;
+  //}
+
   /* front / back minimal styles
     */
   .proj-nav {
@@ -832,37 +883,7 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
       right: 2rem;
     }
 
-    /* credits box */
-    .credits {
-      margin: 1.5rem 0 0;
-      padding: 1rem 1.25rem;
-      background: var(--card);
-      border-left: 15px solid #444;
-      border-radius: 6px;
-      font-size: 0.97rem;
-      line-height: 2.0;
-      white-space: normal;
 
-      a {
-        color: var(--link);
-      }
-
-      a:hover {
-        text-decoration: underline;
-      }
-    }
-
-    /* Make the first bold line in credits act like a header */
-    .credits :deep(p:first-child) {
-      margin: 0 0 0.6rem;
-    }
-
-    .credits :deep(p:first-child strong) {
-      display: block;
-      font-size: 1.05rem; /* try 1.0 – 1.15rem */
-      font-weight: 700;
-      line-height: 1.2;
-    }
 
 
     /* iframe carousels */
