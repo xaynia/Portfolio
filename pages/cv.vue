@@ -255,7 +255,7 @@
           <b> (CART 415)</b>
           A small 3D show‑jumping prototype built in Unreal Engine 5.6. Ride a horse around an arena and complete a jump course in the correct order while minimizing faults and time.
         </li>
-
+        <!-- Blender Incarnation  -->
         <li>
           <a href="/work/blender" target="_blank" rel="noopener">
             <strong>Blender 3D Modeling</strong>
@@ -307,53 +307,11 @@
             the magical core.
           </div>
         </li>
+        <!-- capstone  -->
         <li>
           <a href="/work/capstone" target="_blank" rel="noopener"> <strong> ECG & Gaming Capstone</strong></a> <b>(PSYC 447)</b>
           Researched psychophysiological signals (heart rate, ECG) while playing various game genres (social simulation,
           fighting, platformer), analyzing stress and emotional responses.
-        </li><!-- ghoul rush-->
-        <li>
-          <div class="proj-head">
-            <a
-                href="https://acaciawilliams.netlify.app/work/ghoul-rush"
-                target="_blank"
-                rel="noopener"
-            >
-              <strong>Ghoul Rush</strong>
-            </a>
-            <b>(CART 315)</b>
-          </div>
-
-          <div class="proj-links">
-            <a
-                href="https://github.com/Noe235/CART315FinalProject"
-                target="_blank"
-                rel="noopener"
-            >
-              Final team repo
-            </a>
-            <span class="sep">•</span>
-            <a
-                href="https://github.com/xaynia/CART-315"
-                target="_blank"
-                rel="noopener"
-            >
-              Course repo + process
-            </a>
-            <span class="sep">•</span>
-            <a
-                href="https://github.com/xaynia/CART-315/blob/main/Process/Journal.md"
-                target="_blank"
-                rel="noopener"
-            >
-              MDM weekly journal
-            </a>
-          </div>
-
-          <div class="proj-desc">
-            Built with a partner: a fast-paced 3D horde-survival magic shooter in Unity. Collect elemental mushrooms and swap spells to defend
-            the magical core.
-          </div>
         </li>
         <!-- max msp cymatic water symphony  -->
         <li>
@@ -369,14 +327,6 @@
           <a href="/work/chaos-vs-symmetry" target="_blank" rel="noopener"> <strong>Chaos vs. Symmetry:</strong></a> <b>(CART 212)</b>
           A short experimental video created in Premiere Pro and After Effects. Explores the balance between natural and
           digital elements, featuring AI-generated stop-motion frames.
-        </li>
-        <!--  ghost tale -->
-        <li>
-          <a href="/work/ghost-tale" target="_blank" rel="noopener">
-            <strong>Ghost Tale</strong>
-          </a>
-          <b> (CART 315)</b>
-          A retro-style platformer built in Lua for Pico-8, with puzzle elements and a “haunted” pixel-art aesthetic.
         </li>
         <!--  chromatic chameleon -->
         <li>
@@ -395,6 +345,14 @@
           <b> (CART 253)</b>
           A p5.js prototype focused on guiding falling objects via gravity. Each variation uses the same core mechanic but
           different visual themes.
+        </li>
+        <!--  ghost tale -->
+        <li>
+          <a href="/work/ghost-tale" target="_blank" rel="noopener">
+            <strong>Ghost Tale</strong>
+          </a>
+          <b> (CART 315)</b>
+          A retro-style platformer built in Lua for Pico-8, with puzzle elements and a “haunted” pixel-art aesthetic.
         </li>
 
       </ol>
