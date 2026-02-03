@@ -1,19 +1,45 @@
   <template>
     <section class="cv-page">
-  <!--    HEADER-->
-      <h1>Acacia Williams</h1>
-      <p>
-        Montreal • acacia_williams@hotmail.com •
-        <strong>Portfolio: </strong>
-        <a href="https://acaciawilliams.netlify.app" target="_blank" rel="noopener">https://acaciawilliams.netlify.app</a>
-        •
-        <strong>GitHub: </strong>
-        <a href="https://github.com/xaynia" target="_blank" rel="noopener"
-        >github.com/xaynia</a
-        >
-      </p>
+      <!-- HEADER -->
+      <header class="cv-header">
+        <h1>Acacia Williams</h1>
+
+        <ul class="contact">
+          <li>Montreal</li>
+
+          <li>
+            <a href="mailto:acacia_williams@hotmail.com">acacia_williams@hotmail.com</a>
+          </li>
+
+          <li class="portfolio">
+            <strong>Portfolio:</strong>
+            <a href="https://acaciawilliams.netlify.app" target="_blank" rel="noopener">
+              acaciawilliams.netlify.app
+            </a>
+            <span class="meta">(built with Nuxt + TypeScript, deployed on Netlify)</span>
+          </li>
+
+          <li>
+            <strong>GitHub:</strong>
+            <a href="https://github.com/xaynia" target="_blank" rel="noopener">
+              github.com/xaynia
+            </a>
+          </li>
+
+          <li class="featured-repos">
+            <strong>Featured code:</strong>
+            <a href="https://github.com/xaynia/Portfolio" target="_blank" rel="noopener">
+              Portfolio repo
+            </a>,
+            <a href="https://github.com/xaynia/CART-315" target="_blank" rel="noopener">
+              CART 315 repo
+            </a>
+          </li>
+        </ul>
+      </header>
 
       <hr/>
+
 
       <!-- Personal Statement -->
       <h2>Personal Statement</h2>
@@ -192,52 +218,36 @@
       <p>Below are some of my recent projects (more details and demos on my portfolio):</p>
 
       <ol>
+        <!-- start -->
+        <!-- hide and seek -->
         <li>
-          <a href="/work/capstone" target="_blank" rel="noopener"> <strong> ECG & Gaming Capstone</strong></a> <b>(PSYC 447)</b>
-          Researched psychophysiological signals (heart rate, ECG) while playing various game genres (social simulation,
-          fighting, platformer), analyzing stress and emotional responses.
-        </li>
-        <li>
-          <a href="/work/ghoul-rush" target="_blank" rel="noopener"> <strong>Ghoul Rush</strong></a> <b>(CART 315)</b>
-          A fast-paced 3D horde-survival magic shooter in Unity. Collect elemental mushrooms and swap spells to defend
-          the magical core.
-        </li>
-        <li>
-          <a href="/work/chaos-vs-symmetry" target="_blank" rel="noopener"> <strong>Chaos vs. Symmetry:</strong></a> <b>(CART 212)</b>
-          A short experimental video created in Premiere Pro and After Effects. Explores the balance between natural and
-          digital elements, featuring AI-generated stop-motion frames.
-        </li>
-        <li>
-          <a href="/work/ghost-tale" target="_blank" rel="noopener">
-            <strong>Ghost Tale</strong>
+          <a
+              href="https://acaciawilliams.netlify.app/work/hide-and-seek"
+              target="_blank"
+              rel="noopener"
+          >
+            <strong>Hide and Seek (Sky Museum)</strong>
           </a>
-          <b> (CART 315)</b>
-          A retro-style platformer built in Lua for Pico-8, with puzzle elements and a “haunted” pixel-art aesthetic.
+          <b>(CART 498)</b>
+          Solo real-time cinematic 3D environment build in Unreal Engine 5.6 (Sequencer, Blueprints, Movie Render Queue) with
+          Blender asset workflow; built a non-Euclidean cube presentation effect and edited the trailer
+          in Premiere/After Effects.
         </li>
+        <!-- Ouroboros Loop -->
         <li>
-          <a href="/work/chromatic-chameleon" target="_blank" rel="noopener">
-            <strong>Chromatic Chameleon</strong>
+          <a
+              href="https://acaciawilliams.netlify.app/work/ouroboros-loop"
+              target="_blank"
+              rel="noopener"
+          >
+            <strong>Ouroboros Loop — iAcorn: Scheduled Growth</strong>
           </a>
-          <b> (CART 263)</b>
-          A JavaScript platformer that shifts from monochrome to vibrant pastel as you collect Sakura petals—symbolizing
-          seasonal change and mood.
+          <b>(CART 361)</b>
+          15–20s looping Blender animation: a hydration UI drives an acorn → oak → reset loop; used
+          shader-node material transitions, Geometry Nodes foliage replacement, and Video Sequencer
+          iteration.
         </li>
-        <li>
-          <a href="/work/gravity-jam" target="_blank" rel="noopener">
-            <strong>Gravity Jam</strong>
-          </a>
-          <b> (CART 253)</b>
-          A p5.js prototype focused on guiding falling objects via gravity. Each variation uses the same core mechanic but
-          different visual themes.
-        </li>
-        <li>
-          <a href="/work/cymatic-water-symphony" target="_blank" rel="noopener">
-            <strong>Cymatic Water Symphony</strong>
-          </a>
-          <b> (CART 346)</b>
-          A Max MSP & Jitter patch combining six water-themed audio sources with cymatic-inspired visuals, showcasing how
-          sound vibrations produce distinct patterns in physical media.
-        </li>
+        <!-- Jumper  Simulator  -->
         <li>
           <a href="/work/horse-jumper" target="_blank" rel="noopener">
             <strong>Horse Jumper Simulator</strong>
@@ -253,33 +263,138 @@
           <b> (CART 361)</b>
           Created two 3D models in Blender: one technically accurate everyday object, and one conceptual transformation (hourglass) using modifiers and visual metaphor.
         </li>
-
+        <!-- ghoul rush-->
         <li>
-          <a
-              href="https://acaciawilliams.netlify.app/work/ouroboros-loop"
-              target="_blank"
-              rel="noopener"
-          >
-            <strong>Ouroboros Loop — iAcorn: Scheduled Growth</strong>
-          </a>
-          <b>(CART 361)</b>
-          15–20s looping Blender animation: a hydration UI drives an acorn → oak → reset loop; used
-          shader-node material transitions, Geometry Nodes foliage replacement, and Video Sequencer
-          iteration.
+          <div class="proj-head">
+            <a
+                href="https://acaciawilliams.netlify.app/work/ghoul-rush"
+                target="_blank"
+                rel="noopener"
+            >
+              <strong>Ghoul Rush</strong>
+            </a>
+            <b>(CART 315)</b>
+          </div>
+
+          <div class="proj-links">
+            <a
+                href="https://github.com/Noe235/CART315FinalProject"
+                target="_blank"
+                rel="noopener"
+            >
+              Final team repo
+            </a>
+            <span class="sep">•</span>
+            <a
+                href="https://github.com/xaynia/CART-315"
+                target="_blank"
+                rel="noopener"
+            >
+              Course repo + process
+            </a>
+            <span class="sep">•</span>
+            <a
+                href="https://github.com/xaynia/CART-315/blob/main/Process/Journal.md"
+                target="_blank"
+                rel="noopener"
+            >
+              MDM weekly journal
+            </a>
+          </div>
+
+          <div class="proj-desc">
+            Built with a partner: a fast-paced 3D horde-survival magic shooter in Unity. Collect elemental mushrooms and swap spells to defend
+            the magical core.
+          </div>
         </li>
-
         <li>
-          <a
-              href="https://acaciawilliams.netlify.app/work/hide-and-seek"
-              target="_blank"
-              rel="noopener"
-          >
-            <strong>Hide and Seek (Sky Museum)</strong>
+          <a href="/work/capstone" target="_blank" rel="noopener"> <strong> ECG & Gaming Capstone</strong></a> <b>(PSYC 447)</b>
+          Researched psychophysiological signals (heart rate, ECG) while playing various game genres (social simulation,
+          fighting, platformer), analyzing stress and emotional responses.
+        </li><!-- ghoul rush-->
+        <li>
+          <div class="proj-head">
+            <a
+                href="https://acaciawilliams.netlify.app/work/ghoul-rush"
+                target="_blank"
+                rel="noopener"
+            >
+              <strong>Ghoul Rush</strong>
+            </a>
+            <b>(CART 315)</b>
+          </div>
+
+          <div class="proj-links">
+            <a
+                href="https://github.com/Noe235/CART315FinalProject"
+                target="_blank"
+                rel="noopener"
+            >
+              Final team repo
+            </a>
+            <span class="sep">•</span>
+            <a
+                href="https://github.com/xaynia/CART-315"
+                target="_blank"
+                rel="noopener"
+            >
+              Course repo + process
+            </a>
+            <span class="sep">•</span>
+            <a
+                href="https://github.com/xaynia/CART-315/blob/main/Process/Journal.md"
+                target="_blank"
+                rel="noopener"
+            >
+              MDM weekly journal
+            </a>
+          </div>
+
+          <div class="proj-desc">
+            Built with a partner: a fast-paced 3D horde-survival magic shooter in Unity. Collect elemental mushrooms and swap spells to defend
+            the magical core.
+          </div>
+        </li>
+        <!-- max msp cymatic water symphony  -->
+        <li>
+          <a href="/work/cymatic-water-symphony" target="_blank" rel="noopener">
+            <strong>Cymatic Water Symphony</strong>
           </a>
-          <b>(CART 498)</b>
-          Solo real-time cinematic 3D environment build in Unreal Engine 5.6 (Sequencer, Blueprints, Movie Render Queue) with
-          Blender asset workflow; built a non-Euclidean cube presentation effect and edited the trailer
-          in Premiere/After Effects.
+          <b> (CART 346)</b>
+          A Max MSP & Jitter patch combining six water-themed audio sources with cymatic-inspired visuals, showcasing how
+          sound vibrations produce distinct patterns in physical media.
+        </li>
+        <!--  chaos vs symmetry -->
+        <li>
+          <a href="/work/chaos-vs-symmetry" target="_blank" rel="noopener"> <strong>Chaos vs. Symmetry:</strong></a> <b>(CART 212)</b>
+          A short experimental video created in Premiere Pro and After Effects. Explores the balance between natural and
+          digital elements, featuring AI-generated stop-motion frames.
+        </li>
+        <!--  ghost tale -->
+        <li>
+          <a href="/work/ghost-tale" target="_blank" rel="noopener">
+            <strong>Ghost Tale</strong>
+          </a>
+          <b> (CART 315)</b>
+          A retro-style platformer built in Lua for Pico-8, with puzzle elements and a “haunted” pixel-art aesthetic.
+        </li>
+        <!--  chromatic chameleon -->
+        <li>
+          <a href="/work/chromatic-chameleon" target="_blank" rel="noopener">
+            <strong>Chromatic Chameleon</strong>
+          </a>
+          <b> (CART 263)</b>
+          A JavaScript platformer that shifts from monochrome to vibrant pastel as you collect Sakura petals—symbolizing
+          seasonal change and mood.
+        </li>
+        <!--  gravity jam -->
+        <li>
+          <a href="/work/gravity-jam" target="_blank" rel="noopener">
+            <strong>Gravity Jam</strong>
+          </a>
+          <b> (CART 253)</b>
+          A p5.js prototype focused on guiding falling objects via gravity. Each variation uses the same core mechanic but
+          different visual themes.
         </li>
 
       </ol>
