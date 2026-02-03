@@ -39,6 +39,8 @@ export interface PortfolioItem {
     links?: PortfolioLink[]       // demo/code/paper links (great for “original code” evidence)
 }
 
+
+
 /* ─────────────────────────────────────────────────────────── */
 
 export const usePortfolioItems = () => {
@@ -262,10 +264,14 @@ This project accelerated my Blender linear keyframing and troubleshooting (Geome
         // ── Blender ──────────────────────────────
         {
             slug: 'blender',
-            title: 'Blender 3D Modeling',
+            title: 'Blender 3D Modeling — Surface Tensions ',
             image: '/361/ConceptualModel/Hourglass-front-white.png',
             course: 'CART 361 - 3D Digital Production I',
             completed: 'Fall 2025',
+
+            featured: true,
+            featuredOrder: 4,
+
             description: 'Create two models (a technical, and conceptual model) using Blender. The technical model was of a everyday object (my water bottle). The conceptual model was a modified version of the water bottle, with modifiers to create a new understanding of the object.',
             longDescription: ` For my technical model, I transformed my everyday water bottle into a conceptual model: an hourglass whose "sand"
          is shrinking, self-replicating mini bottles. This juxtaposes the eco-friendly aura of reusable merch:
@@ -378,6 +384,11 @@ Assets (Fab / Unreal Engine)
             image: '/ghoulrush2.mp4',
             course: 'CART 315 - Digital Game Prototyping',
             completed: 'Winter 2025',
+
+            featured: true,
+            featuredOrder: 5,
+
+
             description: 'A 3D horde-survival magic shooter game. Swap elemental spells to fend off endless ghost waves while defending the magical core!',
             longDescription: `
         Ghoul Rush is a Unity-made survival shooter where you defend a magical core
