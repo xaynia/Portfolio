@@ -429,7 +429,7 @@ Assets (Fab / Unreal Engine)
                 }
                 ,
                 {
-                    kind: 'Documentation',
+                    kind: 'docs',
                     label: 'Weekly Process Journal',
                     url: 'https://github.com/xaynia/CART-315/blob/main/Process/Journal.md#week-7-iterative-prototype-1',
                 }
@@ -637,7 +637,15 @@ Assets (Fab / Unreal Engine)
             screenshots: [
                 '/capstone.pdf',
             ]
-        }
+
+
+        },
+
+
+
+
+
+
 
 
     ]
