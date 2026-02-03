@@ -255,10 +255,10 @@
           <b> (CART 415)</b>
           A small 3D show‑jumping prototype built in Unreal Engine 5.6. Ride a horse around an arena and complete a jump course in the correct order while minimizing faults and time.
         </li>
-        <!-- Blender Incarnation  -->
+        <!-- Blender Surface Tensions  -->
         <li>
           <a href="/work/blender" target="_blank" rel="noopener">
-            <strong>Blender 3D Modeling</strong>
+            <strong>Blender 3D Modeling — Surface Tensions</strong>
           </a>
           <b> (CART 361)</b>
           Created two 3D models in Blender: one technically accurate everyday object, and one conceptual transformation (hourglass) using modifiers and visual metaphor.
@@ -428,11 +428,6 @@
           </li>
         </ul>
       </details>
-
-
-
-
-
       </ul>
       <hr/>
 
@@ -451,6 +446,54 @@
     line-height: 1.6;
   }
 
+  /* Header contact layout (wraps cleanly, no indentation) */
+  .cv-header {
+    margin-bottom: 0.5rem;
+  }
+
+  /* Use .cv-page ul.contact to beat .cv-page ul specificity */
+  .cv-page ul.contact {
+    list-style: none;
+    padding: 0;
+    margin: 0;          /* removes default + your .cv-page ul margin-bottom */
+    margin-left: 0;     /* cancels .cv-page ul indentation */
+
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    row-gap: 0.25rem;
+    line-height: 1.4;
+  }
+
+  /* Beat .cv-page li { margin-bottom: 1rem } */
+  .cv-page ul.contact li {
+    margin: 0;
+    margin-bottom: 0;
+  }
+
+  /* Separator AFTER each item (gives proper spacing) */
+  .cv-page ul.contact li:not(:last-child)::after {
+    content: "•";
+    opacity: 0.7;
+    margin: 0 0.6rem;
+  }
+
+  .cv-page ul.contact .meta {
+    opacity: 0.85;
+    font-size: 0.95em;
+    margin-left: 0.35rem;
+  }
+
+  .cv-page ul.contact a {
+    text-decoration: none;
+  }
+
+  .cv-page ul.contact a:hover {
+    text-decoration: underline;
+  }
+
+
+
   .cv-page h1 {
     margin-bottom: 0.5rem;
     font-size: 2rem;
@@ -466,11 +509,40 @@
     margin: 1.5rem 0;
   }
 
+
+
+  /* Project link row under a project title */
+  .proj-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+
+  .proj-links {
+    margin-top: 0.2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 0.5rem;
+    font-size: 0.95em;
+    opacity: 0.9;
+  }
+
+  .proj-links .sep {
+    opacity: 0.6;
+  }
+
+  .proj-desc {
+    margin-top: 0.35rem;
+  }
+
+
   .cv-page ul,
   .cv-page ol {
     margin-left: 1.75rem;
     margin-bottom: 1.5rem;
   }
+
 
   .cv-page p,
   .cv-page li {
