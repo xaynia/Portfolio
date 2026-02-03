@@ -1,4 +1,10 @@
 export type PortfolioLinkKind = 'demo' | 'video' | 'code' | 'download' | 'paper' | 'docs'
+    // code: repos that are primarily source code.
+    // docs: process journals, design docs, devlogs, README-style documentation.
+    // paper: formal reports, academic-style papers, capstones.
+    // demo: live playable builds (itch.io, web builds).
+    // video: YouTube/Vimeo pages.
+    // download: direct binaries/installers.
 export interface PortfolioLink {
     label: string
     url: string
@@ -133,32 +139,46 @@ And that leaves a harder question. Hopkins warned that “after-comers cannot gu
             objective:
                 'Use Unreal Engine 5 to create a real-time 3D work that engages with themes of secrecy, encryption, or hidden architectures—whether technological, spatial, social, or symbolic; Deliver a playable build and a video trailer..',
             artisticInfluences: `
-**Artistic Influences**
-• Nadim Samman: *Poetics of Encryption* (sealed zones, hidden mechanisms, encrypted thresholds)  
-• M.C. Escher and Antichamber: view-dependent space, non-Euclidean framing  
-• James Turrell: Ganzfeld environments (perception as structure)  
-• Carlos Cruz-Diez: Chromosaturation (color as spatial experience)  
-  `,
+            **Artistic Influences**
+            • Nadim Samman: *Poetics of Encryption* (sealed zones, hidden mechanisms, encrypted thresholds)  
+            • M.C. Escher and Antichamber: view-dependent space, non-Euclidean framing  
+            • James Turrell: Ganzfeld environments (perception as structure)  
+            • Carlos Cruz-Diez: Chromosaturation (color as spatial experience)  
+              `,
             credits: `
-**References**
-Tutorial:
-- Bojan V03. *Unreal Engine 4 Tutorial: Antichamber 4D Art Gallery (Impossible Objects).*
-
-Assets (Fab / Unreal Engine):
-- Artem Bayankin: *Asteroids Planet (Sci-fi planets/asteroids pack).* https://www.fab.com/listings/7ab65e5e-5769-4332-ae10-08af042415cb
-- nighttimes: *Holo-Gen Hologram Creator System.* https://www.fab.com/listings/b93edf11-8738-482c-8bf1-a98e4685bc8f
-- AleksandrIvanov: *Stylized Sky Dungeon.* https://www.fab.com/listings/fce76096-4cc6-4f21-a040-55ddd3355a0c
-- Fairy Fantasy: *Fairy Fantasy Stylized Plants 01.* https://www.fab.com/listings/858d0901-8e33-4f9e-8225-6997198bc4ee
-- Marcelo Barrio: *Alien Robot.* https://www.fab.com/listings/d40a3ed8-6e97-470f-8302-73211ad90fce
-
-**Sound / Music (Pixabay)**
-- "Ethereal Landscape Space Music": BackgroundMusicForVideos  
-  https://pixabay.com/music/upbeat-ethereal-landscape-space-music-301238/
-
-- "energy hum": firestorm185 (Freesound) via Pixabay  
-  https://pixabay.com/sound-effects/film-special-effects-energy-hum-29083/
-  `,
+            **References**
+            Tutorial:
+            - Bojan V03. *Unreal Engine 4 Tutorial: Antichamber 4D Art Gallery (Impossible Objects).*
+            
+            Assets (Fab / Unreal Engine):
+            - Artem Bayankin: *Asteroids Planet (Sci-fi planets/asteroids pack).* https://www.fab.com/listings/7ab65e5e-5769-4332-ae10-08af042415cb
+            - nighttimes: *Holo-Gen Hologram Creator System.* https://www.fab.com/listings/b93edf11-8738-482c-8bf1-a98e4685bc8f
+            - AleksandrIvanov: *Stylized Sky Dungeon.* https://www.fab.com/listings/fce76096-4cc6-4f21-a040-55ddd3355a0c
+            - Fairy Fantasy: *Fairy Fantasy Stylized Plants 01.* https://www.fab.com/listings/858d0901-8e33-4f9e-8225-6997198bc4ee
+            - Marcelo Barrio: *Alien Robot.* https://www.fab.com/listings/d40a3ed8-6e97-470f-8302-73211ad90fce
+            
+            **Sound / Music (Pixabay)**
+            - "Ethereal Landscape Space Music": BackgroundMusicForVideos  
+              https://pixabay.com/music/upbeat-ethereal-landscape-space-music-301238/
+            
+            - "energy hum": firestorm185 (Freesound) via Pixabay  
+              https://pixabay.com/sound-effects/film-special-effects-energy-hum-29083/
+              `,
             // ratio: '16 / 9',
+            links: [
+                {
+                    kind: 'video',
+                    label: 'Trailer on YouTube',
+                    url: 'https://youtu.be/upM9bRzj3sg?si=yECi6A8RaPDB74Q-'
+                }
+                // ,
+                // {
+                //     kind: 'code',
+                //     label: 'Project notes / blueprints overview',
+                //     url: 'https://github.com/…' // if you have a repo or notes
+                // }
+            ]
+
         },
 
 // ── CART 361 ─────────────────────────────────────────────────────
@@ -231,33 +251,43 @@ This project accelerated my Blender linear keyframing and troubleshooting (Geome
   `,
             ratio: '16 / 9',
             credits: `
-**Sound / SFX (Pixabay)**  
-- "Level Up": Universfield  
-  https://pixabay.com/sound-effects/film-special-effects-level-up-191997/
-
-- "014_PlantaCreciendo-003": (Freesound author via Pixabay)  
-  https://pixabay.com/fr/sound-effects/films-et-effets-sp%c3%a9ciaux-014-plantacreciendo-003-44289/
-
-- "055906_nut cracking 5.wav": Freesound Community via Pixabay  
-  https://pixabay.com/sound-effects/055906-nut-cracking-5wav-46863/
-
-- "A Nature": EAGLAXLE  
-  https://pixabay.com/sound-effects/nature-a-nature-453405/
-
-- "glug glug glug": iwanPlays (Freesound) via Pixabay  
-  https://pixabay.com/sound-effects/people-glug-glug-glug-39140/
-
-- "leaves rustling": Soul_Serenity_Sounds  
-  https://pixabay.com/sound-effects/nature-leaves-rustling-236742/
-
-- "quiet thud hits": toddcircle (Freesound) via Pixabay  
-  https://pixabay.com/sound-effects/nature-quiet-thud-hits-100179/
-
-- "Sfx29 - Wind by (Wind gust)": Data_pion  
-  https://pixabay.com/sound-effects/film-special-effects-sfx29-wind-by-wind-gust-338387/
-`,
-
-
+            **Sound / SFX (Pixabay)**  
+            - "Level Up": Universfield  
+              https://pixabay.com/sound-effects/film-special-effects-level-up-191997/
+            
+            - "014_PlantaCreciendo-003": (Freesound author via Pixabay)  
+              https://pixabay.com/fr/sound-effects/films-et-effets-sp%c3%a9ciaux-014-plantacreciendo-003-44289/
+            
+            - "055906_nut cracking 5.wav": Freesound Community via Pixabay  
+              https://pixabay.com/sound-effects/055906-nut-cracking-5wav-46863/
+            
+            - "A Nature": EAGLAXLE  
+              https://pixabay.com/sound-effects/nature-a-nature-453405/
+            
+            - "glug glug glug": iwanPlays (Freesound) via Pixabay  
+              https://pixabay.com/sound-effects/people-glug-glug-glug-39140/
+            
+            - "leaves rustling": Soul_Serenity_Sounds  
+              https://pixabay.com/sound-effects/nature-leaves-rustling-236742/
+            
+            - "quiet thud hits": toddcircle (Freesound) via Pixabay  
+              https://pixabay.com/sound-effects/nature-quiet-thud-hits-100179/
+            
+            - "Sfx29 - Wind by (Wind gust)": Data_pion  
+              https://pixabay.com/sound-effects/film-special-effects-sfx29-wind-by-wind-gust-338387/
+            `,
+            links: [
+                {
+                    kind: 'video',
+                    label: 'Loop video on YouTube',
+                    url: 'https://www.youtube.com/watch?v=bhjxbDqTC7Q'
+                },
+                {
+                    kind: 'paper',
+                    label: 'Project PDF: iAcorn (process + reflection + resources)',
+                    url: 'https://acaciawilliams.netlify.app/media/361/Ouroboros/iAcorn.pdf'
+                }
+            ]
         },
 
 
@@ -346,7 +376,7 @@ This project accelerated my Blender linear keyframing and troubleshooting (Geome
             ],
             screenshots: [
                 '/JumperReport.pdf',
-                '/Jumper.png',
+                // '/Jumper.png',
             ],
 
             status: 'prototype',
@@ -367,11 +397,18 @@ This project accelerated my Blender linear keyframing and troubleshooting (Geome
                 'Exercise game design and development skills by creating a short digital game prototype that explores a personal theme through mechanics, feel, and readable player goals.',
 
             credits: `
-**References / sources**
-Assets (Fab / Unreal Engine)
-- CT Game: *Advanced Riding Locomotion System (Riding System).* https://www.fab.com/listings/2140716c-a8b4-46d4-86d8-6cea729db48f
-- MalberS Animations: *Horse Animset.* https://www.fab.com/listings/e0fc6520-8c9d-425d-9d25-3b6dc9ed56f8
-`,
+            **References / sources**
+            Assets (Fab / Unreal Engine)
+            - CT Game: *Advanced Riding Locomotion System (Riding System).* https://www.fab.com/listings/2140716c-a8b4-46d4-86d8-6cea729db48f
+            - MalberS Animations: *Horse Animset.* https://www.fab.com/listings/e0fc6520-8c9d-425d-9d25-3b6dc9ed56f8
+            `,
+            links: [
+                {
+                    kind: 'paper',
+                    label: 'Project PDF: Jumpers (Gameplay Playtest Report, Personal Theme)',
+                    url: 'https://acaciawilliams.netlify.app/media/JumperReport.pdf'
+                }
+            ]
 
 
         },
@@ -430,7 +467,7 @@ Assets (Fab / Unreal Engine)
                 ,
                 {
                     kind: 'docs',
-                    label: 'Weekly Process Journal',
+                    label: 'Weekly Process Journal (GitHub)',
                     url: 'https://github.com/xaynia/CART-315/blob/main/Process/Journal.md#week-7-iterative-prototype-1',
                 }
             ]
@@ -470,6 +507,14 @@ Assets (Fab / Unreal Engine)
                 '/chameleon-spritesheet.png'
             ],
             ratio: '4 / 3',
+            links: [
+                {
+                    kind: 'code',
+                    label: 'Source code: Chromatic Chameleon (GitHub)',
+                    url: 'https://github.com/xaynia/CART-263/tree/main/Projects/Sakura%20Final%20Project'
+                }
+            ],
+
         },
 
         // ── Chaos vs Symmetry ────────────────────────────────────
@@ -550,7 +595,7 @@ Assets (Fab / Unreal Engine)
             objective: 'Make a tiny game in one week.',
         },
 
-        // ── Gravity Jam ─────────────────────────────────────────
+        // ── Gravity Jam ───────────────────────────────────────── https://github.com/xaynia/CART-253/tree/main/topics/Assignments/GravityJam
         {
             slug: 'gravity-jam',
             title: 'Gravity Jam',
@@ -559,10 +604,10 @@ Assets (Fab / Unreal Engine)
             completed: 'Fall 2024',
             description: 'A Javascript p5.js game focusing on showcasing three simple variations: guiding falling objects using gravity and wind.',
             longDescription: `
-        Gravity Jam is a p5.js game project that focuses on guiding falling objects using gravity. It showcases how a 
+        Gravity Jam is a small game where you guide a falling object onto a target by creating gusts of wind with mouse clicks. 
+        Each variation (Feather Fall, Snowflake Sizzle, Laughing Skull) has its own unique theme and physics. It showcases how a 
         single mechanic—objects influenced by gravity—can be given distinct themes and aesthetics while relying on the 
-        same core programming principles. Although the variations differ in concept and style (a feather landing in a nest,
-         a snowflake falling onto a candle’s flame, a skull finding its throne in a psychedelic world).
+        same core programming principles. 
       `,
             iframeUrl: '/games/GravityJam/index.html',
 
@@ -575,11 +620,18 @@ Assets (Fab / Unreal Engine)
 
             languages: ['Javascript (p5.js)'],
             developmentDuration: '5 weeks to complete',
-            objective: 'Start with an existing simple experience to create three distinctive variations on that experience; Using arrays, loops, and data-structures, and menu.'
+            objective: 'Start with an existing simple experience to create three distinctive variations on that experience; Using arrays, loops, and data-structures, and menu.',
+            links: [
+                {
+                    kind: 'code',
+                    label: 'Source code: Gravity Jam (GitHub)',
+                    url: 'https://github.com/xaynia/CART-253/tree/main/topics/Assignments/GravityJam'
+                }
+            ]
 
         },
 
-        // ── Cymatic Water Symphony ────────────────────────────── https://www.youtube.com/embed/cNs-FJQlheU
+        // ── Cymatic Water Symphony ──────────────────────────────
         {
             slug: 'cymatic-water-symphony',
             title: 'Cymatic Water Symphony',
@@ -595,26 +647,45 @@ Assets (Fab / Unreal Engine)
         produce patterns in physical matter. See the attatched PDF for a comprehensive report.
       `,
             iframeUrls: [
-                'https://www.youtube.com/embed/cNs-FJQlheU',
-                'https://www.youtube.com/embed/4KOkAUYdPpw'
+                'https://www.youtube.com/embed/cNs-FJQlheU', // https://www.youtube.com/watch?v=cNs-FJQlheU
+                'https://www.youtube.com/embed/4KOkAUYdPpw' // https://www.youtube.com/watch?v=4KOkAUYdPpw
             ],
 
 
             screenshots: [
+                '/visual-symphony-report.pdf',
                 '/cymatic-nodes.png',
                 '/cymatic-thumbnail.png',
                 '/cymatic-setup.png',
                 '/cymatic-patch-1.png',
                 '/cymatic-patch-2.png',
                 '/cymatic-patch-3.png',
-                // '/visual-symphony-report.pdf',
-                '/public/media/visual-symphony-report-thumb.jpg',
+                // '/public/media/visual-symphony-report-thumb.jpg',
             ],
             teamSize: 1,
             engine: 'Max MSP',
             languages: ['Max Visual Scripting, Max extension: Jitter'],
             developmentDuration: '5 weeks to complete',
             objective: 'Make a 10 to 15-minute presentation where you will summarize and showcase the main features and uses of one Max software extension.',
+
+            links: [
+                {
+                    kind: 'video',
+                    label: 'Project video on YouTube',
+                    url: 'https://www.youtube.com/watch?v=cNs-FJQlheU' // your actual link
+                },
+                {
+                    kind: 'video',
+                    label: 'Project video on YouTube',
+                    url: 'https://www.youtube.com/watch?v=4KOkAUYdPpw' // your actual link
+                },
+                {
+                    kind: 'paper',
+                    label: 'Visual Symphony with Jitter report (PDF)',
+                    url: 'https://acaciawilliams.netlify.app/media/visual-symphony-report.pdf'
+                }
+            ]
+
         },
 
         // ── Capstone ──────────────────────────────
@@ -636,9 +707,14 @@ Assets (Fab / Unreal Engine)
 
             screenshots: [
                 '/capstone.pdf',
-            ]
-
-
+            ],
+            links: [
+                {
+                    kind: 'paper',
+                    label: 'Capstone paper (PDF)',
+                    url: 'https://acaciawilliams.netlify.app/media/capstone.pdf',
+                },
+            ],
         },
 
 
