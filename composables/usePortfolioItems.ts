@@ -311,6 +311,7 @@ This project accelerated my Blender linear keyframing and troubleshooting (Geome
       `,
 
             screenshots: [
+                '/surface-tensions.pdf',
                 '/361/TechnicalModel/technical-front-wb.png',
                 '/361/TechnicalModel/technical-sideleft.png',
                 '/361/TechnicalModel/technical-back.png',
@@ -326,7 +327,13 @@ This project accelerated my Blender linear keyframing and troubleshooting (Geome
             ],
             developmentDuration: '3 week course project',
             objective: 'Create two versions of the same everyday object: one technically accurate and realistically textured, and one conceptually transformed. Together, they demonstrate how 3D realism can be used both to replicate the familiar and to disrupt it to reveal new meaning.',
-
+            links: [
+                {
+                    kind: 'paper',
+                    label: 'Project PDF: Surface Tensions (Concept, Reflection, Resources)',
+                    url: 'https://acaciawilliams.netlify.app/media/surface-tensions.pdf'
+                }
+            ]
         },
 
         // ── Horse Jumper  ───────────────────────────────────────────
@@ -354,6 +361,7 @@ This project accelerated my Blender linear keyframing and troubleshooting (Geome
             // iframeUrl: 'https://www.youtube.com/embed/wvCe5DROdd4',
             videoUrl: '/media/HD2.mp4',
             ratio: '1484 / 872',
+
 
 
 
