@@ -428,11 +428,49 @@ This project accelerated my Blender linear keyframing and troubleshooting (Geome
 
             description: 'A 3D horde-survival magic shooter game. Swap elemental spells to fend off endless ghost waves while defending the magical core!',
             longDescription: `
-        Ghoul Rush is a Unity-made survival shooter where you defend a magical core
-        against hordes. Collect elemental mushrooms to unlock different elemental spells.
-        Press tab to enable/disable mouse. 
+            Ghoul Rush is a defend the core horde survival game built in Unity where the player protects a magical crystal
+             from escalating waves of monsters using spell combat, resources, and crafting. Across weeks 7 to 12 I moved 
+             from a low fidelity implementation prototype to a mid fidelity, playable loop that ties together enemy AI, 
+             health systems, level design, UI, and final build polish.
+
+            The first prototype established the core idea and basic implementation: a defend the castle style scenario 
+            where monsters path toward a crystal while the player fires projectiles to hold them back. 
+            My goals were to validate whether spellcasting plus wave defense felt satisfying and whether the pacing of 
+            waves could sustain engagement. I created placeholder monsters and a crystal, implemented a basic projectile
+            system with collision, set up a wave spawner, and added simple health values for monsters, the orb, and the 
+            player, along with minimal UI for health and score. This was firmly an implementation prototype at low to 
+            mid fidelity, focused on testing the loop rather than visuals.
+
+            In the second stage I generalized the combat systems. I built modular enemy AI for movement and attacks, and 
+            a universal Health component that could be attached to the player, enemies, and the core. A world space health
+             bar UI, driven by health change events, provided immediate feedback without relying on the Console. Keeping 
+             these systems reusable and minimal made it easier to scale toward horde gameplay.
+
+            Subsequent iterations layered in structure and atmosphere. I added a dedicated Game Over scene with TextMeshPro 
+            UI and a Try Again button driven by SceneManager, which required setting up cameras, event systems, and build 
+            settings correctly. I began constructing a level using asset store packs, resolved URP material conversion issues,
+             and replaced blockout objects with evocative assets. Red mushrooms were introduced as collectible resources
+              feeding into a future crafting station that unlocks a flamethrower, framing the collect craft defend loop.
+            
+            Later prototypes focused on completing and stressing the core loop. I expanded the spawner into a wave system 
+            that tracks wave index and enemy count, uses ghost prefabs as horde variants, and allows enemies to damage both 
+            player and core. Fire and ice areas, with themed collectibles, support elemental weapon upgrades and inventory 
+            driven progression. By week 11 the loop of gathering resources, crafting stronger spells, and surviving 
+            progressively harder ghost waves was functional but still rough.
+            
+            The final week shifted to polish and balance. I integrated sound effects through an AudioManager, tuned enemy health, 
+            enemy wave timing, adjusted resource costs so players could reliably reach mid game upgrades, and replaced debug logs 
+            with a HUD message system for wave countdowns, alerts, and pickup notifications. 
+            
+             Over the course of the project, I was able to learn how to prioritize core mechanics and build upon them in later iterations.
+             By journaling my progress every week, I was able to set, manage and prioritize goals and deliverables, and to reflect on my progress and learning. 
+             The main takeaways were learning to debug interactions between interconnected systems (AI, spawner, health, UI, scoring), 
+             convert and standardize assets for URP, handling Unity to WebGL conversion, and stress testing waves until the game 
+             felt replayable, challenging and fair. 
         
-      `,
+           
+`,
+
             iframeUrl: '/games/GhoulRushWeb/index.html',
             screenshots: [
                 '/wave-one.mp4',
@@ -447,15 +485,32 @@ This project accelerated my Blender linear keyframing and troubleshooting (Geome
             collaborators: ['Noémie-San Dauphinais'],
             myRole: 'Designer / Gameplay / Systems Programmer',
             myContributions: [
-                'Implemented core gameplay loop (waves, win/lose conditions)',
-                'Built spell swapping system and elemental unlock progression',
-                'Created UI/HUD feedback for spells, core health, and wave state',
-                'Integrated pickups and tuned pacing through playtesting/iteration',
+                'Co-designed the core loop (core defense, enemy-waves, resource collection, crafting upgrades) and implemented the supporting gameplay systems',
+                'Built modular enemy AI (movement, targeting, and attack behaviors) for enemies that can threaten both the player and the core',
+                'Implemented a reusable combat and health framework (shared Health component, damage pipeline, world space health bars for enemies, player, and core)',
+                'Developed the enemy wave system (enemy spawner, wave escalation rules, inter wave pacing, large horde stress testing and tuning)',
+                'Created progression systems (resource pickups, inventory based crafting, elemental upgrades (i.e., flamethrower and ice), cost and difficulty balancing)',
+                'Built UI and game flow (score and wave state UI, core health UI, message HUD for wave countdowns and alerts, save system)',
+                'Implemented fail state and retry loop (core death triggers Game Over scene, Try Again flow back into gameplay)',
+                'Assembled the level and presentation (environmental assets, layout, collectibles, and UI)',
+                'Integrated characters and assets (enemy and core setup, animations, colliders, material and model swaps, build settings)',
             ],
             engine: 'Unity',
             languages: ['C#'],
             developmentDuration: 'Course project (term)',
             objective: 'Design and implement a playable horde-survival prototype focused on elemental spell swapping, wave pacing, and moment-to-moment combat readability.',
+            // Ghoul Rush is a Unity-made survival shooter where you defend a magical core
+            // against hordes. Collect elemental mushrooms to unlock different elemental spells.
+            // Press tab to enable/disable mouse.
+            controls: [
+                'WASD to move',
+                'Mouse (left click) to aim and shoot',
+                'Eliminate enemy waves to defend the core : if the core HP reaches 0, the game ends.',
+                'Pick up mushrooms during the level to collect crafting resources',
+                'Open the crafting window from the on screen menu (click) and spend resources on upgrades',
+                'Alternate between spells by scrolling the mouse wheel (up/down)'
+            ],
+
 
             links: [
                 {
@@ -467,8 +522,9 @@ This project accelerated my Blender linear keyframing and troubleshooting (Geome
                 ,
                 {
                     kind: 'docs',
-                    label: 'Weekly Process Journal (GitHub)',
+                    label: 'Weekly Process Journal - Iterative Process (GitHub)',
                     url: 'https://github.com/xaynia/CART-315/blob/main/Process/Journal.md#week-7-iterative-prototype-1',
+                    // project media : https://github.com/xaynia/CART-315/tree/main/Process/Images/FinalProject
                 }
             ]
 
@@ -517,7 +573,7 @@ This project accelerated my Blender linear keyframing and troubleshooting (Geome
 
         },
 
-        // ── Chaos vs Symmetry ────────────────────────────────────
+        // ── Chaos vs Symmetry ──────────────────────────────────── https://youtu.be/UyIjaud9AE0?si=9JW7BP-R4-QMiQfG
         {
             slug: 'chaos-vs-symmetry',
             title: 'Chaos vs. Symmetry',
@@ -562,6 +618,13 @@ This project accelerated my Blender linear keyframing and troubleshooting (Geome
             objective:
                 'Create a short 2–3 minute video which explores the intersection and interaction between chaotic and symmetrical imagery.',
             ratio: '16 / 9',
+            links: [
+                {
+                    kind: 'video',
+                    label: ' (Youtube)',
+                    url: 'https://github.com/xaynia/CART-263/tree/main/Projects/Sakura%20Final%20Project'
+                }
+            ],
         },
 
 
@@ -611,11 +674,15 @@ This project accelerated my Blender linear keyframing and troubleshooting (Geome
       `,
             iframeUrl: '/games/GravityJam/index.html',
 
+
+
             screenshots: [
                 '/gravity-jam-feather-fall-b.mp4',
                 '/gravity-jam-snow-b.mp4',
                 '/gravity-jam-laughing-skull-b.mp4'
+
             ],
+
             ratio: '4 / 3',
 
             languages: ['Javascript (p5.js)'],
@@ -627,7 +694,14 @@ This project accelerated my Blender linear keyframing and troubleshooting (Geome
                     label: 'Source code: Gravity Jam (GitHub)',
                     url: 'https://github.com/xaynia/CART-253/tree/main/topics/Assignments/GravityJam'
                 }
+            ],
+            controls: [
+                'Select a variation (Feather Fall, Snowflake Sizzle, Laughing Skull) from the menu: use UP/DOWN + ENTER or click a title.',
+                'In-game: the object falls automatically; click to create a wind gust and guide it into the target zone.',
+                'Navigation: ESC returns to the menu; R restarts the current variation.',
+                'Streak: successful landings increase your streak; it continues until you fail or return to the menu (shown top-right).',
             ]
+
 
         },
 
