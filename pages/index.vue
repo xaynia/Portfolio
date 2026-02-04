@@ -281,7 +281,40 @@ const rightItems = computed(() => nonFeaturedItems.value.filter((_, i) => i % 2 
 
 .featured-carousel {
   position: relative;
+  //max-width: 960px;   /*  800 to 1000 works well */
+  //margin: 0 auto;
 }
+
+
+/* Lock Featured card text size so it does not shrink on wide screens */
+.featured-card .info .title {
+  font-size: 18px;   /* pick what looks good */
+  line-height: 1.3;
+  //max-width: 40rem;   /* about 640px at 16px base font */
+  //margin-left: auto;
+  //margin-right: auto;
+  //text-align: center; /* keep your current look */
+}
+
+.featured-card .info .desc {
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.featured-card .info .title {
+  font-size: 18px !important;
+}
+
+.featured-card .info .desc {
+  font-size: 14px !important;
+}
+
+
+
+///* description : a bit smaller only in Featured */
+//.featured-card .desc {
+//  font-size: 16.00rem;
+//}
 
 /* view window */
 .featured-viewport {
