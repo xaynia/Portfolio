@@ -5,45 +5,127 @@
     <section v-if="featuredItems.length" class="featured-section">
       <h2 class="section-title">Featured</h2>
 
-      <div class="featured-grid">
-        <NuxtLink
-            v-for="item in featuredItems"
-            :key="item.slug"
-            :to="`/work/${item.slug}`"
-            class="masonry-item featured-card"
-            :aria-label="`Open project: ${item.title}`"
+      <div class="featured-carousel">
+        <button
+            v-if="featuredItems.length > 1"
+            class="featured-nav prev"
+            type="button"
+            aria-label="Previous featured project"
+            @click.stop="prevFeatured"
         >
-          <video
-              v-if="isVideo(item.image)"
-              :src="`/media${item.image}`"
-              autoplay
-              muted
-              loop
-              playsinline
-              preload="metadata"
-              aria-hidden="true"
-          />
-          <img
-              v-else
-              :src="`/media${item.image}`"
-              :alt="item.title"
-              loading="lazy"
-              decoding="async"
-          />
+          ‹
+        </button>
 
-          <div class="info">
-            <h3 class="title">{{ item.title }}</h3>
+        <div class="featured-viewport">
+          <div
+              class="featured-track"
+              :style="{ transform: `translateX(-${featuredIndex * 100}%)` }"
+          >
+            <NuxtLink
+                v-for="item in featuredItems"
+                :key="item.slug"
+                :to="`/work/${item.slug}`"
+                class="masonry-item featured-card featured-slide"
+                :aria-label="`Open project: ${item.title}`"
+            >
+              <video
+                  v-if="isVideo(item.image)"
+                  :src="`/media${item.image}`"
+                  autoplay
+                  muted
+                  loop
+                  playsinline
+                  preload="metadata"
+                  aria-hidden="true"
+              />
+              <img
+                  v-else
+                  :src="`/media${item.image}`"
+                  :alt="item.title"
+                  loading="lazy"
+                  decoding="async"
+              />
 
-            <div v-if="item.course || item.completed" class="meta-row center">
-              <span v-if="item.course" class="meta-pill">{{ item.course }}</span>
-              <span v-if="item.completed" class="meta-pill">{{ item.completed }}</span>
-            </div>
+              <div class="info">
+                <h3 class="title">{{ item.title }}</h3>
 
-            <p class="desc">{{ item.description }}</p>
+                <div v-if="item.course || item.completed" class="meta-row center">
+                  <span v-if="item.course" class="meta-pill">{{ item.course }}</span>
+                  <span v-if="item.completed" class="meta-pill">{{ item.completed }}</span>
+                </div>
+
+                <p class="desc">{{ item.description }}</p>
+              </div>
+            </NuxtLink>
           </div>
-        </NuxtLink>
+        </div>
+
+        <button
+            v-if="featuredItems.length > 1"
+            class="featured-nav next"
+            type="button"
+            aria-label="Next featured project"
+            @click.stop="nextFeatured"
+        >
+          ›
+        </button>
+
+        <div v-if="featuredItems.length > 1" class="featured-dots">
+          <button
+              v-for="(item, idx) in featuredItems"
+              :key="item.slug + '-dot'"
+              type="button"
+              class="featured-dot"
+              :class="{ active: idx === featuredIndex }"
+              :aria-label="`Go to featured project ${idx + 1}`"
+              @click="featuredIndex = idx"
+          />
+        </div>
       </div>
     </section>
+
+    <!--    <section v-if="featuredItems.length" class="featured-section">-->
+<!--      <h2 class="section-title">Featured</h2>-->
+
+<!--      <div class="featured-grid">-->
+<!--        <NuxtLink-->
+<!--            v-for="item in featuredItems"-->
+<!--            :key="item.slug"-->
+<!--            :to="`/work/${item.slug}`"-->
+<!--            class="masonry-item featured-card"-->
+<!--            :aria-label="`Open project: ${item.title}`"-->
+<!--        >-->
+<!--          <video-->
+<!--              v-if="isVideo(item.image)"-->
+<!--              :src="`/media${item.image}`"-->
+<!--              autoplay-->
+<!--              muted-->
+<!--              loop-->
+<!--              playsinline-->
+<!--              preload="metadata"-->
+<!--              aria-hidden="true"-->
+<!--          />-->
+<!--          <img-->
+<!--              v-else-->
+<!--              :src="`/media${item.image}`"-->
+<!--              :alt="item.title"-->
+<!--              loading="lazy"-->
+<!--              decoding="async"-->
+<!--          />-->
+
+<!--          <div class="info">-->
+<!--            <h3 class="title">{{ item.title }}</h3>-->
+
+<!--            <div v-if="item.course || item.completed" class="meta-row center">-->
+<!--              <span v-if="item.course" class="meta-pill">{{ item.course }}</span>-->
+<!--              <span v-if="item.completed" class="meta-pill">{{ item.completed }}</span>-->
+<!--            </div>-->
+
+<!--            <p class="desc">{{ item.description }}</p>-->
+<!--          </div>-->
+<!--        </NuxtLink>-->
+<!--      </div>-->
+<!--    </section>-->
 
     <!-- ✅ ALL WORK -->
     <section class="allwork-section">
@@ -136,8 +218,9 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import { usePortfolioItems } from '~/composables/usePortfolioItems'
+
 
 function isVideo(file: string) {
   return /\.(mp4|webm)$/i.test(file)
@@ -151,6 +234,21 @@ const featuredItems = computed(() =>
         .filter(i => i.featured)
         .sort((a, b) => (a.featuredOrder ?? 999) - (b.featuredOrder ?? 999))
 )
+
+const featuredIndex = ref(0)
+const featuredCount = computed(() => featuredItems.value.length)
+
+function nextFeatured() {
+  if (featuredCount.value < 2) return
+  featuredIndex.value = (featuredIndex.value + 1) % featuredCount.value
+}
+
+function prevFeatured() {
+  if (featuredCount.value < 2) return
+  featuredIndex.value =
+      (featuredIndex.value + featuredCount.value - 1) % featuredCount.value
+}
+
 
 // featured WILL appear in all work:
 const nonFeaturedItems = computed(() => items)
@@ -177,18 +275,78 @@ const rightItems = computed(() => nonFeaturedItems.value.filter((_, i) => i % 2 
   margin-bottom: 2.5rem;
 }
 
-.featured-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1rem;
-
-  @media (max-width: 900px) {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-  @media (max-width: 600px) {
-    grid-template-columns: 1fr;
-  }
+.featured-section {
+  margin-bottom: 2.5rem;
 }
+
+.featured-carousel {
+  position: relative;
+}
+
+/* view window */
+.featured-viewport {
+  overflow: hidden;
+}
+
+/* horizontal track */
+.featured-track {
+  display: flex;
+  width: 100%;
+  transition: transform 0.4s ease;
+}
+
+/* single full width slide */
+.featured-slide {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+/* nav arrows */
+.featured-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 999px;
+  border: 1px solid var(--pill-border);
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  z-index: 2;
+}
+
+.featured-nav.prev {
+  left: 0.5rem;
+}
+
+.featured-nav.next {
+  right: 0.5rem;
+}
+
+/* dots */
+.featured-dots {
+  margin-top: 0.75rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.featured-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 999px;
+  border: 1px solid var(--pill-border);
+  background: transparent;
+  cursor: pointer;
+}
+
+.featured-dot.active {
+  background: var(--link);
+}
+
 
 /* Reuse your masonry card styling, but make featured subtly stand out */
 .featured-card {

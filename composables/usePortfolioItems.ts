@@ -303,13 +303,47 @@ This project accelerated my Blender linear keyframing and troubleshooting (Geome
             featuredOrder: 4,
 
             description: 'Create two models (a technical, and conceptual model) using Blender. The technical model was of a everyday object (my water bottle). The conceptual model was a modified version of the water bottle, with modifiers to create a new understanding of the object.',
-            longDescription: ` For my technical model, I transformed my everyday water bottle into a conceptual model: an hourglass whose "sand"
-         is shrinking, self-replicating mini bottles. This juxtaposes the eco-friendly aura of reusable merch:
-          even when the object is pink, cute, and marketed as responsible, it still participates in consumerism 
-          and greenwashing. Even when framed as "eco-friendly," branded plastics persist, break down, and multiply,
-           mirroring how plastics become microplastics over time. 
+            longDescription: `
+           To create my conceputal model, I transformed my everyday branded style water bottle
+        into a time based warning. The bottle becomes an hourglass whose sand is made of
+        shrinking, self replicating mini bottles. A pastel, desirable object that is normally marketed
+        as responsible merch is turned into a device that literally counts down while generating its
+        own plastic afterlife. Even when framed as eco friendly, branded plastics persist, fragment,
+        and multiply, mirroring how plastics become microplastics that we eventually ingest again.
+        The idea also nods to a Futurama episode where Bender’s copies keep duplicating at half
+        scale until they become nano sized and take over. That joke becomes a metaphor for the
+        endless afterlife of plastic.
+        
+           The project grew out of my original proposal: a sleek, material driven branded
+        waterbottle bottle slowly overtaken by bark, moss, and sprouts, as if a forest were reclaiming
+        the object. That version framed recycling as a poetic cycle in which what humans create,
+        nature eventually takes back. While visually rich, it risked reading as brand friendly eco
+        aesthetics, where the object still looks aspirational. Shifting to the bottle as hourglass let the
+        critique operate more sharply and at a glance. Instead of nature erasing the object, the object
+        erodes into its own branded residue. Recycling becomes fragmentation and multiplication
+        rather than resolution.
+        
+           Conceptually I explored two parallel metaphors. The first was multiplication, where
+        the bottle reproduces into tinier versions of itself, echoing how “sustainable” product lines
+        and brand variants can actually proliferate material volume. The second was erosion, where
+        what is lost over time is not neutral sand but the product itself, breaking down into micro
+        and nano scale fragments. The final model fuses these readings in a single image that ties
+        consumer virtue and consumer volume together.
       `,
-
+            iframeUrls: [
+                '/361/TechnicalModel/technical-front-wb.png',
+                '/361/TechnicalModel/technical-sideleft.png',
+                '/361/TechnicalModel/technical-back.png',
+                '/361/TechnicalModel/technical-lid.png',
+                '/361/TechnicalModel/technical-lid5png.png',
+                '/361/ConceptualModel/Hourglass-front-white.png',
+                '/361/ConceptualModel/Hourglass-side-grey.png',
+                '/361/ConceptualModel/Hourglass-l.png',
+                '/361/ConceptualModel/Hourglass-topdown.png',
+                '/361/ConceptualModel/Hourglass-bottomup.png',
+                '/361/ConceptualModel/Hourglass-bottomup2.png',
+                '/361/ConceptualModel/Hourglass-side-grey2.png',
+            ],
             screenshots: [
                 '/surface-tensions.pdf',
                 '/361/TechnicalModel/technical-front-wb.png',

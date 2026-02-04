@@ -14,11 +14,24 @@
     </NuxtLink>
 
     <!-- █ 1. Hero Embed - Playable iframe (game / YouTube) -->
-    <div v-if="heroIframes.length"
-         class="media-wrapper embed-wrapper"
-         :style="{ aspectRatio: item?.ratio || '16 / 9' }">
+    <!-- 1. Hero carousel - supports images and iframes -->
+    <div
+        v-if="heroIframes.length"
+        class="media-wrapper embed-wrapper"
+        :style="{ aspectRatio: item?.ratio || '16 / 9' }"
+    >
+      <!-- Image slide -->
+      <img
+          v-if="heroIsImage(heroIframes[heroIndex])"
+          :src="heroSrc(heroIframes[heroIndex])"
+          :alt="`${item.title} image ${heroIndex + 1}`"
+          loading="lazy"
+          decoding="async"
+      />
 
+      <!-- Iframe slide (YouTube, games, external pages) -->
       <iframe
+          v-else
           :src="heroIframes[heroIndex]"
           :title="`${item.title} video ${heroIndex + 1}`"
           loading="lazy"
@@ -27,12 +40,11 @@
           allowfullscreen
       />
 
-
       <button
           v-if="heroIframes.length > 1"
           class="embed-nav prev"
           type="button"
-          aria-label="Previous video"
+          aria-label="Previous hero media"
           @click.stop="prevHero"
       >
         ‹
@@ -42,9 +54,11 @@
           v-if="heroIframes.length > 1"
           class="embed-nav next"
           type="button"
-          aria-label="Next video"
+          aria-label="Next hero media"
           @click.stop="nextHero"
-      >›</button>
+      >
+        ›
+      </button>
 
       <div v-if="heroIframes.length > 1" class="embed-dots">
         <button
@@ -52,11 +66,55 @@
             :key="src2"
             type="button"
             :class="['dot', { active: i === heroIndex }]"
-            :aria-label="`Go to video ${i + 1}`"
+            :aria-label="`Go to hero media ${i + 1}`"
             @click.stop="heroIndex = i"
         />
       </div>
     </div>
+
+    <!--    <div v-if="heroIframes.length"-->
+<!--         class="media-wrapper embed-wrapper"-->
+<!--         :style="{ aspectRatio: item?.ratio || '16 / 9' }">-->
+
+<!--      <iframe-->
+<!--          :src="heroIframes[heroIndex]"-->
+<!--          :title="`${item.title} video ${heroIndex + 1}`"-->
+<!--          loading="lazy"-->
+<!--          referrerpolicy="strict-origin-when-cross-origin"-->
+<!--          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"-->
+<!--          allowfullscreen-->
+<!--      />-->
+
+
+<!--      <button-->
+<!--          v-if="heroIframes.length > 1"-->
+<!--          class="embed-nav prev"-->
+<!--          type="button"-->
+<!--          aria-label="Previous video"-->
+<!--          @click.stop="prevHero"-->
+<!--      >-->
+<!--        ‹-->
+<!--      </button>-->
+
+<!--      <button-->
+<!--          v-if="heroIframes.length > 1"-->
+<!--          class="embed-nav next"-->
+<!--          type="button"-->
+<!--          aria-label="Next video"-->
+<!--          @click.stop="nextHero"-->
+<!--      >›</button>-->
+
+<!--      <div v-if="heroIframes.length > 1" class="embed-dots">-->
+<!--        <button-->
+<!--            v-for="(src2, i) in heroIframes"-->
+<!--            :key="src2"-->
+<!--            type="button"-->
+<!--            :class="['dot', { active: i === heroIndex }]"-->
+<!--            :aria-label="`Go to video ${i + 1}`"-->
+<!--            @click.stop="heroIndex = i"-->
+<!--        />-->
+<!--      </div>-->
+<!--    </div>-->
 <!--    <div v-if="item.iframeUrl"-->
 <!--         class="media-wrapper"-->
 <!--         :style="{ aspectRatio: item.ratio || '16 / 9' }">-->
@@ -136,6 +194,16 @@
         </template>
       </dl>
     </div>
+
+    <!-- How to play / Controls -->
+    <div v-if="item.controls && item.controls.length" class="controls-block">
+      <h3>How to play</h3>
+      <ul class="controls-list">
+        <li v-for="(c, i) in item.controls" :key="i">{{ c }}</li>
+      </ul>
+    </div>
+
+
 
     <div class="description-block">
       <h3>Description</h3>
@@ -319,6 +387,19 @@ const heroIframes = computed(() => {
   if (it.iframeUrl) return [it.iframeUrl]
   return []
 })
+// hero media helpers
+const heroIsImage = (src: string) =>
+    /\.(png|jpe?g|gif|webp|svg)$/i.test(src)
+
+function heroSrc(src: string): string {
+  if (!src) return ''
+  // external
+  if (/^https?:\/\//i.test(src)) return src
+  // already under /media
+  if (src.startsWith('/media/')) return src
+  // follow your other media convention
+  return src.startsWith('/') ? `/media${src}` : `/media/${src}`
+}
 
 const currentIndex = computed(() =>
     items.findIndex(i => i.slug === String(route.params.slug))
@@ -649,6 +730,8 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
     }
   }
 
+
+
   // links styling
   .links-block {
     margin-top: 1.5rem;
@@ -691,6 +774,28 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
     text-transform: uppercase;
     letter-spacing: 0.06em;
     color: var(--muted);
+  }
+
+  // controls
+  .controls-block {
+    margin-top: 1.5rem;
+    padding: 1rem 1.25rem;
+    background: var(--card);
+    border-radius: 6px;
+
+    h3 {
+      margin: 0 0 0.75rem;
+    }
+  }
+
+  .controls-list {
+    margin: 0;
+    padding-left: 1.25rem;
+  }
+
+  .controls-list li {
+    margin: 0.35rem 0;
+    font-weight: 500;
   }
 
 
@@ -744,6 +849,7 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
     opacity: 0.8;
     font-weight: 600;
   }
+
 
   h2 {
     margin-bottom: 0.25rem;
@@ -832,6 +938,13 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
       border: 0;
       object-fit: cover;
     }
+
+    img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain; //  or cover for cropping
+    }
   }
 
   .media-wrapper.image-wrapper {
@@ -843,6 +956,57 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
     width: 100%;
     height: auto;
     object-fit: contain; /* optional; use cover if you want cropping */
+  }
+
+  /* iframe carousels */
+  .embed-wrapper {
+    position: relative;
+  }
+
+  .embed-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3rem;
+    height: 3rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: rgba(0, 0, 0, 0.35);
+    color: #fff;
+    font: 2rem/1 monospace;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+  }
+
+  .embed-nav.prev {
+    left: 0.75rem;
+  }
+
+  .embed-nav.next {
+    right: 0.75rem;
+  }
+
+  .embed-dots {
+    position: absolute;
+    left: 50%;
+    bottom: 0.75rem;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .dot {
+    width: 0.6rem;
+    height: 0.6rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    background: rgba(0, 0, 0, 0.35);
+    cursor: pointer;
+  }
+
+  .dot.active {
+    background: rgba(255, 255, 255, 0.75);
   }
 
   /* screenshots / thumbnails */
@@ -946,57 +1110,6 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
 
 
 
-
-    /* iframe carousels */
-    .embed-wrapper {
-      position: relative;
-    }
-
-    .embed-nav {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 3rem;
-      height: 3rem;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      background: rgba(0, 0, 0, 0.35);
-      color: #fff;
-      font: 2rem/1 monospace;
-      display: grid;
-      place-items: center;
-      cursor: pointer;
-    }
-
-    .embed-nav.prev {
-      left: 0.75rem;
-    }
-
-    .embed-nav.next {
-      right: 0.75rem;
-    }
-
-    .embed-dots {
-      position: absolute;
-      left: 50%;
-      bottom: 0.75rem;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 0.5rem;
-    }
-
-    .dot {
-      width: 0.6rem;
-      height: 0.6rem;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.35);
-      background: rgba(0, 0, 0, 0.35);
-      cursor: pointer;
-    }
-
-    .dot.active {
-      background: rgba(255, 255, 255, 0.75);
-    }
 
 
     /* Tighten Markdown defaults */
