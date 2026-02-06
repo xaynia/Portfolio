@@ -1009,6 +1009,78 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
     background: rgba(255, 255, 255, 0.75);
   }
 
+  /* Lightbox overlay (MUST NOT be nested under .screenshots) */
+  .overlay {
+    position: fixed;
+    inset: 0;
+    padding: 1.25rem;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+  }
+
+  .overlay .full {
+    max-width: 90vw;
+    max-height: 90vh;
+    border-radius: 6px;
+  }
+
+  /* Ensure images/videos behave like “fit in viewport” */
+  .overlay .image-full,
+  .overlay .video-full {
+    width: auto;
+    height: auto;
+    object-fit: contain;
+  }
+
+  /* Controls */
+  .overlay .close,
+  .overlay .nav-button {
+    font: 2.5rem/1 monospace;
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  .overlay .close {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.9rem;
+  }
+
+  .overlay .nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .overlay .nav-button:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  .overlay .nav-button.prev { left: 1rem; }
+  .overlay .nav-button.next { right: 1rem; }
+
+  /* Fade transition (you already use <transition name="fade">) */
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity 0.18s ease;
+  }
+  .fade-enter-from,
+  .fade-leave-to {
+    opacity: 0;
+  }
+
   /* screenshots / thumbnails */
   .screenshots {
     margin-top: 2rem;
@@ -1057,56 +1129,7 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
       }
     }
 
-    /* overlay */
-    .overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.85);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 900;
-    }
 
-    .full {
-      max-width: 90vw;
-      max-height: 90vh;
-      border-radius: 6px;
-    }
-
-    .close,
-    .nav-button {
-      font: 2.5rem/1 monospace;
-      background: none;
-      border: none;
-      color: #fff;
-      cursor: pointer;
-    }
-
-    .nav-button {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 3rem;
-      height: 3rem;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(255, 255, 255, 0.2);
-
-      &:hover {
-        background: rgba(255, 255, 255, 0.3);
-      }
-    }
-
-    .prev {
-      left: 2rem;
-    }
-
-    .next {
-      right: 2rem;
-    }
 
 
 

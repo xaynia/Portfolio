@@ -261,6 +261,7 @@ const rightItems = computed(() => nonFeaturedItems.value.filter((_, i) => i % 2 
 <style lang="scss">
 .home-container {
   padding: 2rem;
+
 }
 
 /* Section titles */
@@ -281,19 +282,28 @@ const rightItems = computed(() => nonFeaturedItems.value.filter((_, i) => i % 2 
 
 .featured-carousel {
   position: relative;
-  //max-width: 960px;   /*  800 to 1000 works well */
-  //margin: 0 auto;
+  max-width: 1360px;   /*  800 to 1000 works well */
+  margin: 0 auto;
 }
 
+/* Featured: lock media area so every slide has the same height */
+.featured-slide video,
+.featured-slide img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
 
 /* Lock Featured card text size so it does not shrink on wide screens */
 .featured-card .info .title {
-  font-size: 18px;   /* pick what looks good */
+  font-size: 18px;
   line-height: 1.3;
-  //max-width: 40rem;   /* about 640px at 16px base font */
-  //margin-left: auto;
-  //margin-right: auto;
-  //text-align: center; /* keep your current look */
+  max-width: 40rem;   /* about 640px at 16px base font */
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
 .featured-card .info .desc {
@@ -339,16 +349,25 @@ const rightItems = computed(() => nonFeaturedItems.value.filter((_, i) => i % 2 
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 3rem;
+  height: 3rem;
   border-radius: 999px;
-  border: 1px solid var(--pill-border);
-  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(0, 0, 0, 0.35);
   color: #fff;
-  cursor: pointer;
+  font: 2rem/1 monospace;
   display: grid;
   place-items: center;
+  cursor: pointer;
   z-index: 2;
+}
+
+.featured-nav.prev { left: 0.75rem; }
+.featured-nav.next { right: 0.75rem; }
+
+.featured-nav:hover {
+  background: rgba(0, 0, 0, 0.5);
+  border-color: rgba(255, 255, 255, 0.35);
 }
 
 .featured-nav.prev {
