@@ -34,7 +34,6 @@ exports.handler = async (event, context) => {
 
         const geo = countryCode ? { country: { code: countryCode } } : null;
 
-
         const ipHash = ip ? crypto.createHash("sha256").update(ip).digest("hex") : null;
 
         const entry = {
@@ -50,7 +49,6 @@ exports.handler = async (event, context) => {
                 origin: headers["origin"] || headers["Origin"] || null,
             },
             client,
-            // add inside entry
             geoHeaders: {
                 xNfGeoCountry: headers["x-nf-geo-country"] || headers["X-Nf-Geo-Country"] || null,
                 xNfGeoCity: headers["x-nf-geo-city"] || headers["X-Nf-Geo-City"] || null,
@@ -58,8 +56,6 @@ exports.handler = async (event, context) => {
                 xNfGeoTimezone: headers["x-nf-geo-timezone"] || headers["X-Nf-Geo-Timezone"] || null,
             },
             countryCode: countryCode,
-
-
         };
 
         if (!process.env.NETLIFY_SITE_ID || !process.env.NETLIFY_AUTH_TOKEN) {
@@ -72,9 +68,16 @@ exports.handler = async (event, context) => {
             token: process.env.NETLIFY_AUTH_TOKEN,
         });
 
-        const key = `ip/${ipHash || "unknown"}/${day}/${Date.now()}_${crypto.randomUUID()}.json`;
+        const ts = Date.now();
+        const id = crypto.randomUUID();
 
-        await store.setJSON(key, entry);
+        // Original per-IP key:
+        const mainKey = `ip/${ipHash || "unknown"}/${day}/${ts}_${id}.json`;
+        await store.setJSON(mainKey, entry);
+
+        // Time-index key:
+        const indexKey = `ts/${day}/${ts}_${ipHash || "unknown"}_${id}.json`;
+        await store.setJSON(indexKey, { ref: mainKey, at: iso, ipHash });
 
         return { statusCode: 204, body: "" };
     } catch (err) {
