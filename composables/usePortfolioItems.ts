@@ -460,7 +460,7 @@ This project accelerated my Blender linear keyframing and troubleshooting (Geome
         {
             slug: 'ghoul-rush',
             title: 'Ghoul Rush',
-            image: '/ghoulrush2.mp4',
+            image: '/GhoulRushCover.png',
             course: 'CART 315 - Digital Game Prototyping',
             completed: 'Winter 2025',
 
@@ -515,6 +515,7 @@ This project accelerated my Blender linear keyframing and troubleshooting (Geome
 
             iframeUrl: '/games/GhoulRushWeb/index.html',
             screenshots: [
+                '/ghoulrush2.mp4', // old cover img
                 '/wave-one.mp4',
                 '/wave-three-switch-spell.mp4',
                 '/wave-six.mp4',
@@ -540,10 +541,8 @@ This project accelerated my Blender linear keyframing and troubleshooting (Geome
             engine: 'Unity',
             languages: ['C#'],
             developmentDuration: 'Course project (term)',
-            objective: 'Design and implement a playable horde-survival prototype focused on elemental spell swapping, wave pacing, and moment-to-moment combat readability.',
-            // Ghoul Rush is a Unity-made survival shooter where you defend a magical core
-            // against hordes. Collect elemental mushrooms to unlock different elemental spells.
-            // Press tab to enable/disable mouse.
+            objective: 'Choose one prototype idea and iteratively develop it into a final game through weekly cycles of ideation, prototyping, testing, and refinement.',
+
             controls: [
                 'WASD to move',
                 'Mouse (left click) to aim and shoot',

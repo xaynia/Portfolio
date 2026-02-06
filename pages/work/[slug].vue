@@ -1035,6 +1035,12 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
     object-fit: contain;
   }
 
+  /* Ensure videos/images scale without stretching */
+  .overlay video.full,
+  .overlay img.full {
+    object-fit: contain;
+  }
+
   /* Controls */
   .overlay .close,
   .overlay .nav-button {
