@@ -51,14 +51,14 @@
 
       <!-- Education -->
       <h2>Education</h2>
-      <p><strong>Bachelor of Arts in Psychology</strong> (Expected Graduation: May/2026)<br/>
-        Minor in Computational Arts<br/>
-        Concordia University, Montreal, Quebec</p>
+      <p><strong>B.A. Psychology, Minor in Computational Arts</strong> (Expected May 2026)<br/>
+        Concordia University, Montreal, Quebec
+      </p>
 
       <ul>
         <!-- Psychology (matches Comp Arts format: intro line + nested list) -->
         <li>
-          <strong>Psychology:</strong> Courses specifically useful/relevant to game design.
+          <strong>Psychology:</strong> Selected Courses (Relevant/Useful)
           <ul>
             <li>
               <strong>Selected coursework:</strong>
@@ -442,8 +442,20 @@
   .cv-page {
     max-width: 900px;
     margin: 0 auto;
-    padding: 2rem 1rem;
+    padding: 2.5rem 1.75rem 3rem;
+    background: var(--card);
+    border-radius: 10px;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
     line-height: 1.6;
+    font-size: 0.98rem;
+  }
+
+  /*  tighter on mobile */
+  @media (max-width: 700px) {
+    .cv-page {
+      margin: 1rem auto 2rem;
+      padding: 1.75rem 1.25rem 2.5rem;
+    }
   }
 
   /* Header contact layout (wraps cleanly, no indentation) */
@@ -475,14 +487,16 @@
   .cv-page ul.contact li:not(:last-child)::after {
     content: "•";
     opacity: 0.7;
-    margin: 0 0.6rem;
+    margin: 0 0.8rem;
   }
+
 
   .cv-page ul.contact .meta {
     opacity: 0.85;
     font-size: 0.95em;
     margin-left: 0.35rem;
   }
+
 
   .cv-page ul.contact a {
     text-decoration: none;

@@ -6,12 +6,12 @@
         <div class="photo-container">
           <video
               class="photo-media"
-              autoplay
               muted
               loop
               playsinline
-              preload="metadata"
+              preload="none"
               controls
+              poster="/media/acacia.png"
           >
             <source src="/media/Bravissima2.mp4" type="video/mp4" />
             Your browser does not support the video tag.
