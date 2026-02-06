@@ -468,7 +468,7 @@ This project accelerated my Blender linear keyframing and troubleshooting (Geome
             featuredOrder: 5,
 
 
-            description: 'A 3D horde-survival magic shooter game. Swap elemental spells to fend off endless ghost waves while defending the magical core!',
+            description: 'A 3D horde-survival magic shooter game made in Unity. Swap elemental spells to fend off endless ghost waves while defending the magical core!',
             longDescription: `
             Ghoul Rush is a defend the core horde survival game built in Unity where the player protects a magical crystal
              from escalating waves of monsters using spell combat, resources, and crafting. Across weeks 7 to 12 I moved 
@@ -822,6 +822,7 @@ This project accelerated my Blender linear keyframing and troubleshooting (Geome
 
             screenshots: [
                 '/capstone.pdf',
+                '/infographic.png',
             ],
             links: [
                 {
