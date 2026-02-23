@@ -57,31 +57,6 @@
 
       <ul>
         <!-- Psychology (matches Comp Arts format: intro line + nested list) -->
-        <li>
-          <strong>Psychology:</strong> Selected Courses (Relevant/Useful)
-          <ul>
-            <li>
-              <strong>Selected coursework:</strong>
-              PSYC 310 (Research Methods), PSYC 315 (Statistics), PSYC 351 (Learning),
-              PSYC 363 (Sensation &amp; Perception), PSYC 364 (Cognition), PSYC 447 (Psychophysiology)
-            </li>
-          </ul>
-
-          <details class="edu-details">
-            <summary class="edu-summary"><strong>Psychology course descriptions</strong></summary>
-            <ul class="edu-detail-list">
-              <li><strong>PSYC 310 – Research Methods &amp; Designs</strong>: Experimental design, ethics, APA style, proposal writing.</li>
-              <li><strong>PSYC 315 – Statistical Analysis</strong>: Descriptive/inferential stats, hypothesis testing.</li>
-              <li><strong>PSYC 321 – Fundamentals of Personality</strong>: Personality theories and application to behavior/character.</li>
-              <li><strong>PSYC 340 – Fundamentals of Psychopathology</strong>: Disorders, mechanisms; useful for mental health–oriented work.</li>
-              <li><strong>PSYC 351 – Fundamentals of Learning</strong>: Conditioning, reinforcement, adaptation in interactive systems.</li>
-              <li><strong>PSYC 355 – Fundamentals of Behavioral Neurobiology</strong>: Neural bases of behavior.</li>
-              <li><strong>PSYC 363 – Fundamentals of Sensation &amp; Perception</strong>: Sensory processing for audio/visual design.</li>
-              <li><strong>PSYC 364 – Fundamentals of Cognition</strong>: Memory, attention, mental models.</li>
-              <li><strong>PSYC 447 – Psychophysiology</strong>: ECG/GSR/EEG; capstone on physiological responses to games.</li>
-            </ul>
-          </details>
-        </li>
 
 
 
@@ -138,39 +113,16 @@
           and multimedia design.</li>
         <ul>
           <li>
-            <strong>CART 210 – New Media Theory</strong>:
-            Examined theoretical frameworks of digital and interactive media,
-            exploring how technology shapes cultural expression.
+            <strong>CART 498 – Special Topics in Computation Arts: Real Time 3D Enviroments</strong>:
+            Advanced studio in real-time 3D digital animation and environments using Unreal Engine 5.4 and Blender 4.5, covering Blender↔Unreal workflows, character/avatar integration, Blueprint interactivity, and real-time lighting/rendering.
           </li>
           <li>
-            <strong>CART 211 – Creative Computation/Network Culture</strong>:
-            Investigated creative coding in website design and networked environments.
+            <strong>CART 415 – Game Studio I</strong>:
+            Experimental game design and rapid prototyping. Built <em>Horse Jumper Simulator</em> in Unreal Engine 5.6 using Blueprints, focusing on moment‑to‑moment feel, timing, and readable goals.
           </li>
           <li>
-            <strong>CART 212 – Digital Media Studio I</strong>:
-            Adobe Premiere, After Effects. Produced
-            <em>Chaos vs. Symmetry</em>, an experimental short music video/film blending AI
-            elements with real-world footage.
-          </li>
-          <li>
-            <strong>CART 215 – Introduction to Game Design</strong>:
-            Explored fundamental mechanics, studied industry texts, and created
-            board/card games as prototypes for digital expansions.
-          </li>
-          <li>
-            <strong>CART 253 – Creative Computation I</strong>:
-            JavaScript fundamentals (variables, conditionals, events, functions, arrays, loops), p5.js. Developed
-            <em>Gravity Jam</em>, a gravity-driven interactive experience.
-          </li>
-          <li>
-            <strong>CART 263 – Creative Computation II</strong>:
-            Translating ideas into programs (JS, HTML, objects, media APIs and canvas, JSON & strings, arrays, SVGs)
-            <em>Chromatic Chameleon</em>, a color-shifting platformer.
-          </li>
-          <li>
-            <strong>CART 315 – Digital Game Prototyping</strong>:
-            Unity and C# scripting. Developed
-            <em>Ghoul Rush</em>, a 3D horde-survival magic shooter.
+            <strong>CART 361 – 3D Digital Production I</strong>:
+            3D production foundations in Blender (modelling, materials, lighting, rendering). Created a technical model and a conceptual transformation exploring meaning through form.
           </li>
           <li>
             <strong>CART 346 – Digital Sound I</strong>:
@@ -179,18 +131,39 @@
             sound sources.
           </li>
           <li>
-            <strong>CART 361 – 3D Digital Production I</strong>:
-            3D production foundations in Blender (modelling, materials, lighting, rendering). Created a technical model and a conceptual transformation exploring meaning through form.
+            <strong>CART 315 – Digital Game Prototyping</strong>:
+            Unity and C# scripting. Developed
+            <em>Ghoul Rush</em>, a 3D horde-survival magic shooter.
           </li>
-
           <li>
-            <strong>CART 415 – Game Studio I</strong>:
-            Experimental game design and rapid prototyping. Built <em>Horse Jumper Simulator</em> in Unreal Engine 5.6 using Blueprints, focusing on moment‑to‑moment feel, timing, and readable goals.
+            <strong>CART 263 – Creative Computation II</strong>:
+            Translating ideas into programs (JS, HTML, objects, media APIs and canvas, JSON & strings, arrays, SVGs)
+            <em>Chromatic Chameleon</em>, a color-shifting platformer.
           </li>
-
           <li>
-            <strong>CART 498 – Special Topics in Computation Arts: Real Time 3D Enviroments</strong>:
-            Advanced studio in real-time 3D digital animation and environments using Unreal Engine 5.4 and Blender 4.5, covering Blender↔Unreal workflows, character/avatar integration, Blueprint interactivity, and real-time lighting/rendering.
+            <strong>CART 253 – Creative Computation I</strong>:
+            JavaScript fundamentals (variables, conditionals, events, functions, arrays, loops), p5.js. Developed
+            <em>Gravity Jam</em>, a gravity-driven interactive experience.
+          </li>
+          <li>
+            <strong>CART 215 – Introduction to Game Design</strong>:
+            Explored fundamental mechanics, studied industry texts, and created
+            board/card games as prototypes for digital expansions.
+          </li>
+          <li>
+            <strong>CART 212 – Digital Media Studio I</strong>:
+            Adobe Premiere, After Effects. Produced
+            <em>Chaos vs. Symmetry</em>, an experimental short music video/film blending AI
+            elements with real-world footage.
+          </li>
+          <li>
+            <strong>CART 211 – Creative Computation/Network Culture</strong>:
+            Investigated creative coding in website design and networked environments.
+          </li>
+          <li>
+            <strong>CART 210 – New Media Theory</strong>:
+            Examined theoretical frameworks of digital and interactive media,
+            exploring how technology shapes cultural expression.
           </li>
           <li>
             <strong>In Progress (Winter 2026)</strong>
@@ -210,6 +183,32 @@
 
         </ul>
 
+
+        <li>
+          <strong>Psychology:</strong> Selected Courses (Relevant/Useful)
+          <ul>
+            <li>
+              <strong>Selected coursework:</strong>
+              PSYC 310 (Research Methods), PSYC 315 (Statistics), PSYC 351 (Learning),
+              PSYC 363 (Sensation &amp; Perception), PSYC 364 (Cognition), PSYC 447 (Psychophysiology)
+            </li>
+          </ul>
+
+          <details class="edu-details">
+            <summary class="edu-summary"><strong>Psychology course descriptions</strong></summary>
+            <ul class="edu-detail-list">
+              <li><strong>PSYC 310 – Research Methods &amp; Designs</strong>: Experimental design, ethics, APA style, proposal writing.</li>
+              <li><strong>PSYC 315 – Statistical Analysis</strong>: Descriptive/inferential stats, hypothesis testing.</li>
+              <li><strong>PSYC 321 – Fundamentals of Personality</strong>: Personality theories and application to behavior/character.</li>
+              <li><strong>PSYC 340 – Fundamentals of Psychopathology</strong>: Disorders, mechanisms; useful for mental health–oriented work.</li>
+              <li><strong>PSYC 351 – Fundamentals of Learning</strong>: Conditioning, reinforcement, adaptation in interactive systems.</li>
+              <li><strong>PSYC 355 – Fundamentals of Behavioral Neurobiology</strong>: Neural bases of behavior.</li>
+              <li><strong>PSYC 363 – Fundamentals of Sensation &amp; Perception</strong>: Sensory processing for audio/visual design.</li>
+              <li><strong>PSYC 364 – Fundamentals of Cognition</strong>: Memory, attention, mental models.</li>
+              <li><strong>PSYC 447 – Psychophysiology</strong>: ECG/GSR/EEG; capstone on physiological responses to games.</li>
+            </ul>
+          </details>
+        </li>
 
       <hr/>
 
