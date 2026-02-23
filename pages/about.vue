@@ -83,64 +83,38 @@
       <div class="about-content">
         <h2>About Me</h2>
         <p>
-          My name is Acacia Williams. I am Coast Salish and a Cowichan Tribes member, born and raised in the Cowichan Valley on
-          Vancouver Island.
+          My name is Acacia Williams. I am Coast Salish and a Cowichan Tribes member, born and raised in the Cowichan Valley on Vancouver Island.
         </p>
 
         <p>
-          I’m completing a Bachelor of Arts in Psychology with a minor in Computational Arts at Concordia University. I began my degree
-          in a Psychology specialization, then pivoted to Computational Arts when I realized I
-          wanted to build interactive digital work, especially games and real-time 3D environments. That shift reflects how I learn:
-          quickly, hands-on, and through making. My projects now sit at the intersection of human experience and digital systems:
-          player psychology, visual storytelling, interaction design, and world-building.
+          I’m completing a Bachelor of Arts in Psychology with a minor in Computational Arts at Concordia University. I started in Psychology, then shifted toward Computational Arts when I realized I wanted to build interactive digital work, especially games and real time 3D environments. That pivot reflects how I learn: hands on, iterative, and through making.
         </p>
 
         <p>
-          My artistic background spans both digital and traditional media, including pottery, acrylic painting, pastels, and
-          photography. Outside of studio work, I’m an outdoors enthusiast who completed the West Coast Trail in seven days.
-          I enjoy playing musical instruments, performing in the U.K. to play flute in my school's chamber orchestra.
+          My work sits at the intersection of human experience and digital systems, combining player psychology, interaction design, and visual storytelling. I’m most engaged when I can move from concept to a working prototype, then refine it through testing, feedback, and polish.
+        </p>
+
+        <h2>Focus</h2>
+        <p>
+          I build interactive experiences that feel intentional, where mechanics, environment, and feedback support the same idea. My focus is real time world building and interaction design, with a strong interest in technical art workflows that connect art and implementation.
         </p>
 
         <p>
-          My equestrian journey started at age six, and I now have 13 years of experience in hunter, jumper, and dressage. I enjoy
-          practicing Parelli horsemanship, emphasizing mutual respect and trust between horse and rider—values that strongly influence
-          how I approach design, iteration, and teamwork.
+          Psychology shapes how I approach design: clarity, attention, perception, and emotion. I think a lot about readability and how players learn systems, then I translate that into concrete choices in level design, UI, pacing, and moment to moment feedback.
         </p>
 
-        <h2>Mission</h2>
+        <h2>Outside the studio</h2>
         <p>
-          I’m passionate about building interactive experiences that feel intentional, where the mechanics, environment, and feedback
-          work together to create meaning. My focus is real-time 3D world-building and interaction design, bridging art, design, and
-          prototyping. I love working across engines and tools (especially Unreal Engine, Unity, and Blender) to bring ideas to life,
-          and I’m drawn to the creative challenge of making worlds that feel readable, immersive, and alive.
+          Outside of school, I spend time riding and training horses, hiking, photographing, and playing games (including Magic: The Gathering). I like activities that reward patience, practice, and careful observation, and I bring that same mindset to building and iteration.
         </p>
 
+        <h2>Next steps</h2>
         <p>
-          My Psychology background shapes how I think about players: how people learn systems, how attention and perception affect
-          readability, and how design choices influence emotion and decision-making. I’m most excited when a project lets me combine
-          those insights with hands-on building—designing the experience and then implementing it through scripting, systems design,
-          and iteration.
-        </p>
-
-        <h2>Hobbies</h2>
-        <p>
-          In my free time, I’m learning French and Japanese, reading, and playing games like Magic: The Gathering. I enjoy open-world
-          titles and platformers, not only for fun, but because I love studying how games teach players through level design, pacing,
-          and feedback. I also enjoy photography, being outdoors, and staying active.
-        </p>
-
-        <h2>Future Aspirations</h2>
-        <p>
-          Professionally, I’m working toward a career in the creative technology industry, ideally in a hybrid role where I can keep
-          designing and building: technical art, gameplay systems, interaction design, and world-building. Long-term, I want to explore
-          entrepreneurship and eventually run a small game studio, which is why I’m actively building not just my portfolio, but also
-          my skills in collaboration, production, and communicating ideas clearly.
+          I’m currently applying for internships and entry level opportunities in creative technology, especially technical art, gameplay systems, interaction design, and real time 3D. I’m looking for teams where I can contribute quickly, learn production pipelines, and grow through collaboration.
         </p>
 
         <p>
-          I’m proud to be the first in my family to pursue and complete university. That milestone carries deep personal significance
-          for me, and it continues to shape how I approach my work: with discipline, gratitude, and a drive to earn opportunities
-          through consistent effort.
+          Longer term, I plan to pursue a Masters in digital media or creative technology once I’ve built more professional experience through internships and shipped projects.
         </p>
       </div>
     </div>
