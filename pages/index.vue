@@ -271,21 +271,28 @@ const rightItems = computed(() => homeGridItems.value.filter((_, i) => i % 2 ===
   margin: 0 0 1rem; /* spacing under the row */
 }
 
-.section-link {
+.section-link,
+.section-link:visited {
   display: inline-flex;
   align-items: center;
   padding: 0.25rem 0.75rem;
   border-radius: 999px;
   border: 1px solid var(--pill-border);
   background: var(--card);
-  color: var(--link);
+  color: var(--text);       /* matches your other text */
   text-decoration: none;
   font-weight: 700;
   font-size: 0.9rem;
 }
 
-.section-link:hover {
+.section-link:hover,
+.section-link:focus-visible {
+  color: var(--link);       /* accent on hover */
   text-decoration: underline;
+}
+
+.section-link:active {
+  color: var(--link);
 }
 
 @media (max-width: 600px) {
