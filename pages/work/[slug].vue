@@ -9,9 +9,12 @@
     </div>
 
     <!-- Optional: top crumb back to index -->
-    <NuxtLink to="/" class="top-crumb">
-      ← All work
+    <NuxtLink :to="backHref" class="top-crumb">
+      ← {{ backLabel }}
     </NuxtLink>
+<!--    <NuxtLink to="/" class="top-crumb">-->
+<!--      ← All work-->
+<!--    </NuxtLink>-->
 
     <!-- █ 1. Hero Embed - Playable iframe (game / YouTube) -->
     <!-- 1. Hero carousel - supports images and iframes -->
@@ -331,9 +334,12 @@
         ← Previous
       </button>
 
-      <NuxtLink to="/" class="proj-nav-link proj-nav-main">
-        All work
+      <NuxtLink :to="backHref" class="proj-nav-link proj-nav-main">
+        {{ backLabel }}
       </NuxtLink>
+<!--      <NuxtLink to="/" class="proj-nav-link proj-nav-main">-->
+<!--        All work-->
+<!--      </NuxtLink>-->
 
       <button
           type="button"
@@ -373,6 +379,25 @@ const item = computed(() =>
     items.find(i => i.slug === String(route.params.slug))
 )
 
+const backHref = computed(() => (item.value?.archived ? '/archive' : '/'))
+const backLabel = computed(() => (item.value?.archived ? 'Archive' : 'All work'))
+
+// Build the list that prev/next should use.
+// If you are on an archived project, stay inside archived.
+// Otherwise, stay inside non-archived (the main site list).
+const navItems = computed(() => {
+  const current = item.value
+  if (!current) return []
+
+  if (current.archived) {
+    // match your Early Work page rule (archived only, and not featured)
+    return items.filter(i => i.archived && !i.featured)
+  }
+
+  // main navigation set: everything except archived
+  return items.filter(i => !i.archived)
+})
+
 // downloads derived from the current item
 const downloads = computed(() => item.value?.downloads ?? [])
 
@@ -402,24 +427,24 @@ function heroSrc(src: string): string {
 }
 
 const currentIndex = computed(() =>
-    items.findIndex(i => i.slug === String(route.params.slug))
+    navItems.value.findIndex(i => i.slug === String(route.params.slug))
 )
 
 const hasPrev = computed(() => currentIndex.value > 0)
 
 const hasNext = computed(() =>
-    currentIndex.value >= 0 && currentIndex.value < items.length - 1
+    currentIndex.value >= 0 && currentIndex.value < navItems.value.length - 1
 )
 
 function goPrev() {
   if (!hasPrev.value) return
-  const target = items[currentIndex.value - 1]
+  const target = navItems.value[currentIndex.value - 1]
   router.push(`/work/${target.slug}`)
 }
 
 function goNext() {
   if (!hasNext.value) return
-  const target = items[currentIndex.value + 1]
+  const target = navItems.value[currentIndex.value + 1]
   router.push(`/work/${target.slug}`)
 }
 

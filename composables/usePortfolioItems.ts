@@ -40,6 +40,7 @@ export interface PortfolioItem {
 
     featured?: boolean;
     featuredOrder?: number;
+    archived?: boolean              // if true, hide from homepage "Selected work" list
     highlights?: string[]         // 3–5 bullets: strongest evidence
     controls?: string[]           // quick “how to play” list (keep separate from longDescription)
     links?: PortfolioLink[]       // demo/code/paper links (great for “original code” evidence)
@@ -578,6 +579,7 @@ This project accelerated my Blender linear keyframing and troubleshooting (Geome
             slug: 'chromatic-chameleon',
             title: 'Chromatic Chameleon',
             image: '/chromatic-chameleon.mp4',
+            archived: true,
             course: 'CART 263 - Creative Computation II',
             completed: 'Winter 2025',
             description: 'A small platformer game made with Phaser.js.',
@@ -676,6 +678,7 @@ This project accelerated my Blender linear keyframing and troubleshooting (Geome
             image: '/ghost-tale-platforms.mp4',
             course: 'CART 315 - Digital Game Prototyping',
             completed: 'Winter 2025',
+            archived: true,
             description: 'A Lua-powered Pico-8 tiny game (platformer).',
             longDescription: `
         Ghost Tale combines retro pixel art with puzzle platforming in a haunted cute ghostly world.
@@ -706,6 +709,7 @@ This project accelerated my Blender linear keyframing and troubleshooting (Geome
             image: '/gravity-jam.mp4',
             course: 'CART 253 - Creative Computation I',
             completed: 'Fall 2024',
+            archived: true,
             description: 'A Javascript p5.js game focusing on showcasing three simple variations: guiding falling objects using gravity and wind.',
             longDescription: `
         Gravity Jam is a small game where you guide a falling object onto a target by creating gusts of wind with mouse clicks. 

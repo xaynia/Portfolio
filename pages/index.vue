@@ -129,7 +129,11 @@
 
     <!-- ✅ ALL WORK -->
     <section class="allwork-section">
-      <h2 class="section-title">All Work</h2>
+      <div class="section-head">
+        <h2 class="section-title">All Work</h2>
+
+        <NuxtLink to="/archive" class="section-link">Archive</NuxtLink>
+      </div>
 
       <div class="masonry">
         <!-- Left column -->
@@ -250,25 +254,51 @@ function prevFeatured() {
 }
 
 
-// featured WILL appear in all work:
-const nonFeaturedItems = computed(() => items)
+// All Work grid should hide archived items, but still include featured items
+const homeGridItems = computed(() => items.filter(i => !i.archived))
 
 // Split items: even indices => left, odd => right
-const leftItems  = computed(() => nonFeaturedItems.value.filter((_, i) => i % 2 === 0))
-const rightItems = computed(() => nonFeaturedItems.value.filter((_, i) => i % 2 === 1))
+const leftItems  = computed(() => homeGridItems.value.filter((_, i) => i % 2 === 0))
+const rightItems = computed(() => homeGridItems.value.filter((_, i) => i % 2 === 1))
 </script>
 
 <style lang="scss">
-.home-container {
-  padding: 2rem;
+.section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 0 0 1rem; /* spacing under the row */
+}
 
+.section-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid var(--pill-border);
+  background: var(--card);
+  color: var(--link);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.section-link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .section-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 /* Section titles */
-.section-title {
-  font-size: 1.4rem;
-  font-weight: 700;
-  margin: 0 0 1rem;
+/* (section-title base style is now global in assets/scss/main.scss) */
+.section-head .section-title {
+  margin: 0; /* remove the default bottom margin inside the row */
 }
 
 /* ✅ Featured section */
@@ -276,13 +306,9 @@ const rightItems = computed(() => nonFeaturedItems.value.filter((_, i) => i % 2 
   margin-bottom: 2.5rem;
 }
 
-.featured-section {
-  margin-bottom: 2.5rem;
-}
-
 .featured-carousel {
   position: relative;
-  max-width: 1360px;   /*  800 to 1000 works well */
+  max-width: 1360px;   /* 800 to 1000 works well */
   margin: 0 auto;
 }
 
@@ -310,21 +336,6 @@ const rightItems = computed(() => nonFeaturedItems.value.filter((_, i) => i % 2 
   font-size: 14px;
   line-height: 1.4;
 }
-
-.featured-card .info .title {
-  font-size: 18px !important;
-}
-
-.featured-card .info .desc {
-  font-size: 14px !important;
-}
-
-
-
-///* description : a bit smaller only in Featured */
-//.featured-card .desc {
-//  font-size: 16.00rem;
-//}
 
 /* view window */
 .featured-viewport {
@@ -370,13 +381,8 @@ const rightItems = computed(() => nonFeaturedItems.value.filter((_, i) => i % 2 
   border-color: rgba(255, 255, 255, 0.35);
 }
 
-.featured-nav.prev {
-  left: 0.5rem;
-}
-
-.featured-nav.next {
-  right: 0.5rem;
-}
+.featured-nav.prev { left: 0.5rem; }
+.featured-nav.next { right: 0.5rem; }
 
 /* dots */
 .featured-dots {
@@ -399,8 +405,7 @@ const rightItems = computed(() => nonFeaturedItems.value.filter((_, i) => i % 2 
   background: var(--link);
 }
 
-
-/* Reuse your masonry card styling, but make featured subtly stand out */
+/* Reuse masonry card styling, but make featured subtly stand out */
 .featured-card {
   outline: 1px solid var(--pill-border);
 }
@@ -414,74 +419,5 @@ const rightItems = computed(() => nonFeaturedItems.value.filter((_, i) => i % 2 
 }
 
 /* Masonry wrapper: 2 columns side by side */
-.masonry {
-  display: flex;
-  gap: 1rem;
-
-  @media (max-width: 600px) {
-    flex-direction: column;
-  }
-}
-
-.masonry-col {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-/* IMPORTANT: masonry-item is now a NuxtLink (<a>) but should look identical */
-.masonry-item {
-  display: block;              /* anchors are inline by default */
-  text-decoration: none;
-  color: inherit;
-
-  background: var(--card);
-  border-radius: 6px;
-  overflow: hidden;
-  text-align: left;
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--link);
-    outline-offset: 3px;
-  }
-
-  video,
-  img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-
-  .info {
-    padding: 1rem;
-    text-align: center;
-    max-width: 90%;
-    margin: 0 auto;
-
-    .title {
-      font-size: 1.1rem;
-      font-weight: 600;
-      margin-bottom: 0.25rem;
-      color: var(--text);
-    }
-
-    .meta-row {
-      margin: 0.35rem 0 0.65rem;
-    }
-
-    .desc {
-      font-size: 0.875rem;
-      color: var(--text);
-      line-height: 1.4;
-    }
-  }
-}
+/* (masonry, masonry-col, masonry-item styles are now global in assets/scss/main.scss) */
 </style>
