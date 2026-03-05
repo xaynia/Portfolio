@@ -81,41 +81,33 @@
 
       <!-- TEXT COLUMN -->
       <div class="about-content">
-        <h2>About Me</h2>
+        <h2>About</h2>
         <p>
-          My name is Acacia Williams. I am Coast Salish and a Cowichan Tribes member, born and raised in the Cowichan Valley on Vancouver Island.
+          I’m Acacia Williams, Coast Salish and a Cowichan Tribes member from the Cowichan Valley on Vancouver Island. I’m a game developer and creative technologist building interactive 3D experiences that combine mechanics, atmosphere, and storytelling.
         </p>
 
         <p>
-          I’m completing a Bachelor of Arts in Psychology with a minor in Computational Arts at Concordia University. I started in Psychology, then shifted toward Computational Arts when I realized I wanted to build interactive digital work, especially games and real time 3D environments. That pivot reflects how I learn: hands on, iterative, and through making.
+          I’m completing a B.A. in Psychology with a minor in Computational Arts at Concordia University. Psychology trained me in research methods and experimental thinking, so I approach design through playtests, clear questions, and iteration, focusing on how players learn systems, how flow and pacing shape the experience, and how agency and choice make interaction meaningful.
         </p>
 
         <p>
-          My work sits at the intersection of human experience and digital systems, combining player psychology, interaction design, and visual storytelling. I’m most engaged when I can move from concept to a working prototype, then refine it through testing, feedback, and polish.
+        Computational Arts is where I built my practical game making toolkit: prototyping in engine, implementing systems, and bringing projects to polished builds through real time 3D pipelines.
         </p>
 
-        <h2>Focus</h2>
+        <h2>What I build</h2>
         <p>
-          I build interactive experiences that feel intentional, where mechanics, environment, and feedback support the same idea. My focus is real time world building and interaction design, with a strong interest in technical art workflows that connect art and implementation.
-        </p>
-
-        <p>
-          Psychology shapes how I approach design: clarity, attention, perception, and emotion. I think a lot about readability and how players learn systems, then I translate that into concrete choices in level design, UI, pacing, and moment to moment feedback.
-        </p>
-
-        <h2>Outside the studio</h2>
-        <p>
-          Outside of school, I spend time riding and training horses, hiking, photographing, and playing games (including Magic: The Gathering). I like activities that reward patience, practice, and careful observation, and I bring that same mindset to building and iteration.
-        </p>
-
-        <h2>Next steps</h2>
-        <p>
-          I’m currently applying for internships and entry level opportunities in creative technology, especially technical art, gameplay systems, interaction design, and real time 3D. I’m looking for teams where I can contribute quickly, learn production pipelines, and grow through collaboration.
+          I take ideas from concept to playable prototype, then refine through playtesting and polish. I enjoy the full loop: concept, implementation, tuning, and presentation. I care about player agency and experiences that feel clear, polished, and intentional, whether it’s an atmospheric 3D world or a simple, replayable game that anyone can pick up and enjoy.
         </p>
 
         <p>
-          Longer term, I plan to pursue a Masters in digital media or creative technology once I’ve built more professional experience through internships and shipped projects.
+          My focus areas include gameplay systems, interaction design, and real time world building, plus technical art workflows that connect art and implementation, from shaders and materials to in engine tools and performance aware setup.
         </p>
+
+        <h2>Current focus</h2>
+        <p>
+          I’m building toward independent releases under my own studio practice, and I’m seeking support and opportunities that let me work full time on production. Right now I’m especially focused on learning mobile game development through rapid prototyping, game jams, and small, shippable experiments.
+        </p>
+
       </div>
     </div>
   </section>
@@ -136,11 +128,11 @@ const mediaSlides = ref<MediaSlide[]>([
     alt: 'Acacia Williams',
     caption: ''
   },
-  {
-    type: 'video',
-    src: '/media/Bravissima2.mp4',
-    caption: 'In my spare time: riding and training (hunter/jumper).'
-  }
+  // {
+  //   type: 'video',
+  //   src: '/media/Bravissima2.mp4',
+  //   caption: 'In my spare time: riding and training (hunter/jumper).'
+  // }
 ])
 
 const mediaIndex = ref(0)
