@@ -418,7 +418,7 @@ This project accelerated my Blender linear keyframing and troubleshooting (Geome
                 },
             ],
             screenshots: [
-                '/JumperReport.pdf',
+                // '/JumperReport.pdf',
                 // '/Jumper.png',
             ],
 
@@ -445,6 +445,7 @@ This project accelerated my Blender linear keyframing and troubleshooting (Geome
             - CT Game: *Advanced Riding Locomotion System (Riding System).* https://www.fab.com/listings/2140716c-a8b4-46d4-86d8-6cea729db48f
             - MalberS Animations: *Horse Animset.* https://www.fab.com/listings/e0fc6520-8c9d-425d-9d25-3b6dc9ed56f8
             `,
+            /*
             links: [
                 {
                     kind: 'paper',
@@ -452,6 +453,7 @@ This project accelerated my Blender linear keyframing and troubleshooting (Geome
                     url: 'https://acaciawilliams.netlify.app/media/JumperReport.pdf'
                 }
             ]
+            */
 
 
         },
