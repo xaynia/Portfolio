@@ -240,12 +240,14 @@
       </ul>
     </div>
 
-    <!-- █ 2½. Artistic Inspiration -->
-    <div v-if="item.artisticInfluences" class="credits" v-html="artspoHtml"></div>
-
-
-    <!-- █ 2½. Credits -->
-    <div v-if="item.credits" class="credits" v-html="creditsHtml"></div>
+    <!-- References & Credits dropdown -->
+    <details v-if="item.artisticInfluences || item.credits" class="references-details">
+      <summary class="references-summary"><strong>References &amp; Credits</strong></summary>
+      <div class="references-content">
+        <div v-if="item.artisticInfluences" class="references-section" v-html="artspoHtml"></div>
+        <div v-if="item.credits" class="references-section" v-html="creditsHtml"></div>
+      </div>
+    </details>
 
     <!-- █ 3. Screenshots / Media grid -->
     <div v-if="mediaShots.length" class="screenshots">
@@ -616,20 +618,33 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
 </script>
 
 <style scoped lang="scss">
-// font
+// Teal accent (scoped to project pages)
+.detail-container {
+  --cv-accent: #2ab5a0;
+  --cv-accent-hover: #23a08d;
+}
+
+.dark .detail-container {
+  --cv-accent: #4dd9c0;
+  --cv-accent-hover: #6de4d0;
+}
+
 .detail-container {
   padding: 2rem;
   max-width: 1200px;
   margin: 0 auto;
   background: var(--bg);
   color: var(--text);
+  font-size: 0.95rem;
+  line-height: 1.7;
 
 
   .description-block {
     margin: 0.35rem 0 1.1rem;
     padding: 1rem 1.25rem;
     background: var(--card);
-    border-radius: 6px;
+    border-radius: 8px;
+    border-left: 3px solid var(--cv-accent);
 
     h3 {
       margin: 0 0 0.75rem;
@@ -645,13 +660,92 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
     }
   }
 
-  /* credits box */
+  /* References & Credits dropdown */
+  .references-details {
+    margin: 1.5rem 0 0;
+    background: var(--card);
+    border-radius: 8px;
+    border-left: 3px solid var(--cv-accent);
+    padding: 0.5rem 0.85rem;
+    transition: box-shadow 0.25s ease;
+  }
+
+  .references-details:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
+  }
+
+  .references-summary {
+    cursor: pointer;
+    padding: 0.6rem 0.5rem;
+    border-radius: 6px;
+    list-style: none;
+    user-select: none;
+    font-size: 0.88rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    transition: background 0.15s ease;
+  }
+
+  .references-summary:hover {
+    background: rgba(42, 181, 160, 0.08);
+  }
+
+  .references-summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .references-summary::before {
+    content: "▸";
+    display: inline-block;
+    margin-right: 0.5rem;
+    transition: transform 0.2s ease;
+    color: var(--cv-accent);
+  }
+
+  .references-details[open] .references-summary::before {
+    transform: rotate(90deg);
+  }
+
+  .references-details[open] .references-summary {
+    margin-bottom: 0.35rem;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.12);
+    padding-bottom: 0.65rem;
+  }
+
+  .references-summary:focus-visible {
+    outline: 2px solid var(--cv-accent);
+    outline-offset: 2px;
+  }
+
+  .references-content {
+    padding: 0.5rem 0.25rem 0.25rem;
+  }
+
+  .references-section {
+    margin-bottom: 1rem;
+    line-height: 1.7;
+  }
+
+  .references-section:last-child {
+    margin-bottom: 0;
+  }
+
+  .references-section a {
+    color: var(--cv-accent);
+  }
+
+  .references-section a:hover {
+    text-decoration: underline;
+  }
+
+  /* credits box (legacy, kept for compatibility) */
   .credits {
     margin: 1.5rem 0 0;
     padding: 1rem 1.25rem;
     background: var(--card);
-    border-left: 15px solid #444;
-    border-radius: 6px;
+    border-left: 3px solid var(--cv-accent);
+    border-radius: 8px;
     font-size: 0.97rem;
     line-height: 1.7;
     white-space: normal;
@@ -729,8 +823,8 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
 
   .proj-nav-link:hover:not([disabled]) {
     background: var(--bg);
-    border-color: var(--link);
-    color: var(--link);
+    border-color: var(--cv-accent);
+    color: var(--cv-accent);
     text-decoration: none;
   }
 
@@ -762,7 +856,8 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
     margin-top: 1.5rem;
     padding: 1rem 1.25rem;
     background: var(--card);
-    border-radius: 6px;
+    border-radius: 8px;
+    border-left: 3px solid var(--cv-accent);
 
     h3 {
       margin: 0 0 0.75rem;
@@ -783,7 +878,7 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
     align-items: center;
     gap: 0.4rem;
     text-decoration: none;
-    color: var(--link);
+    color: var(--cv-accent);
     font-weight: 600;
   }
 
@@ -806,7 +901,8 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
     margin-top: 1.5rem;
     padding: 1rem 1.25rem;
     background: var(--card);
-    border-radius: 6px;
+    border-radius: 8px;
+    border-left: 3px solid var(--cv-accent);
 
     h3 {
       margin: 0 0 0.75rem;
@@ -829,7 +925,7 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
     display: inline-block;
     margin: 0.4rem 0 0.8rem;
     font-size: 0.9rem;
-    color: var(--link);
+    color: var(--cv-accent);
     text-decoration: none;
     font-weight: 500;
 
@@ -843,7 +939,8 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
     margin-top: 1.5rem;
     padding: 1rem 1.25rem;
     background: var(--card);
-    border-radius: 6px;
+    border-radius: 8px;
+    border-left: 3px solid var(--cv-accent);
   }
 
   .download-list {
@@ -861,7 +958,7 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
   }
 
   .download-link {
-    color: var(--link);
+    color: var(--cv-accent);
     text-decoration: none;
     font-weight: 600;
   }
@@ -877,7 +974,32 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
 
 
   h2 {
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.35rem;
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--cv-accent);
+    margin-bottom: 0.75rem;
+  }
+
+  h3::after {
+    content: '';
+    display: block;
+    margin-top: 0.4rem;
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      var(--cv-accent),
+      transparent 60%
+    );
+    opacity: 0.3;
   }
 
   /* nicer spacing under title */
@@ -890,7 +1012,8 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
     margin: 0.35rem 0 1.1rem;
     padding: 1rem 1.25rem;
     background: var(--card);
-    border-radius: 6px;
+    border-radius: 8px;
+    border-left: 3px solid var(--cv-accent);
   }
 
   .project-details h3 {
@@ -910,10 +1033,12 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
   }
 
   .details-grid dt {
-    font-size: 0.75rem;
+    font-size: 0.72rem;
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.04em;
-    color: var(--muted);
+    letter-spacing: 0.06em;
+    color: var(--cv-accent);
+    opacity: 0.8;
   }
 
   .details-grid dd {

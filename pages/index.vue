@@ -28,23 +28,25 @@
                 class="masonry-item featured-card featured-slide"
                 :aria-label="`Open project: ${item.title}`"
             >
-              <video
-                  v-if="isVideo(item.image)"
-                  :src="`/media${item.image}`"
-                  autoplay
-                  muted
-                  loop
-                  playsinline
-                  preload="metadata"
-                  aria-hidden="true"
-              />
-              <img
-                  v-else
-                  :src="`/media${item.image}`"
-                  :alt="item.title"
-                  loading="lazy"
-                  decoding="async"
-              />
+              <div class="img-wrap">
+                <video
+                    v-if="isVideo(item.image)"
+                    :src="`/media${item.image}`"
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                    preload="metadata"
+                    aria-hidden="true"
+                />
+                <img
+                    v-else
+                    :src="`/media${item.image}`"
+                    :alt="item.title"
+                    loading="lazy"
+                    decoding="async"
+                />
+              </div>
 
               <div class="info">
                 <h3 class="title">{{ item.title }}</h3>

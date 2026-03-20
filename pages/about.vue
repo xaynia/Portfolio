@@ -297,18 +297,50 @@ const currentCaption = computed(() => mediaSlides.value[mediaIndex.value]?.capti
   padding: 1rem;
 
   h2:first-of-type {
-    margin-top: -1rem;
+    margin-top: -0.5rem;
   }
 
   h2 {
-    margin-top: 1.5rem;
-    margin-bottom: 0.5rem;
+    margin-top: 2rem;
+    margin-bottom: 0.6rem;
+    font-size: 1.15rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #2ab5a0;
+  }
+
+  h2::after {
+    content: '';
+    display: block;
+    margin-top: 0.5rem;
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      rgba(42, 181, 160, 0.4),
+      rgba(42, 181, 160, 0.1) 60%,
+      transparent
+    );
   }
 
   p {
     margin-bottom: 1.2rem;
     line-height: 1.7;
+    font-size: 0.95rem;
   }
+}
+
+.dark .about-content h2 {
+  color: #4dd9c0;
+}
+
+.dark .about-content h2::after {
+  background: linear-gradient(
+    to right,
+    rgba(77, 217, 192, 0.4),
+    rgba(77, 217, 192, 0.1) 60%,
+    transparent
+  );
 }
 
 /* MOBILE */
