@@ -1,8 +1,8 @@
 <template>
   <section class="about-section">
     <div class="about-wrapper">
-      <!-- MEDIA COLUMN -->
-      <div class="about-photo">
+      <!-- MEDIA COLUMN (hidden for now) -->
+      <div class="about-photo" style="display: none">
         <div class="photo-container">
 
           <div class="about-carousel">
@@ -230,7 +230,7 @@ const currentCaption = computed(() => mediaSlides.value[mediaIndex.value]?.capti
 
 /* MEDIA COLUMN */
 .about-photo {
-  flex: 0 0 30%;
+  flex: 0 0 40%;
   display: flex; /* allow child to stretch */
 }
 
@@ -258,12 +258,13 @@ const currentCaption = computed(() => mediaSlides.value[mediaIndex.value]?.capti
 }
 
 .about-viewport {
+  position: relative;
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: 0;
   /* stable size so it doesn’t become a giant moving wall */
-  aspect-ratio: 3 / 4;
-  height: clamp(380px, 50vh, 550px);
-  max-height: 600px;
+  aspect-ratio: 4 / 4;
+  height: auto;
+  max-height: 550px;
   background: var(--card);
 }
 
@@ -289,7 +290,31 @@ const currentCaption = computed(() => mediaSlides.value[mediaIndex.value]?.capti
 
 .about-media.is-img {
   object-fit: cover;
+  object-position: top;
   background: var(--card);
+}
+
+/* Gallery frame effect */
+.about-viewport::before {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Bottom fade */
+.about-viewport::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 30%;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(to top, var(--bg), transparent);
 }
 
 .about-media.is-video {
