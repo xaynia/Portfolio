@@ -104,6 +104,9 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { usePortfolioItems } from '~/composables/usePortfolioItems'
+import { useReveal } from '~/composables/useReveal'
+
+useReveal()
 
 function isVideo(file: string) {
   return /\.(mp4|webm)$/i.test(file)

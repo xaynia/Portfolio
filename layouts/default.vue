@@ -103,61 +103,98 @@ function scrollTop () {
   flex-direction: column;
 }
 
-/* Fixed, semi-transparent header */
+/* Fixed header with blur */
 .site-header {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1000;
-  background-color: rgba(255, 255, 255, 0.85);
-  color: #333;
-  padding: 1rem 2rem;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  color: var(--text);
+  padding: 0 2.5rem;
+  height: 56px;
+  display: flex;
+  align-items: center;
   transition: transform 0.3s ease;
 
   .nav-container {
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
 
-  /* Logo link as home */
   .logo {
-    font-size: 1.5rem;
+    font-size: 0.95rem;
+    font-weight: 700;
     text-decoration: none;
     color: inherit;
     cursor: pointer;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
 
     &:hover,
     &:focus {
-      opacity: 0.8;
+      opacity: 0.6;
     }
   }
 
   .nav-links {
     list-style: none;
     display: flex;
-    gap: 1rem;
+    align-items: center;
+    gap: 1.5rem;
 
     li a {
       color: inherit;
       text-decoration: none;
+      font-size: 0.78rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      opacity: 0.6;
+      transition: opacity 0.2s ease;
+
+      &:hover {
+        opacity: 1;
+      }
     }
 
     .icon {
-      width: 24px;
-      height: 24px;
+      width: 18px;
+      height: 18px;
       filter: invert(0%);
+      opacity: 0.5;
+      transition: opacity 0.2s ease;
+
+      &:hover {
+        opacity: 1;
+      }
     }
 
     .mode-btn {
       background: none;
       border: none;
-      font-size: 1.3rem;
+      font-size: 1rem;
       cursor: pointer;
       line-height: 1;
+      opacity: 0.5;
+      transition: opacity 0.2s ease;
+
+      &:hover {
+        opacity: 1;
+      }
     }
   }
+}
+
+.dark .site-header {
+  background: rgba(29, 29, 29, 0.7);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 /* Slide header up when hidden */
@@ -167,32 +204,43 @@ function scrollTop () {
 
 /* Reserve space for fixed header */
 .header-spacer {
-  height: 64px;
+  height: 56px;
 }
 
-/* Footer stuck to bottom */
+/* Footer */
 .site-footer {
-  background-color: #333;
-  color: #eee;
+  border-top: 1px solid rgba(128, 128, 128, 0.12);
+  background: transparent;
+  color: var(--text);
   text-align: center;
-  padding: 1rem;
+  padding: 2rem 1rem;
   margin-top: auto;
+  opacity: 0.4;
 
   p {
-    font-size: 0.9rem;
+    font-size: 0.72rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
   }
 
   .back-to-top {
-    margin-top: 0.5rem;
-    background: #555;
-    border: none;
-    border-radius: 4px;
-    padding: 0.3rem 0.6rem;
-    color: #fff;
+    margin-top: 0.75rem;
+    background: none;
+    border: 1px solid var(--text);
+    border-radius: 999px;
+    padding: 0.25rem 0.75rem;
+    color: var(--text);
     cursor: pointer;
-    font-size: 0.85rem;
+    font-size: 0.68rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+
     &:hover {
-      background: #444;
+      opacity: 1;
     }
   }
 }

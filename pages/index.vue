@@ -226,6 +226,9 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import { usePortfolioItems } from '~/composables/usePortfolioItems'
+import { useReveal } from '~/composables/useReveal'
+
+useReveal()
 
 
 function isVideo(file: string) {
@@ -277,14 +280,17 @@ const rightItems = computed(() => homeGridItems.value.filter((_, i) => i % 2 ===
 .section-link:visited {
   display: inline-flex;
   align-items: center;
-  padding: 0.25rem 0.75rem;
+  padding: 0.15rem 0.6rem;
   border-radius: 999px;
   border: 1px solid var(--pill-border);
-  background: var(--card);
-  color: var(--text);       /* matches your other text */
+  background: transparent;
+  color: var(--text);
   text-decoration: none;
-  font-weight: 700;
-  font-size: 0.9rem;
+  font-weight: 500;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.5;
 }
 
 .section-link:hover,
@@ -331,19 +337,18 @@ const rightItems = computed(() => homeGridItems.value.filter((_, i) => i % 2 ===
   display: block;
 }
 
-/* Lock Featured card text size so it does not shrink on wide screens */
+/* Featured card text */
 .featured-card .info .title {
-  font-size: 18px;
+  font-size: 1.1rem;
   line-height: 1.3;
-  max-width: 40rem;   /* about 640px at 16px base font */
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
+  max-width: 40rem;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
 }
 
 .featured-card .info .desc {
-  font-size: 14px;
-  line-height: 1.4;
+  font-size: 0.82rem;
+  line-height: 1.5;
 }
 
 /* view window */
