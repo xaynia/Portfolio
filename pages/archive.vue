@@ -41,9 +41,10 @@
             <div class="info">
               <h3 class="title">{{ item.title }}</h3>
 
-              <div v-if="item.course || item.completed" class="meta-row center">
-                <span v-if="item.course" class="meta-pill">{{ item.course }}</span>
-                <span v-if="item.completed" class="meta-pill">{{ item.completed }}</span>
+              <div v-if="shortEngine(item.engine) || item.completed" class="card-meta">
+                <span v-if="shortEngine(item.engine)" class="card-meta-tag">{{ shortEngine(item.engine) }}</span>
+                <span v-if="shortEngine(item.engine) && item.completed" class="card-meta-sep">·</span>
+                <span v-if="item.completed" class="card-meta-tag">{{ item.completed }}</span>
               </div>
 
               <p class="desc">{{ item.description }}</p>
@@ -83,9 +84,10 @@
             <div class="info">
               <h3 class="title">{{ item.title }}</h3>
 
-              <div v-if="item.course || item.completed" class="meta-row center">
-                <span v-if="item.course" class="meta-pill">{{ item.course }}</span>
-                <span v-if="item.completed" class="meta-pill">{{ item.completed }}</span>
+              <div v-if="shortEngine(item.engine) || item.completed" class="card-meta">
+                <span v-if="shortEngine(item.engine)" class="card-meta-tag">{{ shortEngine(item.engine) }}</span>
+                <span v-if="shortEngine(item.engine) && item.completed" class="card-meta-sep">·</span>
+                <span v-if="item.completed" class="card-meta-tag">{{ item.completed }}</span>
               </div>
 
               <p class="desc">{{ item.description }}</p>
@@ -110,6 +112,11 @@ useReveal()
 
 function isVideo(file: string) {
   return /\.(mp4|webm)$/i.test(file)
+}
+
+function shortEngine(engine?: string) {
+  if (!engine) return ''
+  return engine.split(/[;,(]/)[0].trim()
 }
 
 const { items } = usePortfolioItems()

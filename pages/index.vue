@@ -51,10 +51,19 @@
               <div class="info">
                 <h3 class="title">{{ item.title }}</h3>
 
+                <!-- Engine + date (professional) -->
+                <div v-if="shortEngine(item.engine) || item.completed" class="card-meta">
+                  <span v-if="shortEngine(item.engine)" class="card-meta-tag">{{ shortEngine(item.engine) }}</span>
+                  <span v-if="shortEngine(item.engine) && item.completed" class="card-meta-sep">·</span>
+                  <span v-if="item.completed" class="card-meta-tag">{{ item.completed }}</span>
+                </div>
+
+                <!-- Course + semester (academic) — swap with above to switch:
                 <div v-if="item.course || item.completed" class="meta-row center">
                   <span v-if="item.course" class="meta-pill">{{ item.course }}</span>
                   <span v-if="item.completed" class="meta-pill">{{ item.completed }}</span>
                 </div>
+                -->
 
                 <p class="desc">{{ item.description }}</p>
               </div>
@@ -168,10 +177,17 @@
             <div class="info">
               <h3 class="title">{{ item.title }}</h3>
 
+              <div v-if="shortEngine(item.engine) || item.completed" class="card-meta">
+                <span v-if="shortEngine(item.engine)" class="card-meta-tag">{{ shortEngine(item.engine) }}</span>
+                <span v-if="shortEngine(item.engine) && item.completed" class="card-meta-sep">·</span>
+                <span v-if="item.completed" class="card-meta-tag">{{ item.completed }}</span>
+              </div>
+              <!-- old: course + semester pills
               <div v-if="item.course || item.completed" class="meta-row center">
                 <span v-if="item.course" class="meta-pill">{{ item.course }}</span>
                 <span v-if="item.completed" class="meta-pill">{{ item.completed }}</span>
               </div>
+              -->
 
               <p class="desc">{{ item.description }}</p>
             </div>
@@ -208,10 +224,17 @@
             <div class="info">
               <h3 class="title">{{ item.title }}</h3>
 
+              <div v-if="shortEngine(item.engine) || item.completed" class="card-meta">
+                <span v-if="shortEngine(item.engine)" class="card-meta-tag">{{ shortEngine(item.engine) }}</span>
+                <span v-if="shortEngine(item.engine) && item.completed" class="card-meta-sep">·</span>
+                <span v-if="item.completed" class="card-meta-tag">{{ item.completed }}</span>
+              </div>
+              <!-- old: course + semester pills
               <div v-if="item.course || item.completed" class="meta-row center">
                 <span v-if="item.course" class="meta-pill">{{ item.course }}</span>
                 <span v-if="item.completed" class="meta-pill">{{ item.completed }}</span>
               </div>
+              -->
 
               <p class="desc">{{ item.description }}</p>
             </div>
@@ -233,6 +256,13 @@ useReveal()
 
 function isVideo(file: string) {
   return /\.(mp4|webm)$/i.test(file)
+}
+
+/** Show just the primary engine/tool name for card meta */
+function shortEngine(engine?: string) {
+  if (!engine) return ''
+  // Take text before first semicolon, comma, or parenthesis
+  return engine.split(/[;,(]/)[0].trim()
 }
 
 const { items } = usePortfolioItems()

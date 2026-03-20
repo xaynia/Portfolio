@@ -276,6 +276,21 @@ html, body {
   justify-content: flex-start;
 }
 
+.masonry-item .info .card-meta {
+  margin: 0.2rem 0 0.35rem;
+  font-size: 0.65rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.4;
+  line-height: 1;
+}
+
+.masonry-item .info .card-meta-sep {
+  margin: 0 0.3rem;
+  opacity: 0.5;
+}
+
 .masonry-item .info .desc {
   font-size: 0.78rem;
   color: var(--text);
