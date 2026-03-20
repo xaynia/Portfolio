@@ -126,7 +126,7 @@
             <li>
               <strong>Digital Media Studio</strong> — Audiovisual production and sound-image integration
               <br/><span class="course-label">Software:</span> Premiere Pro, After Effects, Ableton, Reaper
-              <br/><span class="course-label">Details:</span> Stop motion, green screen compositing, colour theory, audio reactivity, Premiere↔AE workflow, sound-image integration
+              <br/><an class="course-label">Details:</an> Stop motion, green screen compositing, colour theory, audio reactivity, Premiere↔AE workflow, sound-image integration
               <br/><span class="course-label">Projects:</span> Movie trailer, <a href="/work/chaos-vs-symmetry"><em>Chaos vs. Symmetry</em></a> (experimental short blending AI elements with real-world footage)
             </li>
             <li>
@@ -250,52 +250,87 @@
     <ul class="project-list">
       <!-- Hide and Seek -->
       <li>
-        <a href="https://acaciawilliams.netlify.app/work/hide-and-seek" target="_blank" rel="noopener">
-          <strong>Hide and Seek (Sky Museum)</strong>
-        </a> — Solo real-time cinematic 3D environment
-        <br/><span class="course-label">Tools:</span> Unreal Engine 5.6, Blender, Premiere Pro, After Effects
-        <br/><span class="course-label">Role:</span> Solo — environment design, asset creation, Blueprint scripting, trailer production
-        <br/><span class="course-label">Details:</span> Built a playable 3D environment using Sequencer, Blueprints, and Movie Render Queue with a Blender asset pipeline; created a non-Euclidean cube presentation effect; edited the gameplay trailer in Premiere/After Effects
+        <div class="proj-content">
+          <div class="proj-text">
+            <a href="https://acaciawilliams.netlify.app/work/hide-and-seek" target="_blank" rel="noopener">
+              <strong>Hide and Seek (Sky Museum)</strong>
+            </a> — Solo real-time cinematic 3D environment
+            <br/><span class="course-label">Tools:</span> Unreal Engine 5.6, Blender, Premiere Pro, After Effects
+            <br/><span class="course-label">Role:</span> Solo — environment design, asset creation, Blueprint scripting, trailer production
+            <br/><span class="course-label">Details:</span> Built a playable 3D environment using Sequencer, Blueprints, and Movie Render Queue with a Blender asset pipeline; created a non-Euclidean cube presentation effect; edited the gameplay trailer in Premiere/After Effects
+          </div>
+          <a href="/work/hide-and-seek" class="proj-thumb-link">
+            <img src="/media/498/HideAndSeek/HideSeekCover.png" alt="Hide and Seek" class="proj-thumb"/>
+          </a>
+        </div>
       </li>
       <!-- Ouroboros Loop -->
       <li>
-        <a href="https://acaciawilliams.netlify.app/work/ouroboros-loop" target="_blank" rel="noopener">
-          <strong>Ouroboros Loop — iAcorn: Scheduled Growth</strong>
-        </a> — Looping 3D animation with procedural transitions
-        <br/><span class="course-label">Tools:</span> Blender (Shader Nodes, Geometry Nodes, Video Sequencer)
-        <br/><span class="course-label">Role:</span> Solo — concept, modelling, shader development, animation, compositing
-        <br/><span class="course-label">Details:</span> 15–20s looping animation where a hydration UI drives an acorn → oak → reset cycle; shader-node material transitions, Geometry Nodes foliage replacement, and Video Sequencer iteration
+        <div class="proj-content">
+          <div class="proj-text">
+            <a href="https://acaciawilliams.netlify.app/work/ouroboros-loop" target="_blank" rel="noopener">
+              <strong>Ouroboros Loop — iAcorn: Scheduled Growth</strong>
+            </a> — Looping 3D animation with procedural transitions
+            <br/><span class="course-label">Tools:</span> Blender (Shader Nodes, Geometry Nodes, Video Sequencer)
+            <br/><span class="course-label">Role:</span> Solo — concept, modelling, shader development, animation, compositing
+            <br/><span class="course-label">Details:</span> 15–20s looping animation where a hydration UI drives an acorn → oak → reset cycle; shader-node material transitions, Geometry Nodes foliage replacement, and Video Sequencer iteration
+          </div>
+          <a href="/work/ouroboros-loop" class="proj-thumb-link">
+            <img src="/media/361/Ouroboros/iAcorn.png" alt="Ouroboros Loop" class="proj-thumb"/>
+          </a>
+        </div>
       </li>
       <!-- Horse Jumper Simulator -->
       <li>
-        <a href="/work/horse-jumper" target="_blank" rel="noopener">
-          <strong>Horse Jumper Simulator</strong>
-        </a> — 3D show-jumping game prototype
-        <br/><span class="course-label">Tools:</span> Unreal Engine 5.6, Blueprints
-        <br/><span class="course-label">Role:</span> Solo — game design, player controls, scoring system, UI/HUD
-        <br/><span class="course-label">Details:</span> Built a playable 3D show-jumping prototype with timed jump courses, fault tracking, horse riding controls, and a scoring system
+        <div class="proj-content">
+          <div class="proj-text">
+            <a href="/work/horse-jumper" target="_blank" rel="noopener">
+              <strong>Horse Jumper Simulator</strong>
+            </a> — 3D show-jumping game prototype
+            <br/><span class="course-label">Tools:</span> Unreal Engine 5.6, Blueprints
+            <br/><span class="course-label">Role:</span> Solo — game design, player controls, scoring system, UI/HUD
+            <br/><span class="course-label">Details:</span> Built a playable 3D show-jumping prototype with timed jump courses, fault tracking, horse riding controls, and a scoring system
+          </div>
+          <a href="/work/horse-jumper" class="proj-thumb-link">
+            <img src="/media/Jumper1.png" alt="Horse Jumper Simulator" class="proj-thumb"/>
+          </a>
+        </div>
       </li>
       <!-- Ghoul Rush -->
       <li>
-        <a href="https://acaciawilliams.netlify.app/work/ghoul-rush" target="_blank" rel="noopener">
-          <strong>Ghoul Rush</strong>
-        </a> — 3D horde-survival magic shooter
-        <span class="proj-links">
-          <span class="sep">·</span>
-          <a href="https://github.com/Noe235/CART315FinalProject" target="_blank" rel="noopener">Source code</a>
-        </span>
-        <br/><span class="course-label">Tools:</span> Unity, C#, JetBrains Rider, GitHub
-        <br/><span class="course-label">Role:</span> Team (2) — gameplay programming, spell system, enemy AI, playtesting
-        <br/><span class="course-label">Details:</span> Fast-paced horde-survival shooter where players collect elemental mushrooms and swap spells to defend a magical core; iterative design through weekly playtesting cycles
+        <div class="proj-content">
+          <div class="proj-text">
+            <a href="https://acaciawilliams.netlify.app/work/ghoul-rush" target="_blank" rel="noopener">
+              <strong>Ghoul Rush</strong>
+            </a> — 3D horde-survival magic shooter
+            <span class="proj-links">
+              <span class="sep">·</span>
+              <a href="https://github.com/Noe235/CART315FinalProject" target="_blank" rel="noopener">Source code</a>
+            </span>
+            <br/><span class="course-label">Tools:</span> Unity, C#, JetBrains Rider, GitHub
+            <br/><span class="course-label">Role:</span> Team (2) — gameplay programming, spell system, enemy AI, playtesting
+            <br/><span class="course-label">Details:</span> Fast-paced horde-survival shooter where players collect elemental mushrooms and swap spells to defend a magical core; iterative design through weekly playtesting cycles
+          </div>
+          <a href="/work/ghoul-rush" class="proj-thumb-link">
+            <img src="/media/GhoulRushCover.png" alt="Ghoul Rush" class="proj-thumb"/>
+          </a>
+        </div>
       </li>
       <!-- Cymatic Water Symphony -->
       <li>
-        <a href="/work/cymatic-water-symphony" target="_blank" rel="noopener">
-          <strong>Cymatic Water Symphony</strong>
-        </a> — Audio-visual installation
-        <br/><span class="course-label">Tools:</span> Max MSP, Jitter
-        <br/><span class="course-label">Role:</span> Solo — sound design, visual programming, installation design
-        <br/><span class="course-label">Details:</span> Interactive patch combining six water-themed audio sources with cymatic-inspired visuals, showcasing how sound vibrations produce distinct patterns in physical media
+        <div class="proj-content">
+          <div class="proj-text">
+            <a href="/work/cymatic-water-symphony" target="_blank" rel="noopener">
+              <strong>Cymatic Water Symphony</strong>
+            </a> — Audio-visual installation
+            <br/><span class="course-label">Tools:</span> Max MSP, Jitter
+            <br/><span class="course-label">Role:</span> Solo — sound design, visual programming, installation design
+            <br/><span class="course-label">Details:</span> Interactive patch combining six water-themed audio sources with cymatic-inspired visuals, showcasing how sound vibrations produce distinct patterns in physical media
+          </div>
+          <a href="/work/cymatic-water-symphony" class="proj-thumb-link">
+            <img src="/media/cymatic-thumbnail.png" alt="Cymatic Water Symphony" class="proj-thumb"/>
+          </a>
+        </div>
       </li>
     </ul>
 
@@ -303,20 +338,34 @@
       <summary class="edu-summary"><strong>Other projects</strong></summary>
       <ul class="edu-detail-list">
         <li>
-          <a href="/work/blender" target="_blank" rel="noopener">
-            <strong>Blender 3D Modeling — Surface Tensions</strong>
-          </a> — Technical and conceptual 3D modelling
-          <br/><span class="course-label">Tools:</span> Blender, Substance Painter
-          <br/><span class="course-label">Role:</span> Solo — modelling, materials, lighting, rendering
-          <br/><span class="course-label">Details:</span> Two 3D models: one technically accurate everyday object, and one conceptual transformation (hourglass) using modifiers and visual metaphor
+          <div class="proj-content">
+            <div class="proj-text">
+              <a href="/work/blender" target="_blank" rel="noopener">
+                <strong>Blender 3D Modeling — Surface Tensions</strong>
+              </a> — Technical and conceptual 3D modelling
+              <br/><span class="course-label">Tools:</span> Blender, Substance Painter
+              <br/><span class="course-label">Role:</span> Solo — modelling, materials, lighting, rendering
+              <br/><span class="course-label">Details:</span> Two 3D models: one technically accurate everyday object, and one conceptual transformation (hourglass) using modifiers and visual metaphor
+            </div>
+            <a href="/work/blender" class="proj-thumb-link">
+              <img src="/media/361/ConceptualModel/Hourglass-front-white.png" alt="Surface Tensions" class="proj-thumb"/>
+            </a>
+          </div>
         </li>
         <li>
-          <a href="/work/capstone" target="_blank" rel="noopener">
-            <strong>ECG &amp; Gaming Capstone</strong>
-          </a> — Psychophysiology research project
-          <br/><span class="course-label">Tools:</span> ECG equipment, Excel, statistical analysis
-          <br/><span class="course-label">Role:</span> Solo — research design, data collection, analysis, write-up
-          <br/><span class="course-label">Details:</span> Measured psychophysiological signals (heart rate, ECG) while participants played various game genres (social simulation, fighting, platformer), analyzing stress and emotional responses
+          <div class="proj-content">
+            <div class="proj-text">
+              <a href="/work/capstone" target="_blank" rel="noopener">
+                <strong>ECG &amp; Gaming Capstone</strong>
+              </a> — Psychophysiology research project
+              <br/><span class="course-label">Tools:</span> ECG equipment, Excel, statistical analysis
+              <br/><span class="course-label">Role:</span> Solo — research design, data collection, analysis, write-up
+              <br/><span class="course-label">Details:</span> Measured psychophysiological signals (heart rate, ECG) while participants played various game genres (social simulation, fighting, platformer), analyzing stress and emotional responses
+            </div>
+            <a href="/work/capstone" class="proj-thumb-link">
+              <img src="/media/capstone-infographic.png" alt="ECG Capstone" class="proj-thumb"/>
+            </a>
+          </div>
         </li>
       </ul>
     </details>
@@ -650,6 +699,48 @@
 
 .project-list li:hover {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
+}
+
+.proj-content {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.proj-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.proj-thumb-link {
+  flex-shrink: 0;
+  align-self: stretch;
+  margin: -1rem -1.1rem -1rem 0;
+}
+
+.proj-thumb {
+  width: 125px;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0 8px 8px 0;
+  border-left: 1px solid rgba(128, 128, 128, 0.12);
+  opacity: 0.9;
+  transition: opacity 0.2s ease;
+}
+
+.proj-thumb:hover {
+  opacity: 1;
+}
+
+@media (max-width: 500px) {
+  .proj-thumb-link {
+    margin: -1rem -1.1rem -1rem 0;
+  }
+
+  .proj-thumb {
+    width: 70px;
+    border-radius: 0 8px 8px 0;
+  }
 }
 
 .proj-links {
