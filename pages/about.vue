@@ -83,29 +83,29 @@
       <div class="about-content">
         <h2>About</h2>
         <p>
-          I’m Acacia Williams, Coast Salish and a Cowichan Tribes member from the Cowichan Valley on Vancouver Island. I’m a game developer and creative technologist building interactive 3D experiences that combine mechanics, atmosphere, and storytelling.
+          Acacia Williams. Coast Salish (Cowichan Tribes), from Vancouver Island. Based in Montreal.
         </p>
 
         <p>
-          I’m completing a B.A. in Psychology with a minor in Computational Arts at Concordia University. Psychology trained me in research methods and experimental thinking, so I approach design through playtests, clear questions, and iteration, focusing on how players learn systems, how flow and pacing shape the experience, and how agency and choice make interaction meaningful.
+          Game developer and creative technologist. Psychology and Computational Arts, Concordia University.
         </p>
 
         <p>
-        Computational Arts is where I built my practical game making toolkit: prototyping in engine, implementing systems, and bringing projects to polished builds through real time 3D pipelines.
+          I make games, interactive environments, and real-time 3D work. I playtest everything.
         </p>
 
-        <h2>What I build</h2>
+        <h2>Interests</h2>
         <p>
-          I take ideas from concept to playable prototype, then refine through playtesting and polish. I enjoy the full loop: concept, implementation, tuning, and presentation. I care about player agency and experiences that feel clear, polished, and intentional, whether it’s an atmospheric 3D world or a simple, replayable game that anyone can pick up and enjoy.
+          Generative AI, procedural systems, agentic workflows. Currently exploring how AI tools can integrate directly into creative pipelines, connecting models to engines and DCCs through protocols like MCP.
         </p>
 
         <p>
-          My focus areas include gameplay systems, interaction design, and real time world building, plus technical art workflows that connect art and implementation, from shaders and materials to in engine tools and performance aware setup.
+          Also builds Unreal Engine pipelines for fun, plays flute, rides horses (hunter/jumper), and once hiked the West Coast Trail in seven days.
         </p>
 
         <h2>Current focus</h2>
         <p>
-          I’m building toward independent releases under my own studio practice, and I’m seeking support and opportunities that let me work full time on production. Right now I’m especially focused on learning mobile game development through rapid prototyping, game jams, and small, shippable experiments.
+          Independent game development. Mobile prototyping, game jams, small shippable experiments.
         </p>
 
         <h2>Tools</h2>
