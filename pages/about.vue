@@ -230,7 +230,7 @@ const currentCaption = computed(() => mediaSlides.value[mediaIndex.value]?.capti
 
 /* MEDIA COLUMN */
 .about-photo {
-  flex: 0 0 40%;
+  flex: 0 0 30%;
   display: flex; /* allow child to stretch */
 }
 
@@ -261,9 +261,9 @@ const currentCaption = computed(() => mediaSlides.value[mediaIndex.value]?.capti
   overflow: hidden;
   border-radius: 8px;
   /* stable size so it doesn’t become a giant moving wall */
-  aspect-ratio: 3 / 5;
-  height: clamp(640px, 78vh, 1100px);
-  max-height: 1200px;
+  aspect-ratio: 3 / 4;
+  height: clamp(380px, 50vh, 550px);
+  max-height: 600px;
   background: var(--card);
 }
 
