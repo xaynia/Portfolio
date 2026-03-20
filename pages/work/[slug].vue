@@ -1,17 +1,20 @@
 <template>
   <div class="detail-container" v-if="item">
-    <h2>{{ item.title }}</h2>
+    <div class="detail-header">
+      <h2>{{ item.title }}</h2>
 
-    <!-- Optional: Re‑use pills on the detail page header -->
-    <div v-if="item.course || item.completed" class="meta-row">
-      <span v-if="item.course" class="meta-pill">{{ item.course }}</span>
-      <span v-if="item.completed" class="meta-pill">{{ item.completed }}</span>
+      <div class="detail-sub">
+        <div v-if="item.course || item.completed" class="detail-meta">
+          <span v-if="item.course">{{ item.course }}</span>
+          <span v-if="item.course && item.completed" class="detail-sep">·</span>
+          <span v-if="item.completed">{{ item.completed }}</span>
+        </div>
+
+        <NuxtLink :to="backHref" class="top-crumb">
+          ← {{ backLabel }}
+        </NuxtLink>
+      </div>
     </div>
-
-    <!-- Optional: top crumb back to index -->
-    <NuxtLink :to="backHref" class="top-crumb">
-      ← {{ backLabel }}
-    </NuxtLink>
 <!--    <NuxtLink to="/" class="top-crumb">-->
 <!--      ← All work-->
 <!--    </NuxtLink>-->
@@ -922,15 +925,17 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
 
   // downloads block
   .top-crumb {
-    display: inline-block;
-    margin: 0.4rem 0 0.8rem;
-    font-size: 0.9rem;
+    font-size: 0.72rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
     color: var(--cv-accent);
     text-decoration: none;
-    font-weight: 500;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
 
     &:hover {
-      text-decoration: underline;
+      opacity: 1;
     }
   }
 
@@ -973,11 +978,37 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
   }
 
 
-  h2 {
-    margin-bottom: 0.35rem;
-    font-size: 1.6rem;
+  .detail-header {
+    margin-bottom: 0.75rem;
+  }
+
+  .detail-header h2 {
+    margin-bottom: 0.3rem;
+    font-size: 1.5rem;
     font-weight: 700;
     letter-spacing: -0.01em;
+    line-height: 1.25;
+  }
+
+  .detail-sub {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .detail-meta {
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    opacity: 0.45;
+  }
+
+  .detail-sep {
+    margin: 0 0.35rem;
+    opacity: 0.5;
   }
 
   h3 {
@@ -1002,10 +1033,7 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
     opacity: 0.3;
   }
 
-  /* nicer spacing under title */
-  .meta-row {
-    margin: 0.35rem 0 1.1rem;
-  }
+  /* (meta-row pills replaced by inline detail-meta) */
 
   /* Project Details block */
   .project-details {
