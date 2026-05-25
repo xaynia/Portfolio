@@ -1,4 +1,4 @@
-# 🎨 Acacia Williams – Portfolio
+# Portfolio
 
 A responsive, dark-mode–ready portfolio for games, interactive art, and short
 films – built with **Nuxt 3 (+ Vite)**, **Vue 3**, and **SCSS** and deployed
